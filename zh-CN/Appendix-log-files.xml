@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Installation_Guide.ent">
+%BOOK_ENTITIES;
+]>
+<appendix id="appe-Installation_Guide-appendix-log-files_Chapter">
+	<title>日志文件</title>
+	<para>
+		This is a test paragraph
+	</para>
+	<section id="sect-Installation_Guide-appendix-log-files_Chapter_Section_1">
+		<title>&OVIRT;管理端安装时的日志文件</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	
+	<section id="sect-Installation_Guide-appendix-log-files_Chapter_Section_2">
+		<title>&OVIRT;管理端日志文件</title>
+		<para>
+			This is a test paragraph in Section 2
+			<orderedlist>
+				<listitem>
+					<para>
+						This is a test listitem.
+					</para>
+				</listitem>
+			</orderedlist>
+		</para>
+	</section>
+
+	<section id="sect-Installation_Guide-appendix-log-files_Chapter_Section_3">
+		<title>&OVIRT;主机的日志文件</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+</appendix>
+

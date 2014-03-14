@@ -6,8 +6,56 @@
 <book>
 	<xi:include href="Book_Info.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
 	<xi:include href="Preface.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-	<xi:include href="Chapter.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-	<xi:include href="Revision_History.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-	<index />
+    <part id="part-resource-manger" label="I">
+        <title>准备工作</title>
+      <partintro>
+       <para>
+        此部分主要是讲解在安装&OVIRT;之前需要准备什么。
+       </para>
+     </partintro>
+	<xi:include href="Chapter-introduction.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+	<xi:include href="Chapter-system-requirements.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+    </part>
+    <part label="II">
+         <title>安装&OVIRT;管理端</title>
+      <partintro>
+        <para>
+        此部分主要是讲解安装&OVIRT;管理端的详细步骤。
+        </para>
+      </partintro>
+	<xi:include href="Chapter-manager-installation.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+	<xi:include href="Chapter-self-hosted-engine.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+	<xi:include href="Chapter-data-collection.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+	<xi:include href="Chapter-update-environment.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+    </part>
+
+    <part label="III">
+         <title>安装&OVIRT; hypervisor节点</title>
+      <partintro>
+        <para>
+        此部分主要是讲解安装&OVIRT; Hypervisor的详细步骤。
+        </para>
+      </partintro>
+	<xi:include href="Chapter-introduction-hosts.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+	<xi:include href="Chapter-install-hypervisor-host.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+	<xi:include href="Chapter-install-host.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+    </part>
+
+    <part label="IV">
+         <title>配置</title>
+      <partintro>
+        <para>
+        此部分主要是讲解&OVIRT;管理端的详细步骤。
+        </para>
+      </partintro>
+	<xi:include href="Chapter-planning-data-center.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+	<xi:include href="Chapter-network-setup.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+	<xi:include href="Chapter-storage-setup.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+    </part>
+    <xi:include href="Appendix-log-files.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+    <xi:include href="Appendix-additional-utilites.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+    <xi:include href="Revision_History.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+   <index />
 </book>
 

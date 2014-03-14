@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Installation_Guide.ent">
+%BOOK_ENTITIES;
+]>
+<chapter id="chap-Installation_Guide-introduction_Chapter">
+	<title>&OVIRT;介绍</title>
+	<para>
+		This is a test paragraph
+	</para>
+	<section id="sect-Installation_Guide-introduction_Chapter_Section_1">
+		<title>&OVIRT;架构</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	
+	<section id="sect-Installation_Guide-introduction_Chapter_Section_2">
+		<title>&OVIRT;系统组件</title>
+		<para>
+			This is a test paragraph in Section 2
+			<orderedlist>
+				<listitem>
+					<para>
+						This is a test listitem.
+					</para>
+				</listitem>
+			</orderedlist>
+		</para>
+	</section>
+	<section id="sect-Installation_Guide-introduction_Chapter_Section_3">
+		<title>&OVIRT;资源</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	<section id="sect-Installation_Guide-introduction_Chapter_Section_4">
+		<title>&OVIRT; API支持</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	<section id="sect-Installation_Guide-introduction_Chapter_Section_5">
+		<title>虚拟机介绍</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	<section id="sect-Installation_Guide-introduction_Chapter_Section_6">
+		<title>&OVIRT;支持的虚拟机操作系统列表</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	<section id="sect-Installation_Guide-introduction_Chapter_Section_7">
+		<title>&OVIRT;安装流程</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+
+</chapter>
+

@@ -1,4 +1,5 @@
 <!ENTITY PRODUCT "Installation_Guide">
 <!ENTITY BOOKID "Installation_Guide">
 <!ENTITY YEAR "2014">
-<!ENTITY HOLDER "| You need to change the HOLDER entity in the zh-CN/Installation_Guide.ent file |">
+<!ENTITY HOLDER "| 易云捷讯技术有限公司 |">
+<!ENTITY OVIRT "eayunOS">

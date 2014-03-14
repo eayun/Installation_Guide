@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Installation_Guide.ent">
+%BOOK_ENTITIES;
+]>
+<chapter id="chap-Installation_Guide-manager-installation">
+	<title>安装&OVIRT;管理端</title>
+	<para>
+		This is a test paragraph
+	</para>
+	<section id="sect-Installation_Guide-manager-installation_Section_1">
+		<title>安装管理端图解示意图</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	
+	<section id="sect-Installation_Guide-manager-installation_Section_2">
+		<title>概览</title>
+		<para>
+			This is a test paragraph in Section 2
+			<orderedlist>
+				<listitem>
+					<para>
+						This is a test listitem.
+					</para>
+				</listitem>
+			</orderedlist>
+		</para>
+	</section>
+
+	<section id="sect-Installation_Guide-manager-installation_Section_3">
+		<title>注册</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	<section id="sect-Installation_Guide-manager-installation_Section_4">
+		<title>安装系统</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	<section id="sect-Installation_Guide-manager-installation_Section_5">
+		<title>配置</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	<section id="sect-Installation_Guide-manager-installation_Section_6">
+		<title>密码设置</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	<section id="sect-Installation_Guide-manager-installation_Section_7">
+		<title>准备PostgreSQL数据库服务</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	<section id="sect-Installation_Guide-manager-installation_Section_8">
+		<title>手动配置本地或远程的PostgreSQL数据库</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	<section id="sect-Installation_Guide-manager-installation_Section_9">
+		<title>访问管理员门户</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	<section id="sect-Installation_Guide-manager-installation_Section_10">
+		<title>卸载&OVIRT;管理程序</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+</chapter>
+

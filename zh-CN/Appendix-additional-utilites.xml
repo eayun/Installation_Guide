@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Installation_Guide.ent">
+%BOOK_ENTITIES;
+]>
+<appendix id="appe-Installation_Guide-appendix-additional-utilites_Chapter">
+	<title>管理员实用工具箱</title>
+	<para>
+		This is a test paragraph
+	</para>
+	<section id="sect-Installation_Guide-appendix-additional-utilites_Chapter_Section_1">
+		<title>加入目录服务程序</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	
+	<section id="sect-Installation_Guide-appendix-additional-utilites_Chapter_Section_2">
+		<title>更改配置工具</title>
+		<para>
+			This is a test paragraph in Section 2
+			<orderedlist>
+				<listitem>
+					<para>
+						This is a test listitem.
+					</para>
+				</listitem>
+			</orderedlist>
+		</para>
+	</section>
+	<section id="sect-Installation_Guide-appendix-additional-utilites_Chapter_Section_3">
+		<title>上传镜像工具</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	<section id="sect-Installation_Guide-appendix-additional-utilites_Chapter_Section_4">
+		<title>ISO文件上传</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	<section id="sect-Installation_Guide-appendix-additional-utilites_Chapter_Section_5">
+		<title>日志文件收集</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	<section id="sect-Installation_Guide-appendix-additional-utilites_Chapter_Section_6">
+		<title>SPICE代理</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	<section id="sect-Installation_Guide-appendix-additional-utilites_Chapter_Section_7">
+		<title>Squid代理</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+
+</appendix>
+

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Installation_Guide.ent">
+%BOOK_ENTITIES;
+]>
+<chapter id="chap-Installation_Guide-self-hosted-engine">
+	<title>self-hosted </title>
+	<para>
+		This is a test paragraph
+	</para>
+	<section id="sect-Installation_Guide-self-hosted-engine_Section_1">
+		<title>关于self-hosted</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	
+	<section id="sect-Installation_Guide-self-hosted-engine_Section_2">
+		<title>安装self-hosted</title>
+		<para>
+			This is a test paragraph in Section 2
+			<orderedlist>
+				<listitem>
+					<para>
+						This is a test listitem.
+					</para>
+				</listitem>
+			</orderedlist>
+		</para>
+	</section>
+
+	<section id="sect-Installation_Guide-self-hosted-engine_Section_3">
+		<title>配置self-hosted</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	<section id="sect-Installation_Guide-self-hosted-engine_Section_4">
+		<title>迁移self-hosted环境</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	<section id="sect-Installation_Guide-self-hosted-engine_Section_5">
+		<title>为self-hosted环境安装额外的主机</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+	<section id="sect-Installation_Guide-self-hosted-engine_Section_6">
+		<title>维护self-hosted</title>
+		<para>
+			This is a test paragraph in a section
+		</para>
+	</section>
+</chapter>
+
