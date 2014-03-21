@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Installation_Guide.ent">
+%BOOK_ENTITIES;
+]>
+<section id="Section-DNS-8-5-4-3">
+	<title>为Hypervisor配置域名服务器</title>
+	<formalpara><title>摘要</title>
+		<para>
+			Hypervisor支持指定一个或者多个域名服务器，在转换主机名和域名的时候会用到这些服务器。
+		</para>		
+	</formalpara>
+	<procedure>
+		<title>为Hypervisor配置域名服务器</title>
+		<step>
+			<para>设置或者改变主DNS服务器，选择DNS Server1那一栏，并且键入新的主DNS服务器的IP地址。</para>
+		</step>
+		<step>
+			<para>设置或者改变备选的DNS服务器，选择DNS Server2那一栏，并且键入行的备用DNS服务器的IP地址。</para>
+		</step>
+		<step>
+			<para>选择&lt;Save&gt;并且按Enter键来改变对DNS的配置。</para>
+		</step>
+	</procedure>
+	<formalpara>
+		<title> 结果</title>
+		<para>主DNS服务器和备选DNS服务器被改变了。</para>
+	</formalpara>
+</section>
+

@@ -6,8 +6,32 @@
 <chapter id="chap-Installation_Guide-install-hypervisor-host">
 	<title>安装&OVIRT; hypervisor主机</title>
 	<para>
-		This is a test paragraph
+         Before commencing Hypervisor installation you must be aware that:
 	</para>
+	<!--<xi:include href="test1.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />  -->
+           <itemizedlist>
+                <listitem>
+                  <para>
+                   &OVIRT;must install to physical server.
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                  </para>
+                </listitem>
+                <listitem>
+                  <para>
+                  </para>
+                </listitem>
+           </itemizedlist>
 	<section id="sect-Installation_Guide-install-hypervisor-host_Section_1">
 		<title>&OVIRT; Hypervisor主机概览</title>
 		<para>
@@ -40,12 +64,13 @@
 		<para>
 			This is a test paragraph in a section
 		</para>
-	</section>
+	</section> 
 	<section id="sect-Installation_Guide-install-hypervisor-host_Section_5">
 		<title>配置&OVIRT; Hypervisor</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
+		<xi:include href="Chpter-install-hypervisor-host/Section-login-hypervisor.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+		<xi:include href="Chpter-install-hypervisor-host/Section-config-keybord.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+		<xi:include href="Chpter-install-hypervisor-host/Section-view-status.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+		<xi:include href="Chpter-install-hypervisor-host/Section-config-network.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
 	</section>
 	<section id="sect-Installation_Guide-install-hypervisor-host_Section_6">
 		<title>将&OVIRT; hypervisor添加到&OVIRT;管理端</title>
