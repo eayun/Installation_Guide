@@ -38,19 +38,64 @@
 			<para>IPv4设置</para>
 			<para>Hypervisor支持DHCP和静态网络配置（static）。</para>
 			<orderedlist numeration="lowerroman">
-			<listitem>
-				<para>动态网路配置（DHCP）</para>
-			</listitem>
+				<listitem>
+					<para>动态网路配置（DHCP）</para>
+					<para>动态网络配置允许Hypervisor通过DHCP来动态的被分配地址。在IPv4 Settings中选择DHCP选项，并按空格来打开动态IPv4网络配置功能。</para>
+				</listitem>
+				<listitem>
+					<para> 静态网络配置</para>
+					<para>静态网络配置允许Hypervisor手动分配IP地址。在IPv4 Settings中选择Static选项，并按空格来打开静态IPv4网络配置功能。</para>
+					<para>选择static选项会出现IP Address，Netmask，Gateway栏。IP Address，Netmask，Gateway栏必须填写，来完成静态网络的配置。</para>
+					<para>详细说明必须满足的内容：</para>
+					<orderedlist > 
+						<listitem>
+							<para>IP Address在该网络中不能已经被使用。</para>
+						</listitem>
+						<listitem>
+							<para>Netmask需要和网络中其他主机使用的netmask匹配。</para>
+						</listitem>
+						<listitem>
+							<para>Gateway需要和网络中的其他机器使用的gateway匹配。</para>
+						</listitem>
+					</orderedlist> 
+					<para>如果你不清楚要使用的IP Address，Netmask或者Gateway，去联系网络管理员或者考虑动态配置。</para>
+					<para>范例8.12.  Static IPv4网络配置</para>
+					<programlisting language="Bash">
+						<![CDATA[
+						IPv4 Settings
+						( ) Disabled	( ) DHCP	(*) Static
+						IP Address: 192.168.122.100_	Netmask: 255.255.255.0___
+						Gateway
+						192.168.1.1_____
+						]]>
+					</programlisting>
+				</listitem>
 			</orderedlist>
-			<para></para>
+		</step> 
+		<step>
+			<para>IPv6设置</para>
+			<para>RHEVM不支持IPv6网络，IPv6网络选项必须保持Disabled。</para>
 		</step>
 		<step>
-			<para>输入你在安装Hypervisor的时候设置的密码并按Enter键。</para>
+			<para>VLAN配置</para>
+			<para>如果需要VLAN的话，在VLAN ID一栏为所选的设备填上VLAN的标识符。</para>
+		</step>
+		<step>
+			<para>保存网络配置</para>
+			<para>当为所选的设备设置好所有的网络选项的时候，必须保存配置。</para>
+			<orderedlist numeration="lowerroman">
+				<listitem>
+					<para>选择&lt;Save&gt;按钮，并键入Enter来保存网络配置。</para>
+				</listitem>
+				<listitem>
+					<para>然后可以看到完成配置的步骤。一旦配置完成，按Enter键来关闭该窗口</para>
+				</listitem>
+			</orderedlist>
 		</step>
 	</procedure>
 	<formalpara>
 		<title> 结果</title>
-		<para>你已经成功以admin的身份登陆Hypervisor。</para>
+		<para>从网络界面可以看到，该设备被列为已配置。</para>
 	</formalpara>
 </section>
 

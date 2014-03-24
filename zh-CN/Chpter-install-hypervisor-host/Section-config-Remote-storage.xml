@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Installation_Guide.ent">
+%BOOK_ENTITIES;
+]>
+<section id="Section-remote-storate-8-5-10">
+	<title>Hypervisor安全配置</title>
+	<formalpara><title>摘要</title>
+		<para>
+			安全界面用来改变本地和远程访问的密码。SSH密码认证也可以通过这个界面设置可用或者禁用。
+		</para>
+	</formalpara>
+	<procedure>
+		<title>Hypervisor安全配置</title>
+		<step>
+			<para>启用SSH密码认证</para>
+			<para>为远程访问启用SSH密码认证。选择Enable ssh password authentication选项，并按空格键来启用。</para>
+		</step>
+		<step>
+			<para>改变admin密码</para>
+			<orderedlist numeration="lowerroman">
+				<listitem>
+					<para>在admin栏键入一个想要的admin密码。这里，你应该使用一个强壮的密码。</para>
+					<para>输入想要的admin密码在Confirm Password栏。确定在Confirm Password输入的数和在Password中输入的是一样的。如果不一样的话，会提示错误信息：Passwords Do Not Match。</para>
+				</listitem>
+				<listitem>
+					<para> 选择&lt;Save&gt;并键入Enter来保存配置。</para>
+				</listitem>
+			</orderedlist>
+		</step>
+	</procedure>
+	<formalpara>
+		<title> 结果</title>
+		<para>安全配置已经更新了。</para>
+	</formalpara>
+</section>
+

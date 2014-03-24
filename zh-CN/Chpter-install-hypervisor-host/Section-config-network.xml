@@ -10,11 +10,4 @@
 	<xi:include href="DNS.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
 	<xi:include href="NTP.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
   	<xi:include href="NIC.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-<!--	<xi:include href="Security.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-	<xi:include href="SNMP.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-        <xi:include href="Common-information-model.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-        <xi:include href="Logging.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-	 <xi:include href="For-rh-network.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-        <xi:include href="Kernel-dumps.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-	<xi:include href="Remote-storage.xml" xmlns:xi="http://www.w3.org/2001/XInclude" /> -->
 </section>

@@ -71,6 +71,12 @@
 		<xi:include href="Chpter-install-hypervisor-host/Section-config-keybord.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
 		<xi:include href="Chpter-install-hypervisor-host/Section-view-status.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
 		<xi:include href="Chpter-install-hypervisor-host/Section-config-network.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+	    <xi:include href="Chpter-install-hypervisor-host/Section-config-Security.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+		<xi:include href="Chpter-install-hypervisor-host/Section-config-SNMP.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+		<xi:include href="Chpter-install-hypervisor-host/Section-config-CIM.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+		<xi:include href="Chpter-install-hypervisor-host/Section-config-Logging.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+		<xi:include href="Chpter-install-hypervisor-host/Section-config-Kernel-dumps.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+	    <xi:include href="Chpter-install-hypervisor-host/Section-config-Remote-storage.xml" xmlns:xi="http://www.w3.org/2001/XInclude" /> 
 	</section>
 	<section id="sect-Installation_Guide-install-hypervisor-host_Section_6">
 		<title>将&OVIRT; hypervisor添加到&OVIRT;管理端</title>

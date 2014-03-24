@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Installation_Guide.ent">
+%BOOK_ENTITIES;
+]>
+<section id="Section-CIM-8-5-7">
+	<title>配置Hypervisor通用信息模型</title>
+	<formalpara><title>摘要</title>
+		<para>
+			启用和配置通用信息模型（CIM）允许你将Hypervisor连接到存在的CIM管理框架中去，并监视Hypervisor上虚拟机的运行。
+		</para>
+	</formalpara>
+	<procedure>
+		<title>配置Hypervisor通用信息模型</title>
+		<step>
+			<para>选择Enable CIM栏。</para>
+			<programlisting language="Bash">
+				<![CDATA[
+				Enable CIM       [ ]
+				]]>
+			</programlisting>
+		</step>
+		<step>
+			<para>在Password栏输入密码。你将使用这个密码来用CIM访问Hypervisor。</para>
+		</step> 
+		<step>
+			<para>在Confirm Password栏重新输入一次密码。</para>
+		</step>
+		<step>
+			<para>选择&lt;Save&gt;并按Enter保存你的更改。</para>
+		</step>
+	</procedure>
+	<formalpara>
+		<title> 结果</title>
+		<para>经过设置，Hypervisor可以接受来自CIM使用密码的连接认证。当你要添加你的Hypervisor到你的通用信息模型管理器（CIMOM）</para>
+	</formalpara>
+</section>
+
