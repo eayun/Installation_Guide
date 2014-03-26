@@ -6,13 +6,59 @@
 <chapter id="chap-Installation_Guide-introduction_Chapter">
 	<title>&OVIRT;介绍</title>
 	<para>
-		This is a test paragraph
+		&OVIRT; 是易云云计算解决方案的核心产品。
 	</para>
 	<section id="sect-Installation_Guide-introduction_Chapter_Section_1">
 		<title>&OVIRT;架构</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
+        <para>
+            &OVIRT;的应用场景由以下部分组成：
+            <itemizedlist>
+                <listitem>
+                    <para>
+                        虚拟机宿主机使用KVM虚拟化技术。
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        虚拟机宿主机通过VDSM、QEMU、libvirt等工具来管理本地的虚拟机、网络和存储等各项资源。
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        &OVIRT;虚拟化管理中心，是整个部署环境的集中管理平台，提供图形界面完成资源的查询、配给和管理。
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        存储域，提供对于虚拟磁盘、虚拟机模板、ISO镜像的管理。
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        保存整个部署环境状态和变更的数据库。
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        可以通过外部的目录服务（Directory Server)提供用户管理和验证。
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>
+                        连接整个部署环境的网络通信，包括物理网络和虚拟网络。
+                    </para>
+                </listitem>
+            </itemizedlist>
+
+            <figure>
+                <title>&OVIRT;架构概览</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata fileref="images/eayun_arch_overview.png" format="PNG" />
+                    </imageobject>
+                </mediaobject>
+            </figure>
+        </para>
 	</section>
 	
 	<section id="sect-Installation_Guide-introduction_Chapter_Section_2">
