@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Installation_Guide.ent">
+%BOOK_ENTITIES;
+]>
+<section id="Section-view-status-8-5-3">
+	<title>观察Hypervisor的状态</title>
+	<para>选择左侧的状态项，可以看到虚拟机当前状态的简短概述。显示的信息包括：</para>
+	<itemizedlist>
+		<listitem>
+			<para>Hypervisor的当前状态</para>
+		</listitem>
+		<listitem>
+			<para>网络的当前状态</para>
+                </listitem>
+		<listitem>
+			<para>按F8,显示当前日志和报告文件的目的位置</para>
+                </listitem>
+		<listitem>
+			<para>活跃虚拟机的个数</para>
+                </listitem>
+	</itemizedlist>
+	<para>状态界面也提供了一些按钮，用来观察Hypervisor的更多细节，并改变其中的部分状态。</para>
+        <itemizedlist>
+                <listitem>
+			<para>&lt;View Host Key&gt;:显示了Hypervisor的RSA主机秘钥指纹，和主机秘钥。</para>
+                </listitem>
+                <listitem>
+                	<para>&lt;Details&gt;:显示了Hyperviosr使用的CPU的细节，例如CPU的名称和类型。</para>
+                </listitem>
+		<listitem>
+			<para>&lt;Lock&gt;:进观察Hyperviosr的状态入锁屏界面。必须输入正确的用户名和密码才可以解锁并进行其他操作。</para>
+                </listitem>
+                <listitem>
+			<para>&lt;Log Off&gt; :退出当前用户。</para>
+                </listitem>
+		<listitem>
+			<para>&lt;Restart&gt;：重启Hypervisor。</para>
+                </listitem>
+		<listitem>
+			<para>&lt;Power Off&gt;:关闭Hypervisor的电源。</para>
+                </listitem>
+        </itemizedlist>
+</section>
+

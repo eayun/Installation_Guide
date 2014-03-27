@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Installation_Guide.ent">
+%BOOK_ENTITIES;
+]>
+<section id="Section-NTP-8-5-4-4">
+	<title>为Hypervisor配置网络时间协议（NTP）</title>
+	<formalpara><title>摘要</title>
+		<para>
+			Hypervisor支持指定一个或者多个网络时间协议服务器，以此来保证虚拟见监视器和NTP服务器的系统时钟同步。保证虚拟机监视器和RHEVM的时间资源同步是非常重要的。者可以确保在RHEV环境中的准确时间。时间的同步影响了VM之间的>迁移。。
+		</para>		
+	</formalpara>
+	<procedure>
+		<title>为Hypervisor配置NTP服务器</title>
+		<step>
+			<para>设置或者改变主NTP服务器，选择NTP Server1那一栏，并且键入新的主NTP服务器的IP地址或者主机名。</para>
+		</step>
+		<step>
+			<para>设置或者改变备选的NTP服务器，选择NTP Server2那一栏，并且键入行的备用NTP服务器的IP地址或者主机名。</para>
+		</step>
+		<step>
+			<para>选择&lt;Save&gt;并且按Enter键来改变对NTP的配置。</para>
+		</step>
+	</procedure>
+	<formalpara>
+		<title> 结果</title>
+		<para>主NTP服务器和备选NTP服务器被改变了。</para>
+	</formalpara>
+</section>
+

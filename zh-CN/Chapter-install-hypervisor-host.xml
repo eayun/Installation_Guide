@@ -67,22 +67,96 @@
 	</section> 
 	<section id="sect-Installation_Guide-install-hypervisor-host_Section_5">
 		<title>配置&OVIRT; Hypervisor</title>
-		<xi:include href="Chpter-install-hypervisor-host/Section-login-hypervisor.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-		<xi:include href="Chpter-install-hypervisor-host/Section-config-keybord.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-		<xi:include href="Chpter-install-hypervisor-host/Section-view-status.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-		<xi:include href="Chpter-install-hypervisor-host/Section-config-network.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-	    <xi:include href="Chpter-install-hypervisor-host/Section-config-Security.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-		<xi:include href="Chpter-install-hypervisor-host/Section-config-SNMP.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-		<xi:include href="Chpter-install-hypervisor-host/Section-config-CIM.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-		<xi:include href="Chpter-install-hypervisor-host/Section-config-Logging.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-		<xi:include href="Chpter-install-hypervisor-host/Section-config-Kernel-dumps.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-	    <xi:include href="Chpter-install-hypervisor-host/Section-config-Remote-storage.xml" xmlns:xi="http://www.w3.org/2001/XInclude" /> 
+		<xi:include href="Chapter-install-hypervisor-host-8-5/Section-login-hypervisor.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+		<xi:include href="Chapter-install-hypervisor-host-8-5/Section-config-keybord.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+		<xi:include href="Chapter-install-hypervisor-host-8-5/Section-view-status.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+		<xi:include href="Chapter-install-hypervisor-host-8-5/Section-config-network.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+	    <xi:include href="Chapter-install-hypervisor-host-8-5/Section-config-Security.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+		<xi:include href="Chapter-install-hypervisor-host-8-5/Section-config-SNMP.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+		<xi:include href="Chapter-install-hypervisor-host-8-5/Section-config-CIM.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+		<xi:include href="Chapter-install-hypervisor-host-8-5/Section-config-Logging.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+		<xi:include href="Chapter-install-hypervisor-host-8-5/Section-config-Kernel-dumps.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+	    <xi:include href="Chapter-install-hypervisor-host-8-5/Section-config-Remote-storage.xml" xmlns:xi="http://www.w3.org/2001/XInclude" /> 
 	</section>
 	<section id="sect-Installation_Guide-install-hypervisor-host_Section_6">
 		<title>将&OVIRT; hypervisor添加到&OVIRT;管理端</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
+			<section id="sect-Attaching-Hypervisor-to-Manager-6-1">
+				<title>配置Hypervisor管理服务器</title>
+				<formalpara>
+					<title>摘要</title>
+					<para>如果服务器IP地址有效，你可以直接将Hypervisor连接到&OVIRT;。如果管理器还没有安装，你需要先设置一个密码。一旦管理器安装了，你就可以从管理员入口添加Hypervisor。Hypervisor用户接口的EayunOS Manager界面同时支持处理这两种情况。
+					</para>
+				</formalpara>
+				<important>
+					<para>EayunOS Manager界面的设置密码功能可以在Hypervisor上设置root的密码并允许SSH密码认证。一旦Hypervisor被成功的添加到管理器上，那最好禁用SSH密码认证功能。</para>
+				</important>
+				<procedure>
+					<title>配置一个Hypervisor管理服务器</title>
+					<step>
+						<para>
+						<orderedlist numeration="upperalpha">
+							<listitem>
+								<para>使用管理服务地地址进行配置</para>
+									<orderedlist numeration="lowerroman">
+										<listitem><para>在Management Server栏输入管理器的IP地址或者完整域名。</para></listitem>
+										<listitem><para>在Management Server Port输入管理服务器的端口。默认值是443。如果&OVIRT;安装的时候选择来一个不同的端口，在这里指定一个新值来替换默认值。</para></listitem>
+										<listitem><para>选择Retrieve Certificate,检查来自指定管理服务器的证书指纹是否正确。证书指纹的比对结果在&OVIRT;安装结束的时候返回。</para></listitem>
+										<listitem><para>不用设置Password和Confirm Password，当管理服务器地址有效的时候这两栏不需要。</para></listitem>
+									</orderedlist>
+							</listitem> 
+							<listitem>
+                               <para><emphasis>进行密码配置</emphasis></para>
+                               		<orderedlist numeration="lowerroman">
+                               			<listitem><para>在Password栏输入密码。建议你使用一个强壮的密码。强壮的密码可以是大小写字母，数字，标点符号的混合。密码最少六个字符，而且不应该出现在字典中。</para></listitem>
+                                        <listitem><para>在Confirm Password栏重新输入你的密码。</para></listitem>
+                                        <listitem><para>不用设置Management Server和Management Server Port两栏，只要密码设置来，稍后允许管理器添加Hypervisor就可以了，不需要这两栏。</para></listitem>
+                                    </orderedlist>
+							</listitem>
+						</orderedlist>
+					   </para>
+                    </step>
+					<step>
+						<title>保存配置</title>
+						<para>选择&lt;Save&gt;并键入Enter来保存配置。</para>
+					</step>
+				</procedure>
+				<formalpara>
+					<title>结果</title>
+					<para>EayunOS Manager配置完成。
+					</para>
+				</formalpara>
+			</section>
+		    <section id="sect-Attaching-Hypervisor-to-Manager-6-2">
+				<title>使用Hypervisor</title>
+				<para>如果Hypervisor配置了&OVIRT;的地址，那Hypervisor重启后自动注册到管理器。在&OVIRT;的主机选项卡中可以看到该Hypervisor。必须在&OVIRT;中批准Hypervisor的注册请求，才可以使用该Hypervisor。</para>
+				<para>如果Hypervisor没有配置&OVIRT;的地址，必须手动配置。在手动添加Hyperviosr的时候，你必须知道该机器的IP地址和在EayunOS Manager界面设置的密码。</para>
+			</section>
+			<section id="sect-Attaching-Hypervisor-to-Manager-6-3">
+		        <title>配置Hypervisor管理服务器</title>
+				<formalpara>
+					<title>摘要</title>
+						<para>在将Hypervisor连接到&OVIRT;之前，是不可能在上面运行虚拟机的。	</para>
+				</formalpara>
+				<procedure>
+				   	<title>配置一个Hypervisor管理服务器</title>
+					<step>
+                        <para>在管理员入口登录&OVIRT;</para>
+					</step>
+					<step>
+						<para>选择主机选项卡，可以看到之前配置的主机。该主机的状态是Pending Approval。</para>
+					</step>
+					<step>
+						<para>点新建按钮。出现新建主机对话框。你可以使用该对话框设置该主机的名字，核对它的SSH指纹，还可以给支持电源管理卡的主机配置电源管理。有关电源管理配置的详细信息，参见&OVIRT;管理员手册。</para>
+					</step>
+					<step>
+                        <para>点击OK。如果你还没有配置电源管理，你将会被提示，是否跳过该步骤直接运行，再次点OK。</para>
+					</step>
+				</procedure>
+				<formalpara>
+						<title>结果</title>
+						<para>该主机的状态变成Installing，一会之后，它的状态变成来UP。</para>
+				</formalpara>
+			</section>
 	</section>
 </chapter>
 

@@ -1,0 +1,35 @@
+<?xml version='1.0' encoding='utf-8' ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN" "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd" [
+<!ENTITY % BOOK_ENTITIES SYSTEM "Installation_Guide.ent">
+%BOOK_ENTITIES;
+]>
+<section id="Section-remote-storate-8-5-10">
+	<title>配置Hypervisor远程存储</title>
+	<formalpara><title>摘要</title>
+		<para>
+			 支持使用iSCSI initiator来进行远程存储。在Remote Storage界面完成对iSCSI initiator的配置。
+		</para>
+	</formalpara>
+	<procedure>
+		<title>配置Hypervisor远程存储</title>
+		<step>
+			<para>iSCSI INitiator 的名称</para>
+			<para> 在iSCSI Initiator名称栏键入initiator 名称</para>
+			<programlisting language="Bash">
+			<![CDATA[
+			Example 8.19.  iSCSI Initiator Name
+			iqn.2014-03.eayun.com:target1
+			]]>
+			</programlisting>
+		</step>
+		<step>
+			<para>保存配置</para>
+			<para> 选择&lt;Save&gt;并键入Enter来保存配置。</para>
+		</step>
+	</procedure>
+	<formalpara>
+		<title> 结果</title>
+		<para>安全配置已经更新了。</para>
+	</formalpara>
+</section>
+
