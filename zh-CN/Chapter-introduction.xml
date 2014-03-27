@@ -15,17 +15,17 @@
             <itemizedlist>
                 <listitem>
                     <para>
-                        虚拟机宿主机使用KVM虚拟化技术。
+                        &NODE;使用KVM虚拟化技术。
                     </para>
                 </listitem>
                 <listitem>
                     <para>
-                        虚拟机宿主机通过VDSM、QEMU、libvirt等工具来管理本地的虚拟机、网络和存储等各项资源。
+                        &NODE;通过VDSM、QEMU、libvirt等工具来管理本地的虚拟机、网络和存储等各项资源。
                     </para>
                 </listitem>
                 <listitem>
                     <para>
-                        &OVIRT;虚拟化管理中心，是整个部署环境的集中管理平台，提供图形界面完成资源的查询、配给和管理。
+                        &OVIRT;&MANAGER;，是整个部署环境的集中管理平台，提供图形界面完成资源的查询、配给和管理。
                     </para>
                 </listitem>
                 <listitem>
@@ -64,15 +64,17 @@
 	<section id="sect-Installation_Guide-introduction_Chapter_Section_2">
 		<title>&OVIRT;系统组件</title>
 		<para>
-			This is a test paragraph in Section 2
-			<orderedlist>
-				<listitem>
-					<para>
-						This is a test listitem.
-					</para>
-				</listitem>
-			</orderedlist>
-		</para>
+             &OVIRT;部署方案由多台&OVIRT;&NODE;服务器和至少一台&OVIRT;&MANAGER;服务器组成。
+        </para>
+        <para>
+            &OVIRT;&NODE;服务器上运行基于KVM技术的虚拟机。
+        </para>
+        <para>
+            &OVIRT;&MANAGER;服务器提供整个虚拟化环境的管理接口，负责管理虚拟机和存储资源的调度，通信协议，用户会话，虚拟机磁盘镜像以及虚拟机的高可用性。
+        </para>
+        <para>
+            &OVIRT;&MANAGER;通过web界面的管理门户与用户进行交互。
+        </para>
 	</section>
 	<section id="sect-Installation_Guide-introduction_Chapter_Section_3">
 		<title>&OVIRT;资源</title>
