@@ -4,30 +4,297 @@
 %BOOK_ENTITIES;
 ]>
 <chapter id="chap-Installation_Guide-install-host-setup">
-	<title>安装&OVIRT;all-in-one当作主机</title>
+	<title>使用All-in-One镜像进行安装</title>
 	<para>
 		This is a test paragraph
 	</para>
 	<section id="sect-Installation_Guide-install-host-setup_Section_1">
-		<title>&OVIRT;all-in-one 介绍</title>
+		<title>&OVIRT;的All-in-One 介绍</title>
 		<para>
-			This is a test paragraph in a section
+		简单介绍三种模式。
 		</para>
 	</section>
-	
 	<section id="sect-Installation_Guide-install-host-setup_Section_2">
-		<title>添加到&OVIRT;管理端</title>
-		<para>
-			This is a test paragraph in Section 2
-			<orderedlist>
-				<listitem>
+		<title>选择All_in_One模式安装</title>
+		<section id="sect-2-1">
+			<title>配置EayunOS主机</title>
+			<section id="sect-2-1-1">
+				<title>选择All_in_One模式安装系统</title>
+			</section>
+			<section id="sec-2-1-2">
+				<title>配置虚拟化主机的防火墙</title>
+				<formalpara>
+					<title>摘要</title>
 					<para>
-						This is a test listitem.
+						&OVIRT;需要打开一系列的网络端口来支持虚拟机和&OVIRT;  Manager的远程管理虚拟化主机的功能。在你尝试将主机加入到管理器之前，你必须按照下面的流程来打开需要的端口。
 					</para>
-				</listitem>
-			</orderedlist>
-		</para>
+				</formalpara>
+					<para>下面的步骤用来配置系统中的默认防火墙——iptables，以此来允许网络通信通过指定端口。这些步骤替代来你系统中存在的防火墙配置，只留下来&OVIRT;需要的。如果你有现存的防火墙规则需要合并，那你必须手动编辑iptables的配置文件。该文件在/etc/sysconfig/iptables下面。下面所有的命令都需要root权限。</para>
+				<procedure>
+					<title>配置虚拟化主机的防火墙</title>
+					<step>
+						<para>移除现有的防火墙规则</para>
+						<para>使用iptabels命令是添加--flush参数来移除现存的规则。</para>
+						 <programlisting language="Bash">
+						 	 <![CDATA[
+								# iptables --flush
+							 ]]>
+						 </programlisting>
+					</step>
+					<step>
+						<para>添加防火墙配置规则</para>
+						<para>使用iptabels命令是并加入--append参数来添加&OVIRT;需要的防火墙规则。提示符（#）已经被我们从命令列表中刻意去除了。这样方便你简单地把这些内容复制到一个脚本文件或者命令提示符。</para>
+						 <programlisting language="Bash">
+						 	 <![CDATA[
+								iptables --append INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+								iptables --append INPUT -p icmp -j ACCEPT
+								iptables --append INPUT -i lo -j ACCEPT
+								iptables --append INPUT -p tcp --dport 22 -j ACCEPT
+								iptables --append INPUT -p tcp --dport 16514 -j ACCEPT
+								iptables --append INPUT -p tcp --dport 54321 -j ACCEPT
+								iptables --append INPUT -p tcp -m multiport --dports 5634:6166 -j ACCEPT
+								iptables --append INPUT -p tcp -m multiport --dports 49152:49216 -j ACCEPT
+								iptables --append INPUT -j REJECT --reject-with icmp-host-prohibited
+								iptables --append FORWARD -m physdev ! --physdev-is-bridged -j REJECT \
+									--reject-with icmp-host-prohibited
+							 ]]>
+						 </programlisting>
+						<note>
+							<para>这些提供的iptables命令添加的防火墙规则允许了指定端口的网络传输。这些端口包括：</para>
+							<para>SSH使用22端口，</para>
+							<para>guest控制台连接使用5634到6166端口，</para>
+							<para>libvirt虚拟机迁移使用16514端口，</para>
+							<para>VDSM虚拟机迁移使用49152到49216端口，</para>
+							<para>&OVIRT; Manager使用54321端口。</para>
+						</note>
+					</step>
+					<step>
+						<para>保存更新后的防火墙配置</para>
+						<para>使用save来保存更新的防火墙配置脚本，使iptables在初始化的时候就使用该规则。</para>
+						 <programlisting language="Bash">
+						 	 <![CDATA[
+								# service iptables save
+							 ]]>
+						 </programlisting>
+					</step>
+					<step>
+						<para>开机启动iptables服务</para>
+						<para>确保iptables服务被配置为开机启动。如果服务没有运行就启动它，否则重启它。</para>
+						<programlisting language="Bash">
+						 	 <![CDATA[
+								# chkconfig iptables on
+								# service iptables restart
+							 ]]>
+						 </programlisting>
+					</step>
+				</procedure>
+				<formalpara>
+					<title>结果</title>
+					<para>你已经成功配置了虚拟化主机的防火墙规则。这些规则允许&OVIRT;所需的网络传输通过。</para>
+				</formalpara>
+			</section>
+			<section id="sec-2-1-3">
+				<title>配置虚拟化主机的SUDO命令</title>
+				<formalpara>
+					<title>摘要</title>
+					<para>
+						&OVIRT;通过使用sudo来以root身份在主机上执行操作。默认的配置内容，保存在/etc/sudoers中，其中包括允许sudo命令执行的内容。如果这个文件在系统安装后被修改，这些内容可能不存在了。下面的流程就逐步确认配置文件中需要的内容，并把不存在的内容添加进去。
+					</para>
+				</formalpara>
+				<procedure>
+					<title>配置虚拟主机的SUDO命令</title>
+					<step>
+						<para>登录</para>
+						<para>首先以root用户身份登录虚拟化主机。</para>
+					</step>
+					<step>
+						<para>运行visudo命令</para>
+						<para>运行visudo命令来打开/etc/sudoers</para>
+						<programlisting language="Bash">
+						 	 <![CDATA[
+								# visudo
+							 ]]>
+						 </programlisting>
+					</step>
+					<step>
+						<para>编辑sudoers文件</para>
+						<para>阅读配置文件，并确定有下面这几行：</para>
+						<programlisting language="Bash">
+						 	 <![CDATA[
+								# Allow root to run any commands anywhere
+							 	root	ALL=(ALL)	ALL
+							 ]]>
+						 </programlisting>
+						 <para>如果文件不包含上面这几行,加入它们，并使用VIM:w命令来保存文件。
+						 </para>
+					</step>
+					<step>
+						<para>退出编辑器</para>
+						<para>使用VIM:q命令来退出visudo。</para>
+					</step>
+				</procedure>
+				<formalpara>
+					<title>结果</title>
+					<para>通过配置sudo，你已经可以以root身份执行操作了。</para>
+				</formalpara>
+			</section>
+			<section id="sec-2-1-4">
+				<title>配置虚拟化主机的SSH</title>
+				<formalpara>
+					<title>摘要</title>
+					<para>&OVIRT; 为了实现Manager允许通过SSH访问虚拟化主机，需要使用root用户SSH登录。SSH登录使用密钥进行认证。你必须遵照下面的流程来确保SSH的配置可以实现上面的要求。
+					</para>
+				</formalpara>
+				<warning>
+					<para>
+						第一次使用&OVIRT; Manager连接虚拟化主机的时候会得到一个认证密钥。这一步它会覆盖在/root/.ssh/authorized_ley文件中存在的任何key。
+					</para>
+				</warning>
+				<procedure>
+					<title>配置虚拟化主机的SSH</title>
+					<para>流程中的所有的命令必须以root用户执行。</para>
+					<step>
+						<para>安装SSH服务器(openssh-server)</para>
+						<para>使用yum安装openssh-server服务器包。</para>
+						<programlisting language="Bash">
+						 	 <![CDATA[
+								# yum install openssh-server
+							 ]]>
+						 </programlisting>
+					</step>
+					<step>
+						<title>编辑SSH服务器的配置文件</title>
+						<para>在文本编辑器中打开SSH服务器的配置文件——/etc/ssh/sshd_config，找到PermitRootLogin。</para>
+						<orderedlist numeration="upperalpha">
+							<listitem>
+								<para>如果PermitRootLogin设置为yes，或者没有设置，那你不需要做什么操作了。
+								</para>
+								<para>
+									如果PermitRootLogin设置为no，那你必须把它设置成yes。
+								</para>
+							</listitem>
+						</orderedlist>
+					</step>
+					<step>
+						<title>开机启动SSH服务器</title>
+						<para>
+							使用chkconfig命令配置SSH服务器为开机启动服务。
+						</para>
+						<programlisting language="Bash">
+						 	 <![CDATA[
+								# chkconfig --level 345 sshd on
+							 ]]>
+						 </programlisting>
+					</step>
+					<step>
+						<title>启动SSH服务器</title>
+						<para>使用service命令启动SSH，如果它正在运行的的话就重启它。</para>
+						<programlisting language="Bash">
+						 	 <![CDATA[
+								# service sshd restart
+							 ]]>
+					    </programlisting>
+					</step>
+				</procedure>
+				<formalpara>
+					<title>结果</title>
+					<para>经过你配置的虚拟化主机已经允许root访问SSH。</para>
+				</formalpara>
+			</section>
+		</section>
+		<section id="sect-2-2">
+			<title>添加到&OVIRT;管理端</title>
+			<formalpara>
+				<title>摘要</title>
+				<para></para>
+			</formalpara>
+			<procedure>
+				<title>添加到&OVIRT;管理端</title>
+				<step>
+					<para>
+						点击主机资源标签，在结果列表中列出所有的主机。	
+					</para>
+				</step>
+				<step>
+					<para>
+						点击新建，打开新建主机窗口。
+					</para>
+				</step>
+				<step>
+					<para>
+						使用下拉菜单为新添加的主机选择数据中心和主机集群。
+					</para>
+				</step>
+				<step>
+					<para>
+						输入新主机的名称，地址，和SSH端口。
+					</para>
+				</step>
+				<step>
+					<para>
+						为新主机选择认证方法：
+					</para>
+					<orderedlist numeration="upperalpha">
+						<listitem>
+							<para>
+								输入root用户的密码，使用密码进行认证。
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								复制SSH PublicKey一栏显示的密钥到主机的/root/.ssh/authorized_hosts位置去，使用这个公钥来认证。
+							</para>
+						</listitem>
+					</orderedlist>
+				</step>
+				<step>
+					<para>
+						你已经完成了添加&OVIRT;主机必须的步骤。点击Advanced Parameters下拉按钮显示主机的高级设置。
+					</para>
+					<orderedlist numeration="upperalpha">
+						<listitem>
+							<para>
+								选择是否禁用自动防火墙配置。
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								选择获取主机SSH指纹来增加安全性。你可以手动添加或者自动获取。
+							</para>
+						</listitem>
+					</orderedlist>
+				</step>
+				<step>
+					<para>
+					</para>
+				</step>
+				<step>
+					<para>
+					</para>
+				</step>
+			</procedure>
+		</section>
+		<section id="sect-2-3">
+ 			<title>新建主机和编辑主机时设置和控制台窗口的各项说明</title>
+				<section id="sect-2-3-1">
+					<title>主机的常规设置的说明</title>
+				</section>
+				<section id="sect-2-3-2">
+					<title>电源管理设置项的说明</title>
+				</section>
+				<section id="sect-2-3-3">
+					<title>SPM优先级设置项的说明</title>
+				</section>
+				<section id="sect-2-3-4">
+					<title>主机控制台设置项的说明</title>
+				</section>
+		</section>
 	</section>
-
+	<section id="sect-Installation_Guide-install-host-setup_Section_3">
+		<title>选择Management_Only模式安装</title>
+	</section>
+	<section id="sect-Installation_Guide-install-host-setup_Section_4">
+		<title>选择Node_Only模式安装</title>     
+	</section>
 </chapter>
 
