@@ -20,12 +20,14 @@
                 </listitem>
                 <listitem>
                     <para>
-                        &NODE;通过VDSM、QEMU、libvirt等工具来管理本地的虚拟机、网络和存储等各项资源。
+                        &NODE;通过VDSM、QEMU、libvirt等工具来管理本地的虚拟机、
+                        网络和存储等各项资源。
                     </para>
                 </listitem>
                 <listitem>
                     <para>
-                        &OVIRT;&MANAGER;，是整个部署环境的集中管理平台，提供图形界面完成资源的查询、配给和管理。
+                        &OVIRT;&MANAGER;，是整个部署环境的集中管理平台，提供图
+                        形界面完成资源的查询、配给和管理。
                     </para>
                 </listitem>
                 <listitem>
@@ -40,7 +42,8 @@
                 </listitem>
                 <listitem>
                     <para>
-                        可以通过外部的目录服务（Directory Server)提供用户管理和验证。
+                        可以通过外部的目录服务（Directory Server)提供用户管理和
+                        验证。
                     </para>
                 </listitem>
                 <listitem>
@@ -54,7 +57,8 @@
                 <title>&OVIRT;架构概览</title>
                 <mediaobject>
                     <imageobject>
-                        <imagedata fileref="images/eayun_arch_overview.png" format="PNG" />
+                        <imagedata fileref="images/eayun_arch_overview.png"
+                            format="PNG" />
                     </imageobject>
                 </mediaobject>
             </figure>
@@ -64,13 +68,16 @@
 	<section id="sect-Installation_Guide-introduction_Chapter_Section_2">
 		<title>&OVIRT;系统组件</title>
 		<para>
-             &OVIRT;部署方案由多台&OVIRT;&NODE;服务器和至少一台&OVIRT;&MANAGER;服务器组成。
+            &OVIRT;部署方案由多台&OVIRT;&NODE;服务器和至少一台&OVIRT;&MANAGER;
+            服务器组成。
         </para>
         <para>
             &OVIRT;&NODE;服务器上运行基于KVM技术的虚拟机。
         </para>
         <para>
-            &OVIRT;&MANAGER;服务器提供整个虚拟化环境的管理接口，负责管理虚拟机和存储资源的调度，通信协议，用户会话，虚拟机磁盘镜像以及虚拟机的高可用性。
+            &OVIRT;&MANAGER;服务器提供整个虚拟化环境的管理接口，负责管理虚拟机
+            和存储资源的调度，通信协议，用户会话，虚拟机磁盘镜像以及虚拟机的高
+            可用性。
         </para>
         <para>
             &OVIRT;&MANAGER;通过web界面的管理门户与用户进行交互。
@@ -80,62 +87,83 @@
 	<section id="sect-Installation_Guide-introduction_Chapter_Section_3">
 		<title>&OVIRT;资源</title>
 		<para>
-			&OVIRT;虚拟环境中的资源分为2大类：物理资源和虚拟资源。物理资源是指实际存在的物理设备，包括&NODE;服务器、存储设备等；除此之外的所有资源归为虚拟资源，如逻辑网络环境、虚拟机模板等。在&OVIRT;虚拟化产品中，会使用以下和资源相关的术语：
+            &OVIRT;虚拟环境中的资源分为2大类：物理资源和虚拟资源。物理资源是指实
+            际存在的物理设备，包括&NODE;服务器、存储设备等；除此之外的所有资源归
+            为虚拟资源，如逻辑网络环境、虚拟机模板等。在&OVIRT;虚拟化产品中，会
+            使用以下和资源相关的术语：
             <itemizedlist>
                 <listitem>
                     <para>
-                        数据中心，对应整个虚拟化环境，是环境中所有物理资源和虚拟资源的集合。
+                        数据中心，对应整个虚拟化环境，是环境中所有物理资源和虚拟
+                        资源的集合。
                     </para>
                 </listitem>
                 <listitem>
                     <para>
-                        集群，是一组&NODE;服务器的集合，提供创建虚拟机的资源池。集群中所有的服务器共享相同的网络和存储基础架构，因此集群中的虚拟机可以在各个服务器节点进行迁移。
+                        集群，是一组&NODE;服务器的集合，提供创建虚拟机的资源池。
+                        集群中所有的服务器共享相同的网络和存储基础架构，因此集
+                        群中的虚拟机可以在各个服务器节点进行迁移。
                     </para>
                 </listitem>
                 <listitem>
                     <para>
-                        逻辑网络，是虚拟化环境中网络组织结构，对&MANAGER;、&NODE;、存储设备、虚拟机之间的通信进行管理。
+                        逻辑网络，是虚拟化环境中网络组织结构，对&MANAGER;、
+                        &NODE;、存储设备、虚拟机之间的通信进行管理。
                     </para>
                 </listitem>
                 <listitem>
                     <para>
-                        &NODE;，实际的物理服务器，为虚拟机提供运行运行的环境。&NODE;隶属于集群，虚拟机可以在同一集群中所有的&NODE;服务器之间进行迁移。
+                        &NODE;，实际的物理服务器，为虚拟机提供运行运行的环境。
+                        &NODE;隶属于集群，虚拟机可以在同一集群中所有的&NODE;服
+                        务器之间进行迁移。
                     </para>
                 </listitem>
                 <listitem>
                     <para>
-                        存储池，特定类型（如iSCSI，光线通道，NFS，POSIXFS等）的镜像仓库。每一个存储池都可以包含多个存储域，用于保存虚拟机磁盘镜像，ISO光盘镜像，虚拟机导入导出的镜像等。
+                        存储池，特定类型（如iSCSI，光线通道，NFS，POSIXFS等）的
+                        镜像仓库。每一个存储池都可以包含多个存储域，用于保存虚
+                        拟机磁盘镜像，ISO光盘镜像，虚拟机导入导出的镜像等。
                     </para>
                 </listitem>
                 <listitem>
                     <para>
-                        虚拟机，分为虚拟桌面和虚拟服务器2种类型。特权用户可以创建、管理、和删除虚拟机，普通用户只能访问虚拟机。
+                        虚拟机，分为虚拟桌面和虚拟服务器2种类型。特权用户可以创
+                        建、管理、和删除虚拟机，普通用户只能访问虚拟机。
                     </para>
                 </listitem>
                 <listitem>
                     <para>
-                        模板，是指包含了一些默认配置项的虚拟机模型。基于模板创建虚拟机时，默认的配置项从模板中获取。使用模板可以快速创建可用的虚拟机。
+                        模板，是指包含了一些默认配置项的虚拟机模型。基于模板创
+                        建虚拟机时，默认的配置项从模板中获取。使用模板可以快速
+                        创建可用的虚拟机。
                     </para>
                 </listitem>
                 <listitem>
                     <para>
-                        虚拟机池，是一组虚拟机的集合。可以根据不同需要建立虚拟机池，比如为企业中的不同部分创建不同的虚拟机池。
+                        虚拟机池，是一组虚拟机的集合。可以根据不同需要建立虚拟
+                        机池，比如为企业中的不同部分创建不同的虚拟机池。
                     </para>
                 </listitem>
                 <listitem>
                     <para>
-                        快照，保存特定时刻虚拟机操作系统和应用程序状态。在升级虚拟机操作系统或者安装新应用程序，可以先为虚拟机创建一份快照，如果之后出现故障，通过快照可以回滚到建立快照时的状态。
+                        快照，保存特定时刻虚拟机操作系统和应用程序状态。在升级
+                        虚拟机操作系统或者安装新应用程序，可以先为虚拟机创建一
+                        份快照，如果之后出现故障，通过快照可以回滚到建立快照时
+                        的状态。
                     </para>
                 </listitem>
                 <listitem>
                     <para>
-                        用户类型，&OVIRT;支持多种级别的拥有不同权限的管理员和普通用户。系统管理员可以对于物理基础架构（如数据中心、&NODE;、存储设备）进行管理。普通用户可以访问虚拟机池中可用的虚拟机或者经过管理员配置的独立运行的虚拟机。
+                        用户类型，&OVIRT;支持多种级别的拥有不同权限的管理员和普
+                        通用户。系统管理员可以对于物理基础架构（如数据中心、
+                        &NODE;、存储设备）进行管理。普通用户可以访问虚拟机池中可
+                        用的虚拟机或者经过管理员配置的独立运行的虚拟机。
                     </para>
                 </listitem>
                 <listitem>
                     <para>
-                        事件和监控，虚拟化环境中所有的警告、提示、通知可以帮助管理员监控各项资源的性能和运行状态。
-                    </para>
+                        事件和监控，虚拟化环境中所有的警告、提示、通知可以帮助管
+                        理员监控各项资源的性能和运行状态。 </para>
                 </listitem>
             </itemizedlist>
 		</para>
@@ -144,8 +172,8 @@
 	<section id="sect-Installation_Guide-introduction_Chapter_Section_4">
 		<title>&OVIRT; API支持</title>
 		<para>
-			&OVIRT;提供了大量与内部组件交互的接口，是对web界面形式的管理门户的补充，方便开发人员定制功能满足特定的需求。
-		</para>
+            &OVIRT;提供了大量与内部组件交互的接口，是对web界面形式的管理门户的补
+            充，方便开发人员定制功能满足特定的需求。 </para>
         <variablelist>
             <title>支持的可读可写访问接口</title>
             <para>
@@ -163,7 +191,8 @@
                 <term>SDK</term>
                 <listitem>
                     <para>
-                        &OVIRT;&MANAGER;提供的SDK开发工具包，支持情况：完全支持。
+                        &OVIRT;&MANAGER;提供的SDK开发工具包，支持情况：完全支持
+                        。
                     </para>
                 </listitem>
             </varlistentry>
@@ -171,7 +200,8 @@
                 <term>VDSM Hooks</term>
                 <listitem>
                     <para>
-                        通过VDSM hooks的接口开发定制功能，目前只支持在web界面的管理门户中对虚拟机进行修改的操作。其他情形暂不支持。
+                        通过VDSM hooks的接口开发定制功能，目前只支持在web界面的
+                        管理门户中对虚拟机进行修改的操作。其他情形暂不支持。
                     </para>
                 </listitem>
             </varlistentry>
@@ -194,7 +224,8 @@
                 <term>&OVIRT;&NODE;上的libvirt</term>
                 <listitem>
                     <para>
-                        支持通过virsh -r命令以只读的方式访问&OVIRT;&NODE;上的libvirt，不支持写入操作。
+                        支持通过virsh -r命令以只读的方式访问&OVIRT;&NODE;上的
+                        libvirt，不支持写入操作。
                     </para>
                 </listitem>
             </varlistentry>
@@ -209,7 +240,8 @@
                 <term>vdsClient命令</term>
                 <listitem>
                     <para>
-                        直接使用vdsClient命令和&OVIRT;&NODE;进行交互，对于直接用户是不支持的。
+                        直接使用vdsClient命令和&OVIRT;&NODE;进行交互，对于直接用
+                        户是不支持的。
                     </para>
                 </listitem>
             </varlistentry>
@@ -217,7 +249,8 @@
                 <term>&OVIRT;&NODE;控制台</term>
                 <listitem>
                     <para>
-                        直接操作&OVIRT;&NODE;时，应该使用默认提供的管理界面。通过其他控制台，对于直接用户是不支持的。
+                        直接操作&OVIRT;&NODE;时，应该使用默认提供的管理界面。通
+                        过其他控制台，对于直接用户是不支持的。
                     </para>
                 </listitem>
             </varlistentry>
@@ -231,11 +264,17 @@
             </varlistentry>
         </variablelist>
 	</section>
+
 	<section id="sect-Installation_Guide-introduction_Chapter_Section_5">
 		<title>虚拟机介绍</title>
 		<para>
-			This is a test paragraph in a section
+            虚拟机是对计算机系统的软件实现。&OVIRT;虚拟化环境中可以创建虚拟桌面
+            系统和虚拟服务器系统。
 		</para>
+        <para>
+            虚拟机可以对IT系统的事务和负载进行统一和增强。传统的IT架构中，工作负
+            载分布在不同的硬件上，需要一一进行管理和维护。同等规模的IT系统使用虚
+            拟化技术可以大幅减低硬件设备的数量以及管理的复杂度。
 	</section>
 	<section id="sect-Installation_Guide-introduction_Chapter_Section_6">
 		<title>&OVIRT;支持的虚拟机操作系统列表</title>
