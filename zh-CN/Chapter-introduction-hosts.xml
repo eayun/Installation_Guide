@@ -5,23 +5,23 @@
 ]>
 <chapter id="chap-Installation_Guide-introduction-hosts">
 	<title>虚拟化主机介绍</title>
-	<para>
-		This is a test paragraph
-	</para>
 	<section id="sect-Installation_Guide-introduction-hosts_Section_1">
 		<title>流程图之安装主机</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
+	<!--<figure id="bookmark"><title>流程图</title>  -->
+			<mediaobject>
+				<imageobject>
+					<imagedata fileref="../../../img/7.1.png" format="PNG" scale="75"/>
+				</imageobject>
+			</mediaobject>
+	<!--	</figure>   -->
 	</section>
-	
 	<section id="sect-Installation_Guide-introduction-hosts_Section_2">
 		<title>虚拟化主机介绍</title>
 		<para>
-			&OVIRT;支持使用&OVIRT;Hypervisor 镜像安装和all-in-one镜像安装两种情况。两种虚拟化主机可以在同一个&OVIRT;环境中共存。
+			&OVIRT;支持使用&OVIRT; Hypervisor 镜像安装和all-in-one镜像安装两种情况。两种虚拟化主机可以在同一个&OVIRT;环境中共存。
 		</para>
 		<para>
-			 你应该确定下面的条件来看优先使用哪种方法：
+			 你应该根据下面的条件来确定优先使用哪种方法：
 		</para>
 		<itemizedlist>
 				<listitem>
@@ -31,19 +31,21 @@
 				</listitem>
 				<listitem>
 					<para>
-						而且你已经成功安装了&OVIRT; Manager
+						你已经成功安装了&OVIRT; Manager
 					</para>
 				</listitem>
 		</itemizedlist>
 		<para>
-			此外，您可以选择安装&OVIRT; Manager Reports。这不是强制的，而且不是安装虚拟化主机必须的。一旦你完成上面的任务，你就做好了安装虚拟化主机的准备。
+			此外，您可以选择安装&OVIRT; Manager Reports。这不是强制的，而且不是安装虚拟化主机必须的。一旦你完成上面的内容，你就可以安装虚拟化主机了。
 		</para>
 		<important>
 			<para>
+				建议您至少安装两个虚拟化主机，并加入到&OVIRT;环境中。如果您只加入一台虚拟化主机，您无法使用类似迁移等功能。这些功能需要多个主机。
 			</para>
 		</important>
 		<important>
 			<para>
+				&OVIRT; Hypervisor是一个封闭的系统。如果您的环境中需要使用额外的RPM包，请使用all-in-one镜像进行安装。
 			</para>
 		</important>
 	</section>
