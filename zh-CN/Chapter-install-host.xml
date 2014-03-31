@@ -5,9 +5,6 @@
 ]>
 <chapter id="chap-Installation_Guide-install-host-setup">
 	<title>使用All-in-One镜像安装Hypervisor主机</title>
-	<para>
-		This is a test paragraph
-	</para>
 		<section id="sect-2-1">
 			<title>安装配置EayunOS Hypervisor主机</title>
 				<section id="sect-2-1-1">

@@ -5,59 +5,313 @@
 ]>
 <chapter id="chap-Installation_Guide-install-hypervisor-host">
 	<title>安装&OVIRT; hypervisor主机</title>
-	<para>
-         Before commencing Hypervisor installation you must be aware that:
-	</para>
-	<!--<xi:include href="test1.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />  -->
-           <itemizedlist>
-                <listitem>
-                  <para>
-                   &OVIRT;must install to physical server.
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                  </para>
-                </listitem>
-                <listitem>
-                  <para>
-                  </para>
-                </listitem>
-           </itemizedlist>
 	<section id="sect-Installation_Guide-install-hypervisor-host_Section_1">
 		<title>&OVIRT; Hypervisor主机概览</title>
 		<para>
-			This is a test paragraph in a section
-		</para>
+			在开始Hperciformes的安装前你必须知道：
+		</para>		<itemizedlist>
+			<listitem>
+				<para>
+					&OVIRT; Hypervisor必须安装在物理服务器上。不能被安装在虚拟机上。
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					安装过程会重新配置已选择的存储设备并破坏所有的数据。确保要把所有要保留的数据备份，然后再继续。
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					该环境中的所有的Hypervisor都必须有独立的主机名和IP地址，避免网络冲突。
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					使用Network Boot来安装Hypervisor的指导
+				</para>
+			</listitem>
+			<listitem>
+				<para>
+					&OVIRT; Hypervisor可以使用Storage Attached Network（SAN）和其他的网络存储来保存虚拟的客户镜像。但是需要一个本地存储设备来安装和启动Hypervisor。
+				</para>
+			</listitem>
+		</itemizedlist>
+		<note>
+			<para>
+				&OVIRT; Hypervisor可以自动化安装，不需要与用户互动。这种类型的安装仅仅推荐高级用户。
+			</para>
+		</note>
 	</section>
-	
 	<section id="sect-Installation_Guide-install-hypervisor-host_Section_2">
 		<title>安装包含安装光盘的软件包</title>
-		<para>
-			This is a test paragraph in Section 2
-			<orderedlist>
-				<listitem>
-					<para>
-						This is a test listitem.
-					</para>
-				</listitem>
-			</orderedlist>
-		</para>
-	</section>
-
+		<formalpara>
+			<title>摘要</title>
+			<para>安装所需要的包</para>
+		</formalpara>
+	</section> 
 	<section id="sect-Installation_Guide-install-hypervisor-host_Section_3">
 		<title>将镜像刻录为光盘或U盘</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
+		<section id="USB-3-1">
+			<title>准备使用USB Hypervisor安装盘</title>
+			<section id="prepare-USB-3-1-1">
+				<title>准备一个Hypervisor USB存储设备</title>
+				<para>
+					&OVIRT; Hypervisor可以安装到USB存储设备或者固态硬盘。然而，启动和安装的USB设备必须是安装目标上的一个独立的设备。使用PXE和tftp的网络启动提供来很好的灵活性和可扩展性。对于网络限制阻止了网络启动或者网卡不支持PXE的环境而言，只能使用CD-ROM或者USB进行本地安装。对那些没有CD-ROM驱动的系统而言，从USB存储设备启动是一个不错的选择。
+				</para>
+				<note>
+					<para>不是所有的系统都支持使用USB存储设备进行启动。开始安装前，在你的系统的BIOS中你的系统是否支持冲USB存储设备中启动。</para>
+				</note>
+			</section>
+			<section id="use-livecd-iso-to-disk-3-1-2">
+				<title>使用livecd-to-disk来制作USB启动盘</title>
+				<formalpara>
+					<title>摘要</title>
+					<para>可以使用livecd-iso-disk命令将Hypervisor镜像或者其他硬盘镜像写入一个USB存储设备。使用该工具将一个Hypervisor硬盘镜像写入USB存储设备后，支持USB启动的系统就可以使用USB存储设备来启动Hypervisor。</para>
+				</formalpara>
+				<para>使用livecd-iso-to-disk工具的基本语法如下：</para>
+				<programlisting language="Bash">
+				<![CDATA[
+				# livecd-iso-to-disk [image] [device]	     
+				]]>
+				</programlisting>
+				<para>[device]参数代表要写入的USB存储设备的路径。[image]参数包含硬盘镜像的路径和文件名。</para>
+			<note>
+				<para>livecd-iso-to-disk工具使用FAT或者EXT3分区格式或者块设备。</para>
+			</note>
+			<note>
+				<para>USB存储设备有时格式化的时候没有分区表。这种情况下，使用像/dev/sdb这样的存储设备的一般标识符来表示。当一个USB存储设备格式化产生来分区表，使用该设备的路径，例如/dev/sdb1。</para>
+			</note>
+			<procedure>
+				<step>
+					<para>获得Hypervisor最新包。</para>
+				</step>
+				<step>
+					<para>使用livecd-iso-to-disk工具复制硬盘镜像到USB存储设备。--format参数设定USB格式化类型。--reset-mbr参数初始化Master Boot Record（MBR）。</para>
+				</step>
+			</procedure>
+			<example>
+				<title>使用livecd-iso-to-disk</title>
+				<para>这个例子演示来如何使用livecd-iso-to-disk写入叫做/dev/sdc的USB存储设备，并使得该USB存储设备可启动。</para>
+			</example>
+			<programlisting language="Bash">
+			<![CDATA[
+			vecd-iso-to-disk --format --reset-mbr /usr/share/rhev-hypervisor/rhev-
+			hypervisor.iso /dev/sdc
+			Verifying image...
+			/usr/share/rhev-hypervisor/rhev-hypervisor.iso:
+			eccc12a0530b9f22e5ba62b848922309
+			Fragment sums:
+			8688f5473e9c176a73f7a37499358557e6c397c9ce2dafb5eca5498fb586
+			Fragment count: 20
+			Press [Esc] to abort check.
+			Checking: 100.0%
+			The media check is complete, the result is: PASS.
+			It is OK to use this media.
+			WARNING: THIS WILL DESTROY ANY DATA ON /dev/sdc!!!
+			Press Enter to continue or ctrl-c to abort
+			/dev/sdc: 2 bytes were erased at offset 0x000001fe (dos): 55 aa
+			Waiting for devices to settle...
+		 	mke2fs 1.42.7 (21-Jan-2013)
+			Filesystem label=LIVE
+			OS type: Linux
+			Block size=4096 (log=2)
+			Fragment size=4096 (log=2)
+			Stride=0 blocks, Stripe width=0 blocks
+			488640 inodes, 1953280 blocks
+			97664 blocks (5.00%) reserved for the super user
+			First data block=0
+			Maximum filesystem blocks=2000683008
+			60 block group
+			32768 blocks per group, 32768 fragments per group
+			8144 inodes per group
+			Superblock backups stored on blocks:
+			     32768, 98304, 163840, 229376, 294912, 819200, 884736, 1605632
+			
+			Allocating group tables: done
+			Writing inode tables: done
+			Creating journal (32768 blocks): done
+			Writing superblocks and filesystem accounting information: done
+			Copying live image to target device.
+			squashfs.img
+			    163360768  100%   184.33MB/s   0:00:00 (xfer#1, to-check=0/1)
+	
+			sent 163380785 bytes received 31 bytes 108920544.00 bytes/sec
+			total size is 163360768 speedup is 1.00
+			osmin.img
+			         4096  100%    0.00kB/s    0:00:00 (xfer#1, to-check=0/1)
+			
+			sent 4169 bytes received 31 bytes 8400.00 bytes/sec
+			total size is 4096 speedup is 0.98
+			Updating boot config file
+			Installing boot loader
+			/media/tgttmp.q6aZdS/syslinux is device /dev/sdc
+			Target device is now set up with a Live image!]]>
+				</programlisting>
+				<formalpara>
+					<title>结果</title>
+					<para>Hypervisor的硬盘镜像已经写入了USB存储设备。现在，您可以使用它启动设备并安装Hypervisor。</para>
+				</formalpara>
+			</section>
+			<section id="using-dd-3-1-3">
+				<title>使用dd来制作USB启动盘</title>
+				<formalpara>
+					<title>摘要</title>
+					<para>大多数linux系统都有dd命令，可以用来制作USB启动盘并启动系统、安装Hypervisor。</para>
+				</formalpara>
+				<procedure>
+					<title>使用linux系统中的dd命令来制作USB启动盘</title>
+					<step>
+						<para>准备好镜像文件和相关的包。</para>
+					</step>
+					<step>
+						<para>使用dd命令把镜像文件复制到硬盘</para>
+						<example>
+							<title>使用dd</title>
+							<para>
+								这个例子使用的存储设别叫做/dev/sdc
+							</para>
+							<programlisting language="Bash">
+							<![CDATA[
+							# dd if=/usr/share/rhev-hypervisor/rhev-hypervisor.iso of=/dev/sdc
+							243712+0 records in
+							243712+0 records out
+							124780544 bytes (125 MB) copied, 56.3009 s, 2.2 MB/s
+							]]>
+							</programlisting>
+						</example>
+					</step>
+				</procedure>
+				<warning>
+					<para>
+						dd命令将会重写of参数指定的设备上的所有数据。设备上存在的任何数据都将被破坏。在使用dd命令前，确定指定了正确的设备，并且该设备上没有任何有价值的数据。
+					</para>
+				</warning>
+				<formalpara>
+					<title>结果</title>
+					<para>USB存储设备已经被做成了Hypervisor安装盘。</para>
+				</formalpara>
+			</section>
+			<section id="prepare-dd-in-windows">
+				<title>在windows系统中使用dd命令制作USB启动盘</title>
+				<formalpara>
+					<title>摘要</title>
+					<para>可以在windows系统中安装Cygwin。在Cygwin中使用dd命令制作USB启动盘来启动和安装Hypervisor是可行的。</para>
+				</formalpara>
+				<procedure>
+					<title>在windows系统中使用dd命令制作USB启动安装盘</title>
+					<step>
+						<para>
+							访问 http：//www.cygwin.com 下载并安装Cygwin。
+						</para>
+					</step>
+					<step>
+						<para>
+							将Hypervisor的iso镜像文件复制到C:\hypervisor.iso。
+						</para>
+					</step>
+					<step>
+						<para>
+							以Adnimistrator权限运行Cygwin，出现一个终端窗口。
+						</para>
+						<important>
+							<para>
+								在windows7和windows server 2008平台上，右键选择Cygwin的图标，并选择“以管理员的身份运行...”选项来保证程序以正确的权限运行。
+							</para>
+						</important>
+					</step>
+					<step>
+						<para>
+							在终端中运行cat /proc/partitions来查看当前系统可见的驱动和分区。
+						</para>
+						<example>
+							<title>连接在系统上的硬盘分区的信息</title>
+							<programlisting language="Bash">
+							<![CDATA[
+							Administrator@test /
+							$ cat /proc/partitions
+							major minor #blocks name
+							8   0   15728640   sda
+							8   1   102400     sda1
+							8   2   15624192   sda2
+							]]>
+							</programlisting>
+						</example>
+					</step>
+					<step>
+						<para>
+							把用来制作Hypervisor安装盘的USB存储设备插入系统。重新运行cat /proc/partitions命令并比较两次的输出结果。多出来的一项就是USB存储设备。
+						</para>
+						<example>
+							<title>连接在系统上的硬盘分区的信息</title>
+							<programlisting language="Bash">
+							<![CDATA[
+							Administrator@test /
+							$ cat /proc/partitions
+							major minor #blocks name
+							8   0   15728640   sda
+							8   1   102400     sda1
+							8   2   15624192   sda2
+							8   16  524288     sdb
+							]]>
+							</programlisting>
+						</example>
+					</step>
+					<step>
+						<para>
+							使用dd命令复制hypervisor的iso镜像文件到硬盘。下面的例子使用的USB存储设备名字是/dev/sdb，把sdb替换成你使用的USB存储设备的正确的名字。
+						</para>
+						<example>
+							<title>使用Cygwin中的dd命令</title>
+							<programlisting language="Bash">
+							<![CDATA[
+							Administrator@test /
+							$ dd if=/cygdrive/c/rhev-hypervisor.iso of=/dev/sdb& pid=$!
+							]]>
+							</programlisting>
+						</example>
+						<para>
+							上面所提供的命令在后台启动传输并保存进程标识符，以便它可以被用来监视传输的进度。	
+						</para>
+						<warning>
+							<para>
+								使用dd命令复制hypervisor的iso镜像文件到硬盘。下面的例子使用的USB存储设备名字是/dev/sdb，把sdb替换成你使用的USB存储设备的正确的名字。
+							</para>
+						</warning>
+					</step>
+					<step>
+						<para>
+							为了查看同一个窗口终端下的启动的进程传输的进度，可以向他发送USR1信号。这可以通过在终端窗口中使用kill命令来实现，如下：
+						</para>
+						<programlisting language="Bash">
+						<![CDATA[
+						kill -USR1 $pid
+						]]>
+						</programlisting>
+					</step>
+					<step>
+						<para>
+							当传输操作完成的时候将会显示最用的记录数。
+						</para>
+						<example>
+							<title>dd复制的结果</title>
+							<programlisting language="Bash">
+							<![CDATA[
+
+						210944+0 records in
+						210944+0 records out
+						108003328 bytes (108 MB) copied, 2035.82 s, 53.1 kB/s
+						[1]+   Done   dd if=/cygdrive/c/rhev-hypervisor.iso of=/dev/sdbample
+							]]>
+							</programlisting>
+						</example>
+					</step>
+				</procedure>
+				<formalpara>
+					<title>结果</title>
+					<para>USB存储设备已经被做成了Hypervisor安装盘。</para>
+				</formalpara>
+			</section>
+		</section>
 	</section>
 	<section id="sect-Installation_Guide-install-hypervisor-host_Section_4">
 		<title>安装&OVIRT; Hypervisor</title>
@@ -126,7 +380,7 @@
 					</para>
 				</formalpara>
 			</section>
-		    <section id="sect-Attaching-Hypervisor-to-Manager-6-2">
+			<section id="sect-Attaching-Hypervisor-to-Manager-6-2">
 				<title>使用Hypervisor</title>
 				<para>如果Hypervisor配置了&OVIRT;的地址，那Hypervisor重启后自动注册到管理器。在&OVIRT;的主机选项卡中可以看到该Hypervisor。必须在&OVIRT;中批准Hypervisor的注册请求，才可以使用该Hypervisor。</para>
 				<para>如果Hypervisor没有配置&OVIRT;的地址，必须手动配置。在手动添加Hyperviosr的时候，你必须知道该机器的IP地址和在EayunOS Manager界面设置的密码。</para>
@@ -157,6 +411,5 @@
 						<para>该主机的状态变成Installing，一会之后，它的状态变成来UP。</para>
 				</formalpara>
 			</section>
-	</section>
-</chapter>
-
+		</section>
+	</chapter>
