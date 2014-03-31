@@ -280,14 +280,311 @@
 	<section id="sect-Installation_Guide-introduction_Chapter_Section_6">
 		<title>&OVIRT;支持的虚拟机操作系统列表</title>
 		<para>
-			This is a test paragraph in a section
+			&OVIRT;支持在虚拟机中安装下列操作系统：
 		</para>
+
+        <table>
+            <title>支持的虚拟机操作系统列表</title>
+            <tgroup cols="3">
+                <colspec align="left" colwidth="3*" />
+                <colspec align="left" />
+                <colspec align="left" />
+                <thead>
+                    <row>
+                        <entry>操作系统</entry>
+                        <entry>CPU架构</entry>
+                        <entry>SPICE支持</entry>
+                    </row>
+                </thead>
+
+                <tbody>
+                    <row>
+                        <entry>
+                            红帽企业Linux 3
+                        </entry>
+                        <entry>
+                            32位，64位
+                        </entry>
+                        <entry>
+                            支持
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            红帽企业Linux 4
+                        </entry>
+                        <entry>
+                            32位，64位
+                        </entry>
+                        <entry>
+                            支持
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            红帽企业Linux 5
+                        </entry>
+                        <entry>
+                            32位，64位
+                        </entry>
+                        <entry>
+                            支持
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            红帽企业Linux 6
+                        </entry>
+                        <entry>
+                            32位，64位
+                        </entry>
+                        <entry>
+                            支持
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            SUSE企业Linux 10（创建虚拟机时，操作系统类型选择
+                            “其他Linux”）
+                        </entry>
+                        <entry>
+                            32位，64位
+                        </entry>
+                        <entry>
+                            不支持
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            SUSE企业Linux 11（SPICE驱动需要由发行版厂商提供）
+                        </entry>
+                        <entry>
+                            32位，64位
+                        </entry>
+                        <entry>
+                            不支持
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            Ubuntu 12.04
+                        </entry>
+                        <entry>
+                            32位，64位
+                        </entry>
+                        <entry>
+                            支持
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            Ubuntu 12.10
+                        </entry>
+                        <entry>
+                            32位，64位
+                        </entry>
+                        <entry>
+                            支持
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            Ubuntu 13.04
+                        </entry>
+                        <entry>
+                            32位，64位
+                        </entry>
+                        <entry>
+                            支持
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            Ubuntu 13.10
+                        </entry>
+                        <entry>
+                            32位，64位
+                        </entry>
+                        <entry>
+                            支持
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                           Windows XP（sp3及更新版本）
+                        </entry>
+                        <entry>
+                            32位
+                        </entry>
+                        <entry>
+                            支持
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            Windows 7
+                        </entry>
+                        <entry>
+                            32位，64位
+                        </entry>
+                        <entry>
+                            支持
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            Windows 8
+                        </entry>
+                        <entry>
+                            32位，64位
+                        </entry>
+                        <entry>
+                            不支持
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            Windows Server 2003（sp2及更新版本）
+                        </entry>
+                        <entry>
+                            32位，64位
+                        </entry>
+                        <entry>
+                            支持
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            Windows Server 2008
+                        </entry>
+                        <entry>
+                            32位，64位
+                        </entry>
+                        <entry>
+                            支持
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            Windows Server 2008 R2
+                        </entry>
+                        <entry>
+                            64位
+                        </entry>
+                        <entry>
+                            支持
+                        </entry>
+                    </row>
+                    <row>
+                        <entry>
+                            Windows Server 2012 R2
+                        </entry>
+                        <entry>
+                            64位
+                        </entry>
+                        <entry>
+                            不支持
+                        </entry>
+                    </row>
+                </tbody>
+            </tgroup>
+        </table>
+
 	</section>
 	<section id="sect-Installation_Guide-introduction_Chapter_Section_7">
 		<title>&OVIRT;安装流程</title>
 		<para>
-			This is a test paragraph in a section
+            要部署一套可用的&OVIRT;虚拟化环境，需要对一系列的组件进行按照和配
+            置，基本流程如下：
 		</para>
+
+        <informalfigure>
+            <mediaobject>
+                <imageobject>
+                    <imagedata
+                        fileref="images/eayun_installation_checklist.png"
+                        format="PNG" />
+                </imageobject>
+            </mediaobject>
+        </informalfigure>
+
+        <itemizedlist>
+            <listitem>
+                <simpara>
+                    <link
+                        linkend="chap-Installation_Guide-system-requirements">
+                        第2章 &OVIRT;系统需求
+                    </link>
+                </simpara>
+            </listitem>
+        </itemizedlist>
+
+        <itemizedlist>
+            <listitem>
+                <simpara>
+                    <link
+                        linkend="part-manager-installation">
+                        部分II 安装&OVIRT;管理端
+                    </link>
+                </simpara>
+            </listitem>
+        </itemizedlist>
+
+        <itemizedlist>
+            <listitem>
+                <simpara>
+                    <link
+                        linkend="chap-Installation_Guide-data-colleciton">
+                        第5章 历史数据收集及报表的安装
+                    </link>
+                </simpara>
+            </listitem>
+        </itemizedlist>
+
+        <itemizedlist>
+            <listitem>
+                <simpara>
+                    <link
+                        linkend="part-part-host-installation">
+                        部分III 安装&OVIRT; hypervisor节点
+                    </link>
+                </simpara>
+            </listitem>
+        </itemizedlist>
+
+        <itemizedlist>
+            <listitem>
+                <simpara>
+                    <link linkend=
+                        "chap-Installation_Guide-planning-data-center-setup">
+                        第10章 规划数据中心
+                    </link>
+                </simpara>
+            </listitem>
+        </itemizedlist>
+
+        <itemizedlist>
+            <listitem>
+                <simpara>
+                    <link
+                        linkend="chap-Installation_Guide-network-setup">
+                        第11章 配置网络
+                    </link>
+                </simpara>
+            </listitem>
+        </itemizedlist>
+
+        <itemizedlist>
+            <listitem>
+                <simpara>
+                    <link
+                        linkend="chap-Installation_Guide-storage-setup">
+                        第12章 配置存储
+                    </link>
+                </simpara>
+            </listitem>
+        </itemizedlist>
+
 	</section>
 
 </chapter>

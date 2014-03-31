@@ -17,7 +17,7 @@
 	<xi:include href="Chapter-system-requirements.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
 
     </part>
-    <part label="II">
+    <part id="part-manager-installation" label="II">
          <title>安装&OVIRT;管理端</title>
       <partintro>
         <para>
@@ -30,7 +30,7 @@
 	<xi:include href="Chapter-update-environment.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
     </part>
 
-    <part label="III">
+    <part id="part-part-host-installation" label="III">
          <title>安装&OVIRT; hypervisor节点</title>
       <partintro>
         <para>
