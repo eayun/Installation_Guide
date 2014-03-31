@@ -18,15 +18,34 @@
 	<section id="sect-Installation_Guide-introduction-hosts_Section_2">
 		<title>虚拟化主机介绍</title>
 		<para>
-			This is a test paragraph in Section 2
-			<orderedlist>
+			&OVIRT;支持使用&OVIRT;Hypervisor 镜像安装和all-in-one镜像安装两种情况。两种虚拟化主机可以在同一个&OVIRT;环境中共存。
+		</para>
+		<para>
+			 你应该确定下面的条件来看优先使用哪种方法：
+		</para>
+		<itemizedlist>
 				<listitem>
 					<para>
-						This is a test listitem.
+						所有的虚拟化主机应该满足硬件需求
 					</para>
 				</listitem>
-			</orderedlist>
+				<listitem>
+					<para>
+						而且你已经成功安装了&OVIRT; Manager
+					</para>
+				</listitem>
+		</itemizedlist>
+		<para>
+			此外，您可以选择安装&OVIRT; Manager Reports。这不是强制的，而且不是安装虚拟化主机必须的。一旦你完成上面的任务，你就做好了安装虚拟化主机的准备。
 		</para>
+		<important>
+			<para>
+			</para>
+		</important>
+		<important>
+			<para>
+			</para>
+		</important>
 	</section>
 
 </chapter>
