@@ -52,7 +52,7 @@
 	<section id="sect-Installation_Guide-install-hypervisor-host_Section_3">
 		<title>将镜像刻录为光盘或U盘</title>
 		<section id="USB-3-1">
-			<title>准备使用USB Hypervisor安装盘</title>
+			<title>制作Hypervisor USB安装盘</title>
 			<section id="prepare-USB-3-1-1">
 				<title>准备一个Hypervisor USB存储设备</title>
 				<para>
@@ -151,7 +151,7 @@
 					<title>结果</title>
 					<para>Hypervisor的硬盘镜像已经写入了USB存储设备。现在，您可以使用它启动设备并安装Hypervisor。</para>
 				</formalpara>
-			</section>
+			</section>	
 			<section id="using-dd-3-1-3">
 				<title>使用dd来制作USB启动盘</title>
 				<formalpara>
@@ -191,7 +191,7 @@
 					<para>USB存储设备已经被做成了Hypervisor安装盘。</para>
 				</formalpara>
 			</section>
-			<section id="prepare-dd-in-windows">
+			<section id="prepare-dd-in-windows-3-1-4">
 				<title>在windows系统中使用dd命令制作USB启动盘</title>
 				<formalpara>
 					<title>摘要</title>
@@ -309,6 +309,286 @@
 				<formalpara>
 					<title>结果</title>
 					<para>USB存储设备已经被做成了Hypervisor安装盘。</para>
+				</formalpara>
+			</section>
+		</section>
+		<section id="optical-media-3-2">
+			<title>制作Hypervisor光盘安装盘</title>
+			<formalpara>
+				<title>摘要</title>
+				<para>使用wodim命令将Hypervisor镜像烧录到CD-ROM上。wodim是wodim包的一部分。</para>
+			</formalpara>
+			<procedure>
+				<title>制作Hypervisor光盘安装盘</title>
+				<step>
+					<para>确定系统安装了wodim</para>
+					<example>
+						<title>确定是否安装了wodim包</title>
+						<programlisting language="Bash">
+						<![CDATA[
+						# rpm -q wodim
+						wodim-1.1.9-11.el6.x86_64
+						]]>
+						</programlisting>
+					</example>
+					<para>如果输出包的版本，说明包是可用的</para>
+					<para>如果没有输出，安装wodim</para>
+					<programlisting language="Bash">
+					<![CDATA[
+					# yum install wodim
+					]]>
+					</programlisting>
+				</step>
+				<step>
+					<para>往你的CD或者DVD刻录机放入一张空的CD-ROM或者DVD。</para>
+				</step>
+				<step>
+					<para>把ISO文件刻录到光盘。按照下面的例子使用wodim命令：</para>
+					<programlisting language="Bash">
+					<![CDATA[
+					wodim dev=device image
+					]]>
+					</programlisting>
+					<para>下面的例子使用第一个可用的CD-RW（/dev/cdrw）和hypervisor镜像。</para>
+					<example>
+						<title>使用wodim命令</title>
+						<programlisting language="Bash">
+						<![CDATA[
+						# wodim dev=/dev/cdrw ～/hypervisor.iso
+						]]>
+						</programlisting>
+					</example>
+				</step>
+			</procedure>
+			<formalpara>
+				<title>结果</title>
+				<para>如果没有错误发生，可以使用光盘启动Hypervisor了。如果光盘本身有问题，那在刻录过程就有可能中发生错误。如果这样的话，插入另一张可写的光盘，重复上面的命令。</para>
+			</formalpara>
+			<para>每次Hypervisor启动的时候，Hypervisor使用程序isomd5sum来验证安装盘的完整性。如果这时候报错，那么在你的启动序列中有一个坏的CD-ROM。安装上面的流程制作一个新的CD-ROM或者DVD</para>
+		</section>
+		<section id="booting-from-media-3-3">
+			<title>从光盘或者U盘启动Hypervisor安装程序</title>
+			<section id="usb-booting-3-3-1">
+				<title>从U盘启动Hypervisor安装程序</title>
+				<formalpara>
+					<title>摘要</title>
+					<para>从USB存储设备启动hypervisor类似从其他自生USB操作系统。遵照下面的流程从USB启动Hypervisor安装。</para>
+				</formalpara>
+				<procedure>
+					<title>从USB安装盘启动Hypervisor</title>
+					<step>
+						<para>进入系统的BIOS菜单，开启允许从USB存储设备启动的功能。</para>
+						<orderedlist numeration="loweralpha">	
+							<listitem>
+								<para>如果USB启动功能被禁用的话，开启它。</para>
+							</listitem>
+							<listitem>
+								<para>设置USB存储谁被为第一启动设备。</para>
+							</listitem>
+							<listitem>
+								<para>关闭系统。</para>
+							</listitem>
+						</orderedlist>
+					</step>
+					<step>
+						<para>插入装有Hypervisor启动镜像的USB存储设备</para>
+					</step>
+					<step>
+						<para>重启系统。</para>
+					</step>
+				</procedure>
+				<formalpara>
+					<title>结果</title>
+					<para>HYperviosr启动过程自动开始。</para>
+				</formalpara>
+			</section>
+			<section id="booting-from-optical-media-3-3-2">
+				<title>从光盘启动Hypervisor安装程序</title>
+				<formalpara>
+					<title>摘要</title>
+					<para>从光盘启动Hypervisor安装程序需要系统的BIOS有关启动的配置是正确的。</para>
+				</formalpara>
+				<procedure>
+					<title>从光盘启动Hypervisor安装程序</title>
+					<step>
+						<para>确认系统的BIOS配置的第一启动项是CD-ROM或者DVD-ROM。许多系统默认这样设置。</para>
+						<note>
+							<para>
+								更多有关BIOS引导配置的信息请参阅制造商提供的手册。
+							</para>
+						</note>
+					</step>
+					<step>
+						<para>把Hypervisor CD-ROM放入CD-ROM或者DVD-ROM驱动器。</para>
+					</step>
+					<step>
+						<para>
+							重启系统。
+						</para>
+					</step>
+				</procedure>
+				<formalpara>
+					<title>结果</title>
+					<para>将会看到Hypervisor启动界面。</para>
+				</formalpara>
+			</section>
+			<section id="troubleshooting-bios-3-3-3">
+				<title>找出BIOS设置和启动过程中的故障</title>
+				<formalpara>
+					<title>摘要</title>
+					<para>在安装&OVIRT; Hypervisor之前，很有必要检查BIOS是否配置正确。许多主板和PC制造商，在主板中禁用了不同的启动方法。大多数BIOS芯片安装按照西面的顺序启动：</para>
+				</formalpara>
+				<orderedlist>
+					<listitem>
+						<para>
+							3.5英寸软盘
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							CD-ROM或者DVD设备
+						</para>
+					</listitem>
+					<listitem>
+						<para>
+							本地硬盘
+						</para>
+					</listitem>
+				</orderedlist>
+				<para>
+					许多BIOS芯片禁用了一种或多种启动方法：USB存储设备，CD-ROMS，DVDS，或者网络启动。开启你需要的方法或设备，并设置该设备为第一启动设备。这样你才可以以你选择的方法启动。
+				</para>
+				<para>
+					大多数主板支持本章描述的启动方法，但有些不支持。查阅你的主板或者系统文档来确定使用这种方法启动是否可行。
+				</para>
+				<warning>
+					<para>
+						不同制造商之间的BIOS设置是不同的。任何BIOS设置的例子对有些系统而言可能都不适用。正因为这种不一致，阅读主板或者系统制造商提供的文档是非常必要的。
+					</para>
+				</warning>
+				<procedure>
+					<title>找出BIOS设置和启动过程中的故障</title>
+					<para>确认您的系统能够运行&OVIRT; Hypervisor。Hypervisor需要由虚拟化扩展而且在BIOS中启用该功能。</para>
+					<step>
+						<para>从可移动的设备诸如U盘，CD-ROM启动HYpervisor。</para>
+					</step>
+					<step>
+						<para>当看到屏幕显示“Bootint Install /Upgrade EayunOS Node Hypervisor-3.3-1 in 30 seconds...”的时候，开始倒计时30秒。按任意键进入自动启动进程。</para>
+					</step>
+					<step>
+						<para>选择Install Upgrade EayunOS Node Hypervisor-3.3-1并按a键来编辑启动参数。</para>
+					</step>
+					<step>
+						<para>在显示的启动参数列表中添加rescue参数，然后按ENter。这步操作会以援救模式启动Hypervisor。</para>
+					</step>
+					<step>
+						<para>Hypervisor启动后，验证你的CPU是否包含虚拟化扩展。可以使用下面的命令：</para>
+						<programlisting language="Bash">
+						<![CDATA[
+						# grep -E "svm|vmx" /proc/cpuinfo
+						]]>
+						</programlisting>
+						<para>如果处理器有硬件虚拟化扩展的话，会有结果显示。</para>
+					</step>
+					<step>
+						<para>验证是否默认加载来KVM模块</para>
+						<programlisting language="Bash">
+						<![CDATA[
+						# lsmod|grep kvm 
+						]]>
+						</programlisting>
+					</step>
+				</procedure>
+				<formalpara>
+					<title>结果</title>
+					<para>如果输出结果包含kvm_intel或者kvm_amd，那就加载来kvm硬件虚拟化模块而且系统满足要求。如果输出结果不包含要求的模块，那你需要检查你的硬件是否支持硬件虚拟化扩展，并看看你的系统BIOS里面是否启用了它。</para>
+				</formalpara>
+			</section>
+			<section id="choosing-boot-options-3-3-4">
+				<title>选择Hypervisor启动选项</title>
+				<formalpara>
+					<title>摘要</title>
+					<para>Hypevisor启动菜单列出了几种预配置的启动模式，而且可以添加或者移除额外的启动选项。</para>
+				</formalpara>
+				<procedure>
+					<title>选择Hypervisor启动选项</title>
+					<step>
+						<para>插入&OVIRT; Hypervisor安装盘。</para>
+					</step>
+					<step>
+						<para>启动系统，并确定系统从安装盘启动。</para>
+					</step>
+					<step>
+						<para>出现开机画面。如果不提供输入，那Hypervisor安装程序会在会在30秒后，使用默认的内核参数启动。</para>
+						<figure id="splash">
+						 	<title>开机画面</title>
+						 	<mediaobject>
+			                	<imageobject>
+									<imagedata fileref="../../../img/splash.png" format="PNG" scale="40"/>
+					            </imageobject>
+							</mediaobject>
+						</figure>
+					</step>
+					<step>
+						<para>如果要修改启动选项，按任意键，进入启动菜单。</para>
+						<figure id="boot-menu">
+						 	<title>启动菜单</title>
+						 	<mediaobject>
+			                	<imageobject>
+									<imagedata fileref="../../../img/menu.png" format="PNG" scale="40"/>
+					            </imageobject>
+							</mediaobject>
+						</figure>
+						<para>可以使用下面的启动选项：</para>
+						<para>Install / Upgrade EayunOS Node Hypervisor-3.3-1</para>
+						<para>启动Hypervisor安装程序</para>
+						<para></para>
+						<para>Install / Upgrade (Basic Video)EayunOS Node Hypervisor-3.3-1</para>
+						<para>使用basic video模式安装或者升级Hypervisor</para>
+						<para></para>
+						<para>Install / Upgrade with serial console EayunOS Node Hypervisor-3.3-1</para>
+						<para>安装或者升级Hypervisor前，将控制台重定向到串行设备/dev/ttyS0</para>
+						<para></para>
+						<para>Reinstall EayunOS Node Hypervisor-3.3-1</para>
+						<para>重新安装Hypervisor</para>
+						<para></para>
+						<para>Reinstall (Basic Video)EayunOS Node Hypervisor-3.3-1</para>
+						<para>使用basic video模式重装Hypervisor</para>
+						<para></para>
+						<para>Reinstall with serial console EayunOS Node Hypervisor-3.3-1</para>
+						<para>重装Hypervisor前，将控制台重定向到串行设备/dev/ttyS0</para>
+						<para></para>
+						<para>Uninstall</para>
+						<para>卸载</para>
+						<para></para>
+						<para>在启动菜单中选择合适的启动项。</para>
+					</step>
+					<step>	
+						<orderedlist numeration="upperalpha">
+							<listitem>
+								<para>
+									输入Enter键以默认的内核承参数启动Hypervisor。
+								</para>
+							</listitem>
+							<listitem>
+								<para>
+									或者按下a键来编辑内核参数。在编辑模式，你可以添加或者删除内核参数。内核参数必须用空格分离。设置好想要的内核参数后保存退出，按Enter启动系统。也可以按ESC放弃你对内核参数做的任何更改。
+								</para>
+							</listitem>
+						</orderedlist>
+						<figure id="kernel">
+						 	<title>添加启动参数</title>
+						 	<mediaobject>
+			                	<imageobject>
+									<imagedata fileref="../../../img/kernel.png" format="PNG" scale="40"/>
+					            </imageobject>
+							</mediaobject>
+						</figure>
+					</step>
+				</procedure>
+				<formalpara>
+					<title>结果</title>
+					<para>Hypervisor在设置的启动模式下启动了。</para>
 				</formalpara>
 			</section>
 		</section>
