@@ -595,9 +595,174 @@
 	</section>
 	<section id="sect-Installation_Guide-install-hypervisor-host_Section_4">
 		<title>安装&OVIRT; Hypervisor</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
+		<section id="menu-action-4-1">
+			<title>Hypervisor的菜单操作</title>
+			<itemizedlist>
+				<listitem>
+					<para>方向键（Up，Down，Left，Right）可以选择屏幕上不同的控件。也可以通过Tab键来在不同的控件中循环移动。</para>
+				</listitem>
+				<listitem>
+					<para>一段下划线（_）代表文本栏。可以选择文本栏并在其中输入数据。</para>
+				</listitem>
+				<listitem>
+					<para>使用一对尖括号（&lt;and>）括起来的标签代表按钮。选择按钮后可以按Enter或者空格键来激活它。</para>
+				</listitem>
+				<listitem>
+					<para>使用一堆方括号（[and]）括起来的星号（*）或者空格符代表了一个布尔选项。当方括号中间有一个星号的时候代表该项被选，否则就没有被选中。选择或者取消一个布尔选项只需要选中该控件并按空格键就可以了。</para>
+				</listitem>
+			</itemizedlist>
+		</section>
+		<section id="installing-hypervisor-4-2">
+			<title>安装Hypervisor</title>
+			<formalpara>
+				<title>摘要</title>
+				<para>有两种安装&OVIRT; Hypervisor的方式：</para>
+			</formalpara>
+			<itemizedlist>
+				<listitem>
+					<para>交互式安装。</para>
+				</listitem>
+				<listitem>
+					<para>无人值守安装。</para>
+				</listitem>
+			</itemizedlist>
+			<para>本节概述采用交互式安装Hypervisor。</para>
+			<procedure>
+				<title>交互式安装Hypervisor</title>
+				<step>
+					<para>
+						使用准备好的启动盘启动将要安装Hypervisor的机器。
+					</para>
+				</step>
+				<step>
+					<para>
+						选择Install / Upgrade EayunOS Node Hypervisor-3.3-1并按Enter键开始安装流程。
+					</para>
+				</step>
+				<step>
+					<para>
+						首先出现在你面前的界面需要你配置合适的键盘布局。使用Up和Down键来选择合适的选项，并按Enter键保存你的选择。
+					</para>
+					<example>
+						<title>键盘布局配置</title>
+						<para>
+						<programlisting language="Bash">
+						<![CDATA[
+						Keyboard Layout Selection
+						Available Keyboard Layouts
+						Swiss German (latin1)
+						Turkish
+						U.S. English
+						U.S. International
+						...
+						(Hit enter to select a layout)
+						<Quit>    <Back>    <Continue>
+						]]>
+						</programlisting>
+						</para>
+					</example>
+				</step>
+				<step>
+					<para>安装脚本自动识别出系统中的所有的硬盘。帮助选择启动和安装Hypervisor的硬盘。该界面的每一项包含每个硬盘的Location，Device Name 和Size。
+					</para>
+					<orderedlist numeration="loweralpha">
+						<listitem>
+							<para>启动硬盘</para>
+							<para>
+									第一个硬盘选择界面用来选择Hypervisor启动盘。在该界面选择硬盘后，会把Hypervisor的引导程序安装到该硬盘的主引导记录（MBR）。Hypervisor尝试自动检测系统中的硬盘，然后列出可以用来做启动硬盘的设备。你可以通过Other Device选项手动选择一个块设备。
+							</para>
+							<important>
+								<para>
+									所选择的硬盘必须被是一个可引导设备，而且要么在系统BIOS的启动顺序中出现，要么在预存在的引导程序中。
+								</para>
+							</important>
+							<orderedlist numeration="upperalpha">
+								<listitem>
+									<para>选择自动到检测的设备</para>
+									<orderedlist numeration="lowerroman">		
+										<listitem>
+											<para>从列表中选择Hypervisor的启动硬盘并按Enter键。</para>
+										</listitem>
+										<listitem>
+											<para>选择硬盘并按Enter。这一步保存启动设备的选择并开始下一步的安装。</para>
+										</listitem>
+									</orderedlist>
+								</listitem>
+								<listitem>
+									<para>手动选择设备</para>
+									<orderedlist numeration="lowerroman">		
+										<listitem>
+											<para> 选择Other device并按Enter键</para>
+										</listitem>
+										<listitem>
+											<para>当提示"Please enter one or more disks touse for installing EayunOS Node Hypervisor"，输入Hypervisor应该启动的块设备的名称。</para>
+											<example>
+												<title>Other Device选择</title>
+													<programlisting language="Bash">
+													<![CDATA[
+													Please enter one or more disks to    use for installing EayunOS Node Hypervisor...   /dev/sda
+													]]>
+													</programlisting>
+											</example>
+										</listitem>
+										<listitem>
+											<para>按Enter键，该操作将保存启动设备选择并开始下一步的安装。</para>
+										</listitem>
+									</orderedlist>
+								</listitem>
+							</orderedlist>
+						</listitem>
+						<listitem>
+							<para>选定的用来安装的硬盘将安装Hypervisor。Hyervisor自动检测系统中的硬盘并从中供选择的的安装设备。</para>
+							<warning>
+								<para>
+									选定的存储设备上的所有的数据都会被破坏。
+								</para>
+							</warning>
+							<orderedlist numeration="upperalpha">
+								<listitem>
+									<para>
+										选择
+									</para>
+								</listitem>
+								<listitem>
+									<para>
+										选择Continue按钮，并按Enter键。
+									</para>
+								</listitem>
+								<listitem>
+									<para>
+										选择将要安装Hypervisor的硬盘并在上面按空格键来启用它。
+									</para>
+								</listitem>
+							</orderedlist>
+						</listitem>
+					</orderedlist>
+				</step>
+				<step>
+					<para></para>
+				</step>
+				<step>
+					<para></para>
+				</step>
+			</procedure>
+			<formalpara>
+				<title>结果</title>
+				<para>当安装结束的时候，将会提示。选择&lt;Reboot>按钮，并按Enter键来重启系统。</para>
+			</formalpara>
+			<note>
+				<para>
+				</para>
+			</note>
+			<note>
+				<para>
+				</para>
+			</note>
+			<note>
+				<para>
+				</para>
+			</note>
+		</section>
 	</section> 
 	<section id="sect-Installation_Guide-install-hypervisor-host_Section_5">
 		<title>配置&OVIRT; Hypervisor</title>
