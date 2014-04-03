@@ -5,28 +5,129 @@
 ]>
 <chapter id="chap-Installation_Guide-system-requirements">
 	<title>&OVIRT;系统需求</title>
-	<para>
-		This is a test paragraph
-	</para>
 	<section id="sect-Installation_Guide-system-requirements_Section_1">
 		<title>系统需求之流程图解</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
+        <informalfigure>
+            <mediaobject>
+                <imageobject>
+                    <imagedata
+                        fileref="images/eayun_installation_checklist.png"
+                        format="PNG" />
+                </imageobject>
+            </mediaobject>
+        </informalfigure>
 	</section>
 	
 	<section id="sect-Installation_Guide-system-requirements_Section_2">
 		<title>硬件需求</title>
-		<para>
-			This is a test paragraph in Section 2
-			<orderedlist>
-				<listitem>
-					<para>
-						This is a test listitem.
-					</para>
-				</listitem>
-			</orderedlist>
-		</para>
+        <section id="sect-Installation_Guide-system-requirements_Section_2-1">
+            <title>&OVIRT;硬件需求概览</title>
+            <para>
+                部署&OVIRT;虚拟化环境，最少应该满足以下设备要求：
+                <itemizedlist>
+                    <listitem>
+                        <para>
+                            1台&OVIRT;&MANAGER;服务器，
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            1台及以上的&OVIRT;&NODE;服务器（为了支持虚拟机迁移
+                            以及电源管理，则最少应该准备2台&OVIRT;&NODE;
+                            服务器），
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            1台及以上用于访问管理门户的客户端设备，
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            存储设备（NFS、POSIX文件系统、iSCSI存储、SAN存储或
+                            者服务器本地存储设备）。
+                        </para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+
+            <para>
+                上述几种类型的硬件需求在后面的章节中会详细说明。
+            </para>
+
+            <formalpara>
+                <title>参见：</title>
+                <para>
+                    <itemizedlist>
+                        <listitem>
+                            <simpara><link linkend=
+                                "sect-Installation_Guide-system-requirements_Section_2-2-2">
+                                2.2.2 &OVIRT;&MANAGER;的硬件需求
+                        </link></simpara>
+                        </listitem>
+
+                        <listitem>
+                            <simpara><link linkend=
+                                "sect-Installation_Guide-system-requirements_Section_2-2-3">
+                                2.2.3 &OVIRT;&NODE;的硬件需求
+                        </link></simpara>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+            </formalpara>
+    </section>
+
+    <section id="sect-Installation_Guide-system-requirements_Section_2-2-2">
+        <title>&OVIRT;&MANAGER;的硬件需求</title>
+        <para>
+            这里提供的最小和推荐硬件需求均针对典型部署方案而言，实际部署时请根据
+            系统规模和负载情况考虑硬件配置。
+        </para>
+
+        <formalpara>
+            <title>最小硬件需求</title>
+            <para><itemizedlist>
+                    <listitem>
+                        <para>1颗双核CPU。</para>
+                    </listitem>
+                    <listitem>
+                        <para>系统（部署&OVIRT;&MANAGER;之前）正常运行时可以保留4G空
+                            闲内存。
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>25G空闲磁盘空间。</para>
+                    </listitem>
+                    <listitem>
+                        <para>1块千兆（或者更高速率）网卡。</para>
+                    </listitem>
+            </itemizedlist></para>
+        </formalpara>
+
+        <formalpara>
+            <title>建议硬件需求</title>
+            <para><itemizedlist>
+                    <listitem>
+                        <para>1颗及以上双核CPU。</para>
+                    </listitem>
+                    <listitem>
+                        <para>16G内存。</para>
+                    </listitem>
+                    <listitem>
+                        <para>50G本地空闲磁盘空间。</para>
+                    </listitem>
+                    <listitem>
+                        <para>1块千兆（或者更高速率）网卡。</para>
+                    </listitem>
+            </itemizedlist></para>
+        </formalpara>
+    </section>
+
+    <section id="sect-Installation_Guide-system-requirements_Section_2-2-3">
+        <title>&OVIRT;&NODE;的硬件需求</title>
+        <para></para>
+    </section>
+
 	</section>
 	<section id="sect-Installation_Guide-system-requirements_Section_3">
 		<title>软件需求</title>
