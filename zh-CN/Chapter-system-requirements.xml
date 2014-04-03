@@ -4,9 +4,9 @@
 %BOOK_ENTITIES;
 ]>
 <chapter id="chap-Installation_Guide-system-requirements">
-	<title>&OVIRT;系统需求</title>
-	<section id="sect-Installation_Guide-system-requirements_Section_1">
-		<title>系统需求之流程图解</title>
+    <title>&OVIRT;系统需求</title>
+    <section id="sect-Installation_Guide-system-requirements_Section_1">
+        <title>系统需求之流程图解</title>
         <informalfigure>
             <mediaobject>
                 <imageobject>
@@ -16,10 +16,10 @@
                 </imageobject>
             </mediaobject>
         </informalfigure>
-	</section>
-	
-	<section id="sect-Installation_Guide-system-requirements_Section_2">
-		<title>硬件需求</title>
+    </section>
+
+    <section id="sect-Installation_Guide-system-requirements_Section_2">
+        <title>硬件需求</title>
         <section id="sect-Installation_Guide-system-requirements_Section_2-1">
             <title>&OVIRT;硬件需求概览</title>
             <para>
@@ -61,80 +61,207 @@
                     <itemizedlist>
                         <listitem>
                             <simpara><link linkend=
-                                "sect-Installation_Guide-system-requirements_Section_2-2-2">
-                                2.2.2 &OVIRT;&MANAGER;的硬件需求
-                        </link></simpara>
+                                    "sect-Installation_Guide-system-requirements_Section_2-2-2">
+                                    2.2.2 &OVIRT;&MANAGER;的硬件需求
+                            </link></simpara>
                         </listitem>
 
                         <listitem>
                             <simpara><link linkend=
-                                "sect-Installation_Guide-system-requirements_Section_2-2-3">
-                                2.2.3 &OVIRT;&NODE;的硬件需求
-                        </link></simpara>
+                                    "sect-Installation_Guide-system-requirements_Section_2-2-3">
+                                    2.2.3 &OVIRT;&NODE;的硬件需求
+                            </link></simpara>
                         </listitem>
                     </itemizedlist>
                 </para>
             </formalpara>
-    </section>
+        </section>
 
-    <section id="sect-Installation_Guide-system-requirements_Section_2-2-2">
-        <title>&OVIRT;&MANAGER;的硬件需求</title>
+        <section id="sect-Installation_Guide-system-requirements_Section_2-2-2">
+            <title>&OVIRT;&MANAGER;的硬件需求</title>
+            <para>
+                这里提供的最小和推荐硬件需求均针对典型部署方案而言，实际部署时请根据
+                系统规模和负载情况考虑硬件配置。
+            </para>
+
+            <formalpara>
+                <title>最小硬件需求</title>
+                <para><itemizedlist>
+                        <listitem>
+                            <para>1颗双核CPU。</para>
+                        </listitem>
+                        <listitem>
+                            <para>系统（部署&OVIRT;&MANAGER;之前）正常运行时可以保留4G空
+                                闲内存。
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>25G空闲磁盘空间。</para>
+                        </listitem>
+                        <listitem>
+                            <para>1块千兆（或者更高速率）网卡。</para>
+                        </listitem>
+                </itemizedlist></para>
+            </formalpara>
+
+            <formalpara>
+                <title>建议硬件需求</title>
+                <para><itemizedlist>
+                        <listitem>
+                            <para>1颗及以上双核CPU。</para>
+                        </listitem>
+                        <listitem>
+                            <para>16G内存。</para>
+                        </listitem>
+                        <listitem>
+                            <para>50G本地空闲磁盘空间。</para>
+                        </listitem>
+                        <listitem>
+                            <para>1块千兆（或者更高速率）网卡。</para>
+                        </listitem>
+                </itemizedlist></para>
+            </formalpara>
+        </section>
+
+        <section id="sect-Installation_Guide-system-requirements_Section_2-2-3">
+            <title>&OVIRT;&NODE;的硬件需求</title>
+
+            <section id="sect-Installation_Guide-system-requirements_Section_2-2-3-1">
+                <title>&OVIRT;&NODE;的硬件需求概览</title>
+                <para>
+                    &OVIRT;&NODE;的硬件需求分章节介绍如下：
+
+                    <itemizedlist>
+                        <listitem>
+                            <simpara><link linkend=
+                                    "sect-Installation_Guide-system-requirements_Section_2-2-3-2">
+                                    2.2.3.2 &OVIRT;&NODE;对于CPU的要求
+                            </link></simpara>
+                        </listitem>
+
+                        <listitem>
+                            <simpara><link linkend=
+                                    "sect-Installation_Guide-system-requirements_Section_2-2-3-3">
+                                    2.2.3.3 &OVIRT;&NODE;对于系统内存的要求
+                            </link></simpara>
+                        </listitem>
+
+                        <listitem>
+                            <simpara><link linkend=
+                                    "sect-Installation_Guide-system-requirements_Section_2-2-3-4">
+                                    2.2.3.4 &OVIRT;&NODE;对于存储空间的要求
+                            </link></simpara>
+                        </listitem>
+
+                        <listitem>
+                            <simpara><link linkend=
+                                    "sect-Installation_Guide-system-requirements_Section_2-2-3-5">
+                                    2.2.3.5 &OVIRT;&NODE;对于PCI设备的要求
+                            </link></simpara>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+            </section>
+
+            <section id="sect-Installation_Guide-system-requirements_Section_2-2-3-2">
+                <title>&OVIRT;&NODE;对于CPU的要求</title>
+
+                <para>
+                    &OVIRT;&NODE;支持以下型号的CPU：
+
+                    <itemizedlist>
+                        <listitem>
+                            <simpara>AMD Operton G1</simpara>
+                        </listitem>
+                        <listitem>
+                            <simpara>AMD Operton G2</simpara>
+                        </listitem>
+                        <listitem>
+                            <simpara>AMD Operton G3</simpara>
+                        </listitem>
+                        <listitem>
+                            <simpara>AMD Operton G4</simpara>
+                        </listitem>
+                        <listitem>
+                            <simpara>AMD Operton G5</simpara>
+                        </listitem>
+                        <listitem>
+                            <simpara>Intel Conroe</simpara>
+                        </listitem>
+                        <listitem>
+                            <simpara>Intel Penryn</simpara>
+                        </listitem>
+                        <listitem>
+                            <simpara>Intel Nehalem</simpara>
+                        </listitem>
+                        <listitem>
+                            <simpara>Intel Westmere</simpara>
+                        </listitem>
+                        <listitem>
+                            <simpara>Intel Sandybridge</simpara>
+                        </listitem>
+                        <listitem>
+                            <simpara>Intel Haswell</simpara>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+
+                <para>
+                    CPU必须支持64位技术（Intel&reg; 64 or AMD64），支持
+                    AMD-V&trade;或者Intel VT&reg;虚拟化技术。另外CPU也必须支持
+                    NX技术（No eXecute）。部署之前需要检查CPU是否满足上述要求：
+                    <itemizedlist>
+                        <listitem>
+                            <para>
+                                使用&OVIRT;&NODE;安装光盘引导服务器，进入救援模
+                                式（rescue）；
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                出现提示符，执行下面的命令：
+                                <screen># grep -E 'svm|vmx' /proc/cpuinfo | grep nx
+                                </screen>
+                                如果有输出，说明CPU支持虚拟化技术。某些服务器的
+                                BIOS中提供了禁用虚拟化技术的选项，需要根据硬件手
+                                册确认或者咨询生产厂商。
+                            </para>
+                        </listitem>
+                        <listitem>
+                            <para>
+                                检查内核模块kvm有没有加载：
+                                <screen># lsmod | grep kvm
+                                </screen>
+                                如果输入中包含kvm_intel或者kvm_amd说明模块已经正
+                                确加载，CPU满足虚拟化技术的要求。
+                            </para>
+                        </listitem>
+                    </itemizedlist>
+                </para>
+            </section>
+
+            <section id="sect-Installation_Guide-system-requirements_Section_2-2-3-3">
+                <title>&OVIRT;&NODE;对于系统内存的要求</title>
+                <para></para>
+            </section>
+
+            <section id="sect-Installation_Guide-system-requirements_Section_2-2-3-4">
+                <title>&OVIRT;&NODE;对于存储空间的要求</title>
+                <para></para>
+            </section>
+
+            <section id="sect-Installation_Guide-system-requirements_Section_2-2-3-5">
+                <title>&OVIRT;&NODE;对于PCI设备的要求</title>
+                <para></para>
+            </section>
+        </section>
+    </section>
+    <section id="sect-Installation_Guide-system-requirements_Section_3">
+        <title>软件需求</title>
         <para>
-            这里提供的最小和推荐硬件需求均针对典型部署方案而言，实际部署时请根据
-            系统规模和负载情况考虑硬件配置。
+            This is a test paragraph in a section
         </para>
-
-        <formalpara>
-            <title>最小硬件需求</title>
-            <para><itemizedlist>
-                    <listitem>
-                        <para>1颗双核CPU。</para>
-                    </listitem>
-                    <listitem>
-                        <para>系统（部署&OVIRT;&MANAGER;之前）正常运行时可以保留4G空
-                            闲内存。
-                        </para>
-                    </listitem>
-                    <listitem>
-                        <para>25G空闲磁盘空间。</para>
-                    </listitem>
-                    <listitem>
-                        <para>1块千兆（或者更高速率）网卡。</para>
-                    </listitem>
-            </itemizedlist></para>
-        </formalpara>
-
-        <formalpara>
-            <title>建议硬件需求</title>
-            <para><itemizedlist>
-                    <listitem>
-                        <para>1颗及以上双核CPU。</para>
-                    </listitem>
-                    <listitem>
-                        <para>16G内存。</para>
-                    </listitem>
-                    <listitem>
-                        <para>50G本地空闲磁盘空间。</para>
-                    </listitem>
-                    <listitem>
-                        <para>1块千兆（或者更高速率）网卡。</para>
-                    </listitem>
-            </itemizedlist></para>
-        </formalpara>
     </section>
-
-    <section id="sect-Installation_Guide-system-requirements_Section_2-2-3">
-        <title>&OVIRT;&NODE;的硬件需求</title>
-        <para></para>
-    </section>
-
-	</section>
-	<section id="sect-Installation_Guide-system-requirements_Section_3">
-		<title>软件需求</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
-	</section>
 
 </chapter>
 
