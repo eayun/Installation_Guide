@@ -377,15 +377,88 @@
 
             <section id="sect-Installation_Guide-system-requirements_Section_2-2-3-5">
                 <title>&OVIRT;&NODE;对于PCI设备的要求</title>
-                <para></para>
+                <para>
+                    &OVIRT;&NODE;至少应该配置1块千兆（或者更高速率）网卡，建议配
+                    置2块网卡以支持对网络要求较高的任务，如虚拟机迁移等。
+                </para>
             </section>
         </section>
     </section>
+
     <section id="sect-Installation_Guide-system-requirements_Section_3">
         <title>软件需求</title>
-        <para>
-            This is a test paragraph in a section
-        </para>
+        <section>
+            <title>&OVIRT;&MANAGER;客户端的软件要求</title>
+            <para>
+                客户端通过web浏览器访问管理门户和普通用户门户。不同的操作系统平
+                台上对web浏览器有不同的要求：
+                <itemizedlist>
+                    <listitem>
+                        <para>
+                            在Red Hat企业Linux上，使用Mozilla Firefox 17或者更新
+                            版本可以访问2种门户；
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            在微软Windows上，使用IE 8或者更新版本可以访问普通用
+                            户门户（只支持桌面版IE，不可使用触屏版的IE 10）。
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>
+                            在微软Windows上，使用IE 9或者更新版本可以访问管理门
+                            户（只支持桌面版IE，不可使用触屏版的IE 10）。
+                        </para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+
+            <para>
+                使用虚拟机控制台，需要安装SPICE客户端。支持安装SPICE客户端的系统
+                有：
+                <itemizedlist>
+                    <listitem>
+                        <simpara>Red Hat企业Linux 5.8+（i386、amd64、Intel64）
+                        </simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>Windows XP
+                        </simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>Windows XP Embedded (XPe)
+                        </simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>Windows 7 (x86, AMD64 and Intel 64)
+                        </simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>Windows 8 (x86, AMD64 and Intel 64)
+                        </simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>Windows Embedded Standard 7
+                        </simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>Windows 2008/R2 (x86, AMD64 and Intel 64)
+                        </simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>Windows Embedded Standard 2009
+                        </simpara>
+                    </listitem>
+                </itemizedlist>
+            </para>
+
+            <para>Mozilla Firefox使用的SPICE客户端，需要通过yum安装spice-xpi。
+            </para>
+
+            <para>使用IE访问2种门户时，SPICE ActiveX插件会自动下载安装。
+            </para>
+        </section>
     </section>
 
 </chapter>
