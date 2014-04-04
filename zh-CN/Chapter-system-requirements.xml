@@ -459,6 +459,213 @@
             <para>使用IE访问2种门户时，SPICE ActiveX插件会自动下载安装。
             </para>
         </section>
+
+        <section>
+            <title>目录服务</title>
+            <section>
+                <title>目录服务简介</title>
+                <para>
+                    目录服务是指提供储存企业和用户信息数据，并提供给用户的软硬件
+                    和处理流程的集合。一个目录服务至少包含一个目录服务器和一个目
+                    录客户端。客户端可以访问目录服务中储存的各种数据信息，如姓名、
+                    电话号码等。
+                </para>
+                <formalpara>
+                    <title>参见</title>
+                    <para><link linkend=
+                            "sect-Installation_Guide-system-requirements_Section_2-3-2-2">
+                            2.3.2.2 &OVIRT;虚拟化环境对目录服务的支持
+                    </link></para>
+                </formalpara>
+            </section>
+
+            <section id="sect-Installation_Guide-system-requirements_Section_2-3-2-2">
+                <title>&OVIRT;虚拟化环境对目录服务的支持</title>
+                <para>安装&OVIRT;&NODE;时自动建立了一个管理用户admin，该用户只用
+                    于整个虚拟化环境的初始配置和故障处理。要增加其他用户，必须通
+                    过engine-manage-domains工具连接到一个目录服务。
+                </para>
+                <para>当&OVIRT;&MANAGER;连接到至少一个目录服务之后，才可以通过管
+                    理门户添加目录服务中已有的用户，并为新增的用户赋予不同的角色
+                    和权限。用户通过user@domain这种格式的UPN（User Principal Name）
+                    进行唯一标识。&OVIRT;&MANAGER;支持同时连接到多个目录服务。
+                </para>
+                <para>目前&OVIRT;&MANAGER;支持的目录服务器有：
+                    <itemizedlist>
+                        <listitem><simpara>
+                                Active Directory
+                        </simpara></listitem>
+                        <listitem><simpara>
+                                Identity Management (IdM)
+                        </simpara></listitem>
+                        <listitem><simpara>
+                                Red Hat Directory Server 9 (RHDS 9)
+                        </simpara></listitem>
+                        <listitem><simpara>
+                                OpenLDAP
+                        </simpara></listitem>
+                    </itemizedlist>
+                </para>
+                <para>目录服务器必须有正确的DNS记录，包括：
+                    <itemizedlist>
+                        <listitem><simpara>
+                                目录服务器的PTR记录
+                        </simpara></listitem>
+                        <listitem><simpara>
+                                LDAP TCP 389端口的SRV记录
+                        </simpara></listitem>
+                        <listitem><simpara>
+                                Kerberos TCP 88端口的SRV记录
+                        </simpara></listitem>
+                        <listitem><simpara>
+                                Kerberos UDP 88端口的SRV记录
+                        </simpara></listitem>
+                    </itemizedlist>
+                </para>
+                <para>如果&OVIRT;&MANAGER;无法解析上述DNS记录，engine-manage-domains
+                    无法添加目录服务。
+                </para>
+                <para>关于各目录服务器的详细文档，请查阅厂商或者社区网站：
+                    <itemizedlist>
+                        <listitem><simpara>
+                                Active Directory -
+                                <ulink url="
+                                    http://technet.microsoft.com/en-us/windowsserver/dd448614"
+                                    />
+                        </simpara></listitem>
+                        <listitem><simpara>
+                                Identity Management (IdM) -
+                                <ulink url="
+                                    http://docs.redhat.com/docs/en-US/Red_Hat_Enterprise_Linux/6/html/Identity_Management_Guide/index.html"
+                                    />
+                        </simpara></listitem>
+                        <listitem><simpara>
+                                Red Hat Directory Server 9 (RHDS 9) -
+                                <ulink url="
+                                    http://docs.redhat.com/docs/en-US/Red_Hat_Directory_Server/index.html"
+                                    />
+                        </simpara></listitem>
+                        <listitem><simpara>
+                                LDAP -
+                                <ulink url="
+                                    http://www.openldap.org/doc/"
+                                    />
+                        </simpara></listitem>
+                    </itemizedlist>
+                </para>
+                <important>
+                    <para>在目录服务中必须建立一个用户作为&OVIRT;&MANAGER;的管理
+                        员用户，不要直接使用目录服务的管理员用户作为&OVIRT;&MANAGER;
+                        的管理员。
+                    </para>
+                </important>
+                <important>
+                    <para>IdM（ipa-server）无法和&OVIRT;&MANAGER;安装在同一台服
+                        务器上，因为IdM和mod_ssl不兼容，但是该软件包是安装
+                        &OVIRT;&MANAGER;必需的。
+                    </para>
+                </important>
+                <important>
+                    <para>如果使用Active Directory作为目录服务，而且在建立模板和
+                        虚拟机时需要使用sysprep，那么&OVIRT;&MANAGER;的管理员用
+                        户必须用户AD域的以下权限：
+                        <itemizedlist>
+                            <listitem><simpara>
+                                    Join a computer to the domain
+                            </simpara></listitem>
+                            <listitem><simpara>
+                                    Modify the m em bership of a group
+                            </simpara></listitem>
+                        </itemizedlist>
+                        关于Active Direcotry建立用户和赋予权限的详细说明参见：
+                        <itemizedlist>
+                            <listitem><simpara>
+                                    <ulink url="
+                                        http://technet.microsoft.com/en-us/library/cc732336.aspx"
+                                        />
+                            </simpara></listitem>
+                            <listitem><simpara>
+                                    <ulink url="
+                                        http://technet.microsoft.com/en-us/library/cc732524.aspx"
+                                        />
+                            </simpara></listitem>
+                        </itemizedlist>
+                    </para>
+                </important>
+                <note>
+                    <para>&OVIRT;&MANAGER;访问目录服务时使用Kerberos验证。RHDS不
+                        能直接支持Kerberos。使用RHDS时需要保证它作为一个可用的
+                        Kerberos域中目录服务，通过以下步骤可以实现这一部署方案，
+                        详细说明请查阅厂商文档：
+                        <itemizedlist>
+                            <listitem><para>
+                                    配置RHDS的memberOf插件以支持用户分组。
+                            </para></listitem>
+                            <listitem><para>
+                                    将目录服务配置为Kerberos realm中一个服务，服
+                                    务名称的格式为ldap/hostname@REALNAME，其中
+                                    hostname是目录服务器的完整域名，REALNAME是
+                                    Kerberos realm的完整名称。
+                            </para></listitem>
+                            <listitem><para>
+                                    在Kerberos realm中为目录服务生成一个keytab文
+                                    件。
+                            </para></listitem>
+                            <listitem><para>
+                                    在目录服务器上安装keytab文件，并配置RHDS使用
+                                    keytab文件而且接受使用GSSAPI进行Kerberos验证。
+                            </para></listitem>
+                            <listitem><para>
+                                    在目录服务器上使用kinit测试用户验证是否可以
+                                    通过。验证通过之后，使用ldapsearch加上 -Y GSSAPI
+                                    参数测试是否可以正常查询目录服务。
+                            </para></listitem>
+                        </itemizedlist>
+                    </para>
+                </note>
+                <formalpara>
+                    <title>参见：</title>
+                    <para><itemizedlist>
+                            <listitem><simpara>
+                                    <link linkend="
+                                        sect-Installation_Guide-appendix-additional-utilites_Chapter_Section_1"> 
+                                        附录 B.1 目录服务管理
+                                    </link>
+                            </simpara></listitem>
+                            <listitem><simpara>
+                                    <link linkend="
+                                        sect-Installation_Guide-system-requirements_Section_2-3-3-3">
+                                        2.3.3.3 目录服务的防火墙配置
+                                    </link>
+                            </simpara></listitem>
+                        </itemizedlist>
+                    </para>
+                </formalpara>
+            </section>
+        </section>
+
+        <section>
+            <title>防火墙配置</title>
+            <section>
+                <title>&OVIRT;&MANAGER;的防火墙配置</title>
+                <para></para>
+            </section>
+
+            <section>
+                <title>&OVIRT;&NODE;的防火墙配置</title>
+                <para></para>
+            </section>
+
+            <section id="sect-Installation_Guide-system-requirements_Section_2-3-3-3">
+                <title>目录服务的防火墙配置</title>
+                <para></para>
+            </section>
+
+            <section>
+                <title>数据库的防火墙配置</title>
+                <para></para>
+            </section>
+        </section>
     </section>
 
 </chapter>
