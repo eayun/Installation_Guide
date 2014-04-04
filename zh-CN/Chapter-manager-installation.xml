@@ -5,53 +5,318 @@
 ]>
 <chapter id="chap-Installation_Guide-manager-installation">
 	<title>安装&OVIRT;管理端</title>
-	<para>
-		This is a test paragraph
-	</para>
 	<section id="sect-Installation_Guide-manager-installation_Section_1">
 		<title>安装管理端图解示意图</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
+                <mediaobject>
+                  <imageobject>
+                    <imagedata fileref="../../../img/7.1.png" format="PNG" scale="75"/>
+                  </imageobject>
+                </mediaobject>
 	</section>
 	
 	<section id="sect-Installation_Guide-manager-installation_Section_2">
 		<title>概览</title>
-		<para>
-			This is a test paragraph in Section 2
-			<orderedlist>
-				<listitem>
-					<para>
-						This is a test listitem.
-					</para>
-				</listitem>
-			</orderedlist>
-		</para>
-	</section>
+                <formalpara>
+                  <title>条件</title>
+                  <para>安装&OVIRT;&MANAGER;必须确认满足了所有的安装前提，只有所有的条件都满足，才可以开始安装。</para>
+                </formalpara>
 
-	<section id="sect-Installation_Guide-manager-installation_Section_3">
-		<title>注册</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
+                <para>在成功安装&OVIRT; &MANAGER;之前，必须决定：</para>
+                <orderedlist>
+                  <listitem>
+                    <para>HTTP和HTTPS用来通信的端口，默认的是80和443。</para>
+                  </listitem>
+                  <listitem>
+                    <para>要安装&MANAGER;的系统的全称域名。</para>
+                  </listitem>
+                  <listitem>
+                    <para>&OVIRT;管理员账户的密码。</para>
+                  </listitem>
+                 <listitem>
+                   <para>要使用的数据库服务器的位置。你可以使用setup脚本来安装并配置一个本地数据库服务器或者使用一个已经配置好的远程数据库服务器。在使用远程数据库服务器的时候，你需要知道：
+                   </para>
+                   <itemizedlist>
+                      <listitem>
+                        <para>远程数据库服务器所在系统的主机名，</para>
+                      </listitem>
+                      <listitem>
+                        <para>远程数据库服务器监听的端口，</para>
+                      </listitem>
+                      <listitem>
+                        <para>远程数据库服务器应该已经加载uuid-ossp扩展。</para>
+                      </listitem>
+                    </itemizedlist>
+                    <para>此外，你要需要知道你要使用的远程数据库服务器的用户名和密码，该用户必须有咋在PostgreSQL中创建数据库的权限。</para>
+                  </listitem>
+                 <listitem>
+                    <para>创建&MANAGER;的安全认证时候要使用的组织名称。</para>
+                  </listitem>
+                 <listitem>
+                    <para>连接到&MANAGER;的初始化数据中心要使用的存储类型，默认的是NFS。</para>
+                  </listitem>
+                 <listitem>
+                    <para>如果&MANAGER;配置提供ISO共享的话，需要共享ISO的路径。用来标记这个域的名字也是&OVIRT; &MANAGER;需要的。</para>
+                  </listitem>
+                 <listitem>
+                    <para>防火墙规则。要满足&MANAGER;的需求。</para>
+                  </listitem>
+                </orderedlist>
+                <example>
+                  <title>完全安装</title>
+                  <programlisting language="Bash">
+                    <![CDATA[
+                    EayunOS Manager will be installed using the following configuration:
+                    =================================================================
+                    override-httpd-config:     yes
+                    http-port:                 80
+                    https-port:                443
+                    host-fqdn:                 demo.eayun.com
+                    auth-pass:                 ********
+                    org-name:                  eayunos.com
+                    default-dc-type:           NFS
+                    db-remote-install:         local
+                    db-local-pass:             ********
+                    nfs-mp:                    /usr/local/exports/iso
+                    config-nfs:                yes
+                    override-iptables:         yes
+                    Proceed with the configuration listed above? (yes|no): yes
+                    ]]>
+                  </programlisting>
+                </example>
+                <note>
+                  <para>
+                    通过一个答案文件启用engine-setup进行自动化安装。一个答案文件包含setup命令行所问问题的所有答案。
+                  </para>
+                  <itemizedlist>
+                    <listitem>
+                      <para>
+                    使用--gen-answer-file参数设置要创建的答案文件的路径。然后engine-setup将会在文件中记录所有问题的答案。
+                      </para>
+                      <programlisting language="Bash">
+                        <![CDATA[
+                          # engine-setup --gen-answer-file=ANSWER_FILE
+                        ]]>
+                      </programlisting>
+                    </listitem>
+                    <listitem>
+                      <para>
+                      在使用答案文件进行安装的时候。使用--answer-file参数设置要使用的的答案文件的路径。然后engine-setup将会使用文件中记录所有答案。
+                      </para>
+                      <programlisting language="Bash">
+                        <![CDATA[
+                          # engine-setup --answer-file=ANSWER_FILE
+                        ]]>
+                      </programlisting>
+                    </listitem>
+                  </itemizedlist>
+                  <para>使用engine-setup --help来获取更多engine-setup的更多帮助信息。</para>
+                </note>
 	</section>
-	<section id="sect-Installation_Guide-manager-installation_Section_4">
+	<section id="sect-Installation_Guide-manager-installation_Section_3">
 		<title>安装系统</title>
 		<para>
-			This is a test paragraph in a section
+		      截图！！
 		</para>
 	</section>
 	<section id="sect-Installation_Guide-manager-installation_Section_5">
-		<title>配置</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
-	</section>
+		<title>配置&OVIRT; &MANAGER;</title>
+                <formalpara>
+                  <title>条件</title>
+                  <para>
+                    当系统安装完后，需要配置&OVIRT; &MANAGER; engine-setup就是完成这个任务的。这个脚本问你一系列问题，并根据你的回答配置你的环境。提供给它它需要的数据后，它开始启动&OVIRT; &MANAGER;的服务。
+                  </para>
+                </formalpara>
+                  <para>
+                    engine-setup通过几个明显的阶段来引导你，每个阶段包含几个需要用户输入的步骤。每一步都会在方括号中提供建议默认值。你可以按Enter同意使用这些默认值并进入下一个步骤或者阶段。
+                  </para>
+                <procedure>
+                  <step>
+                    <para>包检查</para>
+                    <para>
+                        engine-setup脚本判断此次是一个安装还是升级，同时看看&MANAGER;有没有可以升级的包。这一阶段不需要输入。
+                    </para>
+                    <programlisting language="Bash">
+                    <![CDATA[
+                    [ INFO] Checking for product updates...
+                    [ INFO] No product updates found
+                    ]]>
+                    </programlisting>
+                  </step>
+                  <step>
+                    <para>网络配置</para>
+                    <para>
+                      系统会自动检测你的主机名并进行反向查找。如果检测出的主机名错误或者使用一台虚拟机，可以手动纠正主机名。你的完整域名必须在DNS里同时由正向和反向查找记录，尤其在它还安装了报告服务器的情况下。
+                    </para>
+                    <programlisting language="Bash">
+                      <![CDATA[
+                        Host fully qualified DNS name of this server [autodetected host name]:
+                      ]]>
+                    </programlisting>
+                    <para>
+                      engine-setup将会检查你的防火墙配置，帮你打开&MANAGER;通信所需要的端口。如果不允许engine-setup修改iptables的配置，那就必须手动打开&OVIRT; &MANAGER;需要的这些端口。
+                    </para>
+                    <programlisting language="Bash">
+                      <![CDATA[
+                      iptables was detected on your computer. Do you wish Setup to configure it?
+                      (yes, no) [yes]:
+                      ]]>
+                    </programlisting>
+                  </step>
+                  <step>
+                    <para>数据库配置</para>
+                    <para>可以使用本地或者远程的Postgres数据库。engine-setup脚本可以完全自动配置数据库，包括添加用户和数据库，或者使用你设置的值。</para>
+                    <programlisting language="Bash">
+                      <![CDATA[
+                      Where is the database located? (Local, Remote) [Local]:
+                      Setup can configure the local postgresql server automatically for the engine
+                      to run. This may conflict with existing applications.
+                      Would you like Setup to automatically configure postgresql, or prefer to
+                      perform that manually? (Automatic, Manual) [Automatic]:
+                      ]]>
+                    </programlisting>
+                  </step>
+                  <step>
+                    <para>engine配置</para>
+                    <para>为自动创建的&OVIRT; &MANAGER;管理员账户admin@internal设置密码。</para>
+                    <programlisting language="Bash">
+                      <![CDATA[
+                       Engine admin password:
+                       Confirm engine admin password:
+                       ]]>
+                    </programlisting>
+                    <para>选择Gluster，Virtualization或者Both。Both具有最大的适应性</para>
+                    <programlisting language="Bash">
+                      <![CDATA[
+                          Data center (Both, Virt, Gluster) [Both]: 
+                       ]]>
+                     </programlisting>
+                     <para>选择初始化数据中心的类型。环境中可以由很多数据中心，数据中心用不同的存储方式。这里选择的是第一个数据中心的类型。</para>
+                    <programlisting language="Bash">
+                      <![CDATA[
+                      Default storage type: (NFS, FC, ISCSI, POSIXFS) [NFS]:
+                       ]]>
+                    </programlisting>
+                  </step>
+                  <step>
+                    <para>PKI配置</para>
+                    <para>&MANAGER;使用认证来和它的主机交流。需要为认证提供组织名。这个认证也可以用来增强&MANAGER;的https的通信安全。</para>
+                    <programlisting language="Bash">
+                      <![CDATA[
+                      Organization name for certificate [autodetected domain-based name]:
+                      ]]>
+                    </programlisting>
+                  </step>
+                  <step>
+                    <para>Apache配置</para>
+                    <para>&OVIRT; &MANAGER; 使用Apache服务器来为用户提供一个登录页面。engine-setup脚本可以把&MANAGER;的登录页面变成Apache的默认页面。</para>
+                    <programlisting language="Bash">
+                      <![CDATA[
+                      Setup can configure the default page of the web server to present the
+                      application home page. This may conflict with existing applications.
+                      Do you wish to set the application as the default web page of the server?
+                      (Yes, No) [Yes]:
+                       ]]>
+                     </programlisting>
+                     <para>
+                      主机和&MANAGER;的ssl（https）通信使用PKI配置阶段生成的自签名。其他的https连接选择另一个证书，不影响&MANAGER;和主机之间的通信。
+                     </para>
+                    <programlisting language="Bash">
+                      <![CDATA[
+                      Setup can configure apache to use SSL using a certificate issued from the
+                      internal CA
+                      Do you wish Setup to configure that, or prefer to perform that manually?
+                      (Automatic, Manual) [Automatic]:
+                      ]]>
+                    </programlisting>
+                  </step>
+                  <step>
+                    <para>系统配置</para>
+                    <para>engine-setup可以在&MANAGER;上创建一个NFS服务，利用该服务使用ISO domain。在&MANAGER;本地保存ISO domain可以简化更新环境中的元素。</para>
+                    <programlisting language="Bash">
+                      <![CDATA[
+                      Configure an NFS share on this server to be used as an ISO Domain? (Yes, No)                      
+                      [Yes]:
+                      Local ISO domain path [/var/lib/exports/iso]:
+                      Local ISO domain name [ISO_DOMAIN]:
+                      Configure WebSocket Proxy on this machine? (Yes, No) [Yes]:
+                      ]]>
+                    </programlisting>
+                    </step>
+                    <step>
+                      <para>
+                        engine-setup验证你的所有答案，并警告你可能发生的问题。用户需要输入来确定提供的的答案是否对环境由不良影响。
+                      </para>
+                      <programlisting language="Bash">
+                      <![CDATA[--== END OF CONFIGURATION ==-- 
+Would you like transactions from the Red Hat Access Plugin sent from the RHEV
+Manager to be brokered through a proxy server? (Yes, No) [No]:
+                      ]]>
+                      </programlisting>
+                      <programlisting language="Bash">
+                      <![CDATA[
+                      [ INFO] Stage: Setup validation
+                      ]]>
+                      </programlisting>
+                    </step>
+                    <step>
+                      <para>预览和摘要</para>
+                      <para>在预览阶段，engine-setup给你展示了你自己输入的配置值，并给你修改的机会。如果你选择运行，engine-setup将会按照你在配置阶段提供的答案进行&OVIRT; &MANAGER;安装</para>
+                      <screen>          --== CONFIGURATION PREVIEW ==--
+                        Database name:                engine
+                        Database secured connection:     False
+                        Database host:                   localhost
+                        Database user name:              engine
+                        Database host name validation:   False
+                        Database port:                   5432
+                        NFS setup:                       True
+                        PKI organization:                Your Org
+                        NFS mount point:                 /var/lib/exports/iso
+                        Application mode:                both
+                        Firewall manager:                iptables
+                        Configure WebSocket Proxy:       True
+                        Host FQDN:                       Your Manager's FQDN
+                        Datacenter storage type:         nfs
+                        Configure local database:        True
+                        Set application as default page: True
+                        Configure Apache SSL :           True
+                        Please confirm installation settings (OK, Cancel) [OK]:
+                      </screen>
+                      <para>环境配置好以后，使用engine-setup查看你环境和安全的细节。</para>
+                      <screen>A default ISO NFS share has been created on this host.
+                        If IP based access restrictions are required, edit: entry
+                        /var/lib/exports/iso in /etc/exports
+                        SSH fingerprint: 87:af:b5:fe:7a:e5:1b:64:83:57:02:07:62:eb:8c:18
+                        Internal CA SHA1
+                        Fingerprint=7B:DF:2A:EE:18:C8:B1:CC:F7:6B:59:42:A3:96:BC:44:32:98:FF:A6
+                        Web access is enabled at:
+                                http://manager.fqdn:80/ovirt-engine
+                                https://manager.fqdn:443/ovirt-engine
+                        Please use the user "admin" and password specified in order to login into
+                        oVirt Engin
+                      </screen>
+                    </step>
+                    <step>
+                      <para>清理结束</para>
+                      <para>engine-setup脚本清理配置过程中产生的不必要的文件并把&OVIRT; &MANAGER;的配置过程记录到日志。</para>
+                      <screen>[ INFO ] Stage: Clean up
+Log file is located at /var/log/ovirt-engine/setup/ovirt-engine-
+setup-installation-date.log
+[ INFO ] Stage: Pre-termination
+[ INFO ] Stage: Termination
+[ INFO ] Execution of setup completed successfully
+                      </screen>
+                    </step>
+                  </procedure>
+                  <formalpara>
+                    <title>结果</title>
+                    <para>当engine-setup脚本结束的时候，&OVIRT; &MANAGER;配置完毕而且启动了。你可以以admin@internal用户登录，并添加集群，主机还有其他。</para>
+                  </formalpara>
+                    <para>如果你想把&OVIRT; &MANAGER;和一个目录服务器关联，你可以添加一个额外的用户。&OVIRT;支持RHDS，IDM，和Active Directory的目录服务。使用engine-manage-domain命令添加一个目录服务。</para>
+                    <para>engine-setup脚本也可以把你的配置保存到文件，以便灾难恢复。</para>
+        </section>
 	<section id="sect-Installation_Guide-manager-installation_Section_6">
 		<title>密码设置</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
+                <para>密码设置</para>
 	</section>
 	<section id="sect-Installation_Guide-manager-installation_Section_7">
 		<title>准备PostgreSQL数据库服务</title>
