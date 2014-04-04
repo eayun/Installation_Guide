@@ -779,7 +779,215 @@
 
             <section>
                 <title>&OVIRT;&NODE;的防火墙配置</title>
-                <para></para>
+                <para>使用&OVIRT;&NODE;光盘安装时会自动配置防火墙。将普通的
+                    Linux主机加入&OVIRT;虚拟化环境时需要手动配置防火墙。
+                    <table>
+                        <title>&OVIRT;&NODE;的防火墙配置</title>
+                        <tgroup cols="5">
+                            <thead>
+                                <row>
+                                    <entry>端口</entry>
+                                    <entry>协议</entry>
+                                    <entry>来源地址</entry>
+                                    <entry>目标地址</entry>
+                                    <entry>用途</entry>
+                                </row>
+                            </thead>
+                            <tbody>
+                                <row>
+                                    <entry>22</entry>
+                                    <entry>TCP</entry>
+                                    <entry>
+                                        <itemizedlist>
+                                            <listitem><simpara>
+                                                    &OVIRT;&MANAGER;
+                                            </simpara></listitem>
+                                        </itemizedlist>
+                                    </entry>
+                                    <entry>
+                                        <itemizedlist>
+                                            <listitem><simpara>
+                                                    &OVIRT;&NODE;
+                                            </simpara></listitem>
+                                            <listitem><simpara>
+                                                    单独的Linux主机
+                                            </simpara></listitem>
+                                        </itemizedlist>
+                                    </entry>
+                                    <entry><simpara>
+                                            SSH访问连接
+                                    </simpara></entry>
+                                </row>
+                                <row>
+                                    <entry>5900 - 6411</entry>
+                                    <entry>TCP</entry>
+                                    <entry>
+                                        <itemizedlist>
+                                            <listitem><simpara>
+                                                    访问管理门户的客户端
+                                            </simpara></listitem>
+                                            <listitem><simpara>
+                                                    访问普通用户门户的客户端
+                                            </simpara></listitem>
+                                        </itemizedlist>
+                                    </entry>
+                                    <entry>
+                                        <itemizedlist>
+                                            <listitem><simpara>
+                                                    &OVIRT;&NODE;
+                                            </simpara></listitem>
+                                            <listitem><simpara>
+                                                    单独的Linux主机
+                                            </simpara></listitem>
+                                        </itemizedlist>
+                                    </entry>
+                                    <entry>
+                                        <simpara>客户端使用这些端口连接虚拟机的
+                                        的VNC和SPICE接口。</simpara>
+                                    </entry>
+                                </row>
+                                <row>
+                                    <entry>5989</entry>
+                                    <entry>TCP，UDP</entry>
+                                    <entry>CIMOM</entry>
+                                    <entry>
+                                        <itemizedlist>
+                                            <listitem><simpara>
+                                                    &OVIRT;&NODE;
+                                            </simpara></listitem>
+                                            <listitem><simpara>
+                                                    单独的Linux主机
+                                            </simpara></listitem>
+                                        </itemizedlist>
+                                    </entry>
+                                    <entry>
+                                        <simpara>使用CIMOM监控虚拟机时需要使用该
+                                        端口</simpara>
+                                    </entry>
+                                </row>
+                                <row>
+                                    <entry>16514</entry>
+                                    <entry>TCP</entry>
+                                    <entry>
+                                        <itemizedlist>
+                                            <listitem><simpara>
+                                                    &OVIRT;&NODE;
+                                            </simpara></listitem>
+                                            <listitem><simpara>
+                                                    单独的Linux主机
+                                            </simpara></listitem>
+                                        </itemizedlist>
+                                    </entry>
+                                    <entry>
+                                        <itemizedlist>
+                                            <listitem><simpara>
+                                                    &OVIRT;&NODE;
+                                            </simpara></listitem>
+                                            <listitem><simpara>
+                                                    单独的Linux主机
+                                            </simpara></listitem>
+                                        </itemizedlist>
+                                    </entry>
+                                    <entry>
+                                        <simpara>使用libvirt进行虚拟机迁移时需要
+                                        使用该端口</simpara>
+                                    </entry>
+                                </row>
+                                <row>
+                                    <entry>49152 - 49216</entry>
+                                    <entry>TCP</entry>
+                                    <entry>
+                                        <itemizedlist>
+                                            <listitem><simpara>
+                                                    &OVIRT;&NODE;
+                                            </simpara></listitem>
+                                            <listitem><simpara>
+                                                    单独的Linux主机
+                                            </simpara></listitem>
+                                        </itemizedlist>
+                                    </entry>
+                                    <entry>
+                                        <itemizedlist>
+                                            <listitem><simpara>
+                                                    &OVIRT;&NODE;
+                                            </simpara></listitem>
+                                            <listitem><simpara>
+                                                    单独的Linux主机
+                                            </simpara></listitem>
+                                        </itemizedlist>
+                                    </entry>
+                                    <entry>
+                                        <simpara>虚拟机迁移以及VDSM的fencing
+                                        </simpara>
+                                    </entry>
+                                </row>
+                                <row>
+                                    <entry>54321</entry>
+                                    <entry>TCP</entry>
+                                    <entry>
+                                        <itemizedlist>
+                                            <listitem><simpara>
+                                                    &OVIRT;&MANAGER;
+                                            </simpara></listitem>
+                                            <listitem><simpara>
+                                                    &OVIRT;&NODE;
+                                            </simpara></listitem>
+                                            <listitem><simpara>
+                                                    单独的Linux主机
+                                            </simpara></listitem>
+                                        </itemizedlist>
+                                    </entry>
+                                    <entry>
+                                        <itemizedlist>
+                                            <listitem><simpara>
+                                                    &OVIRT;&NODE;
+                                            </simpara></listitem>
+                                            <listitem><simpara>
+                                                    单独的Linux主机
+                                            </simpara></listitem>
+                                        </itemizedlist>
+                                    </entry>
+                                    <entry>
+                                        <simpara>&OVIRT;&MANAGER;和&NODE;、
+                                            &NODE;和&NODE;之间VDSM的通信。
+                                        </simpara>
+                                    </entry>
+                                </row>
+                            </tbody>
+                        </tgroup>
+                    </table>
+                </para>
+                <example>
+                    <title>IPTables配置示例</title>
+                    <para>
+                        &OVIRT;&NODE;安装自动生成的防火墙配置
+                        <screen>*filter
+                            :INPUT ACCEPT [0:0]
+                            :FORWARD ACCEPT [0:0]
+                            :OUTPUT ACCEPT [0:0]
+                            -A INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+                            -A INPUT -p icmp -j ACCEPT
+                            -A INPUT -i lo -j ACCEPT
+                            # vdsm
+                            -A INPUT -p tcp --dport 54321 -j ACCEPT
+                            # libvirt tls
+                            -A INPUT -p tcp --dport 16514 -j ACCEPT
+                            # SSH
+                            -A INPUT -p tcp --dport 22 -j ACCEPT
+                            # guest consoles
+                            -A INPUT -p tcp -m multiport --dports 5634:6166 -j ACCEPT
+                            # migration
+                            -A INPUT -p tcp -m multiport --dports 49152:49216 -j ACCEPT
+                            # snmp
+                            -A INPUT -p udp --dport 161 -j ACCEPT
+                            # Reject any other input traffic
+                            -A INPUT -j REJECT --reject-with icmp-host-prohibited
+                            -A FORWARD -m physdev ! --physdev-is-bridged -j REJECT --reject-with icmp-host-
+                            prohibited
+                            COMMIT
+                        </screen>
+                    </para>
+                </example>
             </section>
 
             <section id="sect-Installation_Guide-system-requirements_Section_2-3-3-3">
