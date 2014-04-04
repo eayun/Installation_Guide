@@ -992,14 +992,117 @@
 
             <section id="sect-Installation_Guide-system-requirements_Section_2-3-3-3">
                 <title>目录服务的防火墙配置</title>
-                <para></para>
+                <para>
+                    &OVIRT;&MANAGER;使用目录服务进行用户管理和验证，针对目录服务
+                    也需要对防火墙进行一些配置。
+                    <table>
+                        <title>目录服务的防火墙配置</title>
+                        <tgroup cols="5">
+                            <thead>
+                                <row>
+                                    <entry>端口</entry>
+                                    <entry>协议</entry>
+                                    <entry>来源地址</entry>
+                                    <entry>目的地址</entry>
+                                    <entry>用途</entry>
+                                </row>
+                            </thead>
+                            <tbody>
+                                <row>
+                                    <entry>88, 464</entry>
+                                    <entry>TCP，UDP</entry>
+                                    <entry>
+                                        <itemizedlist>
+                                            <listitem><simpara>
+                                                    &OVIRT;&MANAGER;
+                                            </simpara></listitem>
+                                        </itemizedlist>
+                                    </entry>
+                                    <entry>
+                                        <itemizedlist>
+                                            <listitem><simpara>
+                                                    目录服务器
+                                            </simpara></listitem>
+                                        </itemizedlist>
+                                    </entry>
+                                    <entry><simpara>
+                                        Kerberos验证
+                                    </simpara></entry>
+                                </row>
+                                <row>
+                                    <entry>389， 636</entry>
+                                    <entry>TCP</entry>
+                                    <entry>
+                                        <itemizedlist>
+                                            <listitem><simpara>
+                                                    &OVIRT;&MANAGER;
+                                            </simpara></listitem>
+                                        </itemizedlist>
+                                    </entry>
+                                    <entry>
+                                        <itemizedlist>
+                                            <listitem><simpara>
+                                                    目录服务器
+                                            </simpara></listitem>
+                                        </itemizedlist>
+                                    </entry>
+                                    <entry><simpara>
+                                        使用SSL加密的目录服务访问
+                                    </simpara></entry>
+                                </row>
+                            </tbody>
+                        </tgroup>
+                    </table>
+                </para>
             </section>
 
             <section>
                 <title>数据库的防火墙配置</title>
-                <para></para>
+                <para>
+                    &OVIRT;&MANAGER;可以使用远程数据库服务器，使用远程数据库服务
+                    器时需要考虑防火墙的配置。
+                    <table>
+                        <title>数据库的防火墙配置</title>
+                        <tgroup cols="5">
+                            <thead>
+                                <row>
+                                    <entry>端口</entry>
+                                    <entry>协议</entry>
+                                    <entry>来源地址</entry>
+                                    <entry>目的地址</entry>
+                                    <entry>用途</entry>
+                                </row>
+                            </thead>
+                            <tbody>
+                                <row>
+                                    <entry>5432</entry>
+                                    <entry>TCP，UDP</entry>
+                                    <entry>
+                                        <itemizedlist>
+                                            <listitem><simpara>
+                                                    &OVIRT;&MANAGER;
+                                            </simpara></listitem>
+                                        </itemizedlist>
+                                    </entry>
+                                    <entry>
+                                        <itemizedlist>
+                                            <listitem><simpara>
+                                                    数据库服务器
+                                            </simpara></listitem>
+                                        </itemizedlist>
+                                    </entry>
+                                    <entry><simpara>
+                                        PostgreSQL数据库的默认监听端口
+                                    </simpara></entry>
+                                </row>
+                            </tbody>
+                        </tgroup>
+                    </table>
+                </para>
             </section>
+
         </section>
+
     </section>
 
 </chapter>
