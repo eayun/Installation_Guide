@@ -316,31 +316,233 @@ setup-installation-date.log
         </section>
 	<section id="sect-Installation_Guide-manager-installation_Section_6">
 		<title>密码设置</title>
-                <para>密码设置</para>
+                <para>
+                  &OVIRT;在调用engien-setup的时候为数据库和admin@internal生成了一个临时密码。运行engine-config来修改admin@internal密码
+                </para>
+                <para>
+                  也可以使用engine-setup --answer-file=/[path_to_answer_file]来手动指定一个密码，此时需要临时密码保存在回答文件中。可以使用engine-setup --generate-answer=file来生成一个回答文件。下面是回答文件的格式
+                </para>
+                <screen># action=setup
+                  [environment:default]
+                  OVESETUP_CORE/engineStop=none:None
+                  OVESETUP_DIALOG/confirmSettings=bool:True
+                  OVESETUP_DB/database=str:engine
+                  OVESETUP_DB/fixDbViolations=none:None
+                  OVESETUP_DB/secured=bool:False
+                  OVESETUP_DB/host=str:localhost
+                  OVESETUP_DB/user=str:engine
+                  OVESETUP_DB/securedHostValidation=bool:False
+                  OVESETUP_DB/password=str:0056jKkY
+                  OVESETUP_DB/port=int:5432
+                  OVESETUP_SYSTEM/nfsConfigEnabled=bool:True
+                  ...
+                  OVESETUP_APACHE/configureSsl=bool:True
+                  OSETUP_RPMDISTRO/requireRollback=none:None
+                  OSETUP_RPMDISTRO/enableUpgrade=none:None
+                  OVESETUP_AIO/configure=none:None
+                  OVESETUP_AIO/storageDomainDir=none:None
+                </screen>
 	</section>
 	<section id="sect-Installation_Guide-manager-installation_Section_7">
 		<title>准备PostgreSQL数据库服务</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
+                <formalpara>
+                  <title>摘要</title>
+                  <para>你可以为&OVIRT;手动配置一个数据库服务器。它可以在本地服务器或者在安装了postgresql的远程服务器。</para>
+                </formalpara>
+                <procedure>
+                  <title>为&OVIRT; &MANAGER;准备一台数据库服务器</title>
+                  <step>
+                    <para>
+                      为&OVIRT; &MANAGER;读写数据库建立一个postgresql帐号。并建立一个数据库来保存环境信息。这一步需要在本地和远程手动配置数据库服务器。在数据库服务器中使用postgresql用户来运行psql终端。
+                    </para>
+                    <screen># su - postgres
+                      $ psql
+                      postgres=# create user USER password 'PASSWORD';
+                      postgres=# create database DATABASE owner USER;
+                    </screen>
+                  </step>
+                  <step>
+                    <para>
+                      通过启用客户认证，确定数据库是可以远程访问的。这一步需要在远程服务器手动配置。编辑/var/lib/pgsql/data/pg_hba.conf文件，加入下面的内容：
+                    </para>
+                    <screen>
+                      host all all X.X.X.X/24 trust
+                    </screen>
+                    <para>
+                        用&MANAGER;的IP地址替换X.X.X.X。
+                    </para>
+                  </step>
+                  <step>
+                    <para>
+                      允许TCP/IP连接到数据库。这一步需要在远程服务器手动配置。编辑/var/lib/pgsql/data/postgresql.conf文件，加入下面的内容：
+                    </para>
+                    <screen>
+                      listen_addresses='*'
+                    </screen>
+                    <para>
+                      上面的例子使postgresql监听所有接受上的所有连接。你可以通过IP指定接口。
+                    </para>
+                  </step>
+                  <step>
+                    <para>
+                      重启postgresql服务。这一步需要在远程服务器手动配置。
+                    </para>
+                    <screen>
+                      service postgresql restart
+                    </screen>
+                  </step>
+                </procedure>
+                <formalpara>
+                  <title>结果</title>
+                  <para>可以为&MANAGER;手动配置postgresql服务器。</para>
+                </formalpara>
 	</section>
 	<section id="sect-Installation_Guide-manager-installation_Section_8">
 		<title>手动配置本地或远程的PostgreSQL数据库</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
+                <formalpara>
+                  <title>摘要</title>
+                  <para>
+                    在使用engine-setup配置&OVIRT; &MANAGER;的数据库配置阶段，可以手动配置一个数据库。可以选择本地或者远程安装数据库。
+                  </para>
+                </formalpara>
+                <procedure>
+                  <title>配置&MANAGER;的时候手动配置本地或者远程Postgresql数据库</title>
+                  <step>
+                    <para>
+                      在使用engine-setup配置&OVIRT; &MANAGER;的时候，你需要决定数据库安装的位置。
+                    </para>
+                    <screen>
+                      Where is the database located? (Local, Remote) [Local]:
+                    </screen>
+                    <para>
+                      在配置&OVIRT; &MANAGER;使用本地数据库还是远程数据库的时候，除了上面的这一项，其他都相同。如果是远程的话，必须提供远程服务器的主机名和监听的端口。
+                    </para>
+                  </step>
+                  <step>
+                    <para>
+                    如果使用远程的数据库，engine-setup需要附加数据库服务器的主机名和监听的端口。
+                    </para>
+                    <screen>Database host [localhost]:
+                      Database port [5432]:
+                    </screen>
+                  </step>
+                  <step>
+                    <para>
+                    任何一种情况，都需要确定数据库是否使用安全连接，配置数据库的名称，用来访问数据库的用户名，和用户的密码。
+                    </para>
+                    <screen>Database secured connection (Yes, No) [No]:
+                    Database name [engine]:
+                    Database user [engine]:
+                    Database password:
+                    </screen>
+                    <note>
+                      <para>
+                        使用安全连接的话，需要手动配置数据库的安全连接。
+                      </para>
+                    </note>
+                  </step>
+                </procedure>
+                <formalpara>
+                  <title>结果</title>
+                  <para>已经配置&OVIRT; &MANAGER;使用一个手动配置的数据库。engine-config继续其他环境的配置。</para>
+                </formalpara> 
 	</section>
 	<section id="sect-Installation_Guide-manager-installation_Section_9">
 		<title>访问管理员门户</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
+                <formalpara>
+                  <title>摘要</title>
+                  <para>可以使用web浏览器访问管理员门户。</para>
+                </formalpara>
+                <procedure>
+                  <title>访问管理员门户</title>
+                  <step>
+                    <para>
+                        打开客户系统上一个web浏览器。
+                    </para>
+                  </step>
+                  <step>
+                    <para>
+                      把https://your-manager-fqdn/ovirt-engine中的your-manager-fqdn用安装时候设置的完整域名替换。第一次访问的时候，需要为浏览器和服务器间的安全连接的证书添加信任。
+                    </para>
+                  </step>
+                  <step>
+                    <para>
+                      显示出登录屏幕。输入你的用户名和密码。如果第一次登录，使用admin和在安装的设置的设置的密码登录。  
+                    </para>
+                  </step>
+                  <step>
+                    <para>
+                        从域列表中选择要认证的目录服务域，如果使用的是内部的admin用户，就选择internal域。
+                    </para>
+                  </step>
+                  <step>
+                    <para>
+                        管理员门户可以支持多种语言，默认的选项是根据浏览器的语言设置的，如果需要其他语言，在下拉列表中选择。
+                    </para>
+                  </step>
+                  <step>
+                    <para>
+                        点击登录。
+                    </para>
+                  </step>
+                </procedure>
+                <formalpara>
+                  <title>结果</title>
+                  <para>已经成功登录管理员门户。</para>
+                </formalpara>
 	</section>
 	<section id="sect-Installation_Guide-manager-installation_Section_10">
-		<title>卸载&OVIRT;管理程序</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
+		<title>卸载&OVIRT; &MANAGER;</title>
+                <formalpara>
+                  <title>摘要</title>
+                  <para>&OVIRT; &MANAGER;提供engine-clean脚本来简单快速地把&OVIRT; &MANAGER; 环境中的关联文件移除。</para>
+                </formalpara>
+                <procedure>
+                  <title>
+                    卸载&OVIRT; &MANAGER;
+                  </title>
+                  <step>
+                    <para>在安装了&OVIRT; &MANAGER;的系统上执行命令engine-cleanup。</para>
+                    <screen># engine-cleanup</screen>
+                  </step>
+                  <step>
+                    <para>需要确定&OVIRT; &MANAGER;移除的组件，这些组件包括PKI 密钥，本地ISO domain文件系统分布，PKI配置，本地NFS导出配置，engien数据库内容。
+                    </para>
+                    <screen>Do you want to remove all components? (Yes, No) [Yes]:</screen>
+                    <note><para>engine数据库的备份文件，PKI的密钥和配置文件的压缩归档文件都是自动创建的。保存在/var/lib/ovirt-engine/backups/下面，它们的文件名包含日期和engine-或者engine-pki-。</para></note>
+                  </step>
+                  <step>
+                    <para>到这里还有一次放弃移除&OVIRT; &MANAGER;的机会。如果选择执行，ovirt-engine服务被停止，之前选择的环境配置都会被移除。</para>
+                    <screen>During execution engine service will be stopped (OK, Cancel) [OK]:
+                      ovirt-engine is about to be removed, data will be lost (OK, Cancel)
+                    [Cancel]:OK</screen>
+                  </step>
+                </procedure>
+                <formalpara>
+                  <title>结果</title>
+                  <para>当运行engine-cleanup后，移除了环境的配置文件。</para>
+                </formalpara>
+                <screen>
+                  --== SUMMARY ==--
+                  A backup of the database is available at /var/lib/ovirt-engine/backups/engine-date-
+                  and-extra-characters.sql
+                  Engine setup successfully cleaned up
+                  A backup of PKI configuration and keys is available at /var/lib/ovirt-
+                  engine/backups/engine-pki-date-and-extra-characters.tar.gz
+                  --== END OF SUMMARY ==--
+                  [ INFO ] Generating answer file '/var/lib/ovirt-
+                  engine/setup/answers/20130827181911-cleanup.conf'
+                  [ INFO ] Stage: Clean up
+                  Log file is located at /var/log/ovirt-engine/setup/ovirt-engine-
+                  remove-date.log
+                  [ INFO ] Stage: Pre-termination
+                  [ INFO ] Stage: Termination
+                  [ INFO ] Execution of cleanup completed successfully</screen>
+                <para>
+                  现在可以使用yum安全地移除&OVIRT;包。
+                </para>
+                <screen>
+                  # yum remove rhevm* vdsm-bootstrap
+                </screen>
 	</section>
 </chapter>
-
