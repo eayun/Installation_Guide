@@ -5,28 +5,67 @@
 ]>
 <chapter id="chap-Installation_Guide-planning-data-center-setup">
 	<title>部署前规划</title>
-	<para>
-		This is a test paragraph
-	</para>
 	<section id="sect-Installation_Guide-planning-data-center-setup_Section_1">
 		<title>流程图解之规划数据中心</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
+        <informalfigure>
+            <mediaobject>
+                <imageobject>
+                    <imagedata
+                        fileref="images/eayun_installation_checklist_planning_datacenter.png"
+                        format="PNG" />
+                </imageobject>
+            </mediaobject>
+        </informalfigure>
 	</section>
 	
 	<section id="sect-Installation_Guide-planning-data-center-setup_Section_2">
 		<title>规划数据中心</title>
-		<para>
-			This is a test paragraph in Section 2
-			<orderedlist>
-				<listitem>
-					<para>
-						This is a test listitem.
-					</para>
-				</listitem>
-			</orderedlist>
-		</para>
+        <para>有效的规划对于实现&OVIRT;虚拟化环境的可用性和扩展性至关重要。
+        </para>
+
+        <para>应该从以下方面去规划&OVIRT;虚拟化环境的数据中心：
+            <variablelist>
+                <varlistentry>
+                    <term>CPU</term>
+                    <listitem><para>虚拟机平均分布在所有的&OVIRT;&NODE;，当出现
+                            压力峰值时仍有能力处理远大于日常情况的运行负载。
+                            &OVIRT;&NODE;的平均CPU使用率应该控制在50%。
+                    </para></listitem>
+                </varlistentry>
+
+                <varlistentry>
+                    <term>内存</term>
+                    <listitem><para>&OVIRT;虚拟化环境支持最大150%的内存overcommit，
+                            通常情况下内存overcommit比例在30%左右。
+                    </para></listitem>
+                </varlistentry>
+
+                <varlistentry>
+                    <term>网络</term>
+                    <listitem>
+                        <para>规划网络要考虑存储设置、远程连接以及虚拟机
+                            本身产生的流量。通常每台虚拟机的的流量在50MB/s。
+                        </para>
+                        <para>尽可能将磁盘I/O和终端用户的流量分开，这样有利于降
+                            低网卡的负载以及安全隐患。对于以太网卡，建议配置
+                            bonding（802.3ad模式）。</para>
+                        <note><para>
+                                可以将存储设备和&OVIRT;&NODE;连接到同一高性能交
+                                换机。不过为达到较高的效率，交换机应该至少提供
+                                30Gb/s的带宽。
+                        </para></note>
+                    </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                    <term>高可用性</term>
+                    <listitem><para>
+                            至少有2台服务器实现冗余，从而实现整个虚拟化环境的高
+                            可用性。
+                    </para></listitem>
+                </varlistentry>
+            </variablelist>
+        </para>
 	</section>
 
 	<section id="sect-Installation_Guide-planning-data-center-setup_Section_3">
