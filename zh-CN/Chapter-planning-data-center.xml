@@ -76,8 +76,8 @@
                 的物理和逻辑资源。数据中心是由&NODE;组成的集群的集合，管理逻辑
                 网络和存储池等资源。
             </para>
-            <para>&OVIRT;虚拟化安装时创建了一个Default数据中心。在管理门户中可以
-                创建并管理多个数据中心。建议不要删除Default数据中心。
+            <para>&OVIRT;虚拟化产品安装时创建了一个Default数据中心。在管理门户中
+                可以创建并管理多个数据中心。建议不要删除Default数据中心。
             </para>
             <para>系统管理员（即超级用户）可以管理整个虚拟化环境，包括数据中心、
                 存储域、用户、角色、权限。其他用户可以赋予不同的管理角色和权限。
@@ -123,7 +123,7 @@
                             在主面板选中“数据中心”面板，列出所有的已有的数据中心。
                     </para></step>
                     <step><para>
-                            点击“新建”，列出所有的已有的数据中心。
+                            点击“新建”，打开“新建数据中心”对话框。
                     </para></step>
                     <step><para>
                             填写“名称”和“描述”。
@@ -165,12 +165,116 @@
 
 	<section id="sect-Installation_Guide-planning-data-center-setup_Section_4">
 		<title>集群</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
         <section id="sect-Installation_Guide-planning-data-center-setup_Section_4_1">
             <title>&OVIRT;虚拟化环境中的集群</title>
-            <para></para>
+            <para>集群是一组&NODE;的集合，这些&NODE;的配置接近，通过高可用的方式
+                提供计算资源。在&OVIRT;虚拟化环境中，集群必须由使用相同架构的
+                CPU，并且可用共享使用相同存储资源的&NODE;组成。虚拟机可以在同一
+                集群的&NODE;之间进行迁移，因此关于节能和负载均衡的策略都在集群中
+                定义。&OVIRT;虚拟化产品安装时，自动创建了Default数据中心和Default
+                集群。
+            </para>
+            <para>集群必须归属于数据中心，而&NODE;必须归属于集群。根据集群中定义
+                的策略，虚拟机可以动态地指定在集群中的任何一台&NODE;上运行，提高
+                了内存、磁盘空间的使用效率和虚拟机运行时间。
+            </para>
+            <para>当虚拟机在集群中一台&NODE;上启动之后，可以随时将该虚拟机迁移到
+                集群中其他可用的&NODE;。这样就为临时将某些&NODE;停机维护提供了可
+                能。虚拟机的迁移对于用户来说是透明的，在迁移过程中虚拟机仍会持续
+                运行。但是需要注意的是虚拟机不能迁移到集群之外的&NODE;。
+            </para>
+            <note><para>&OVIRT;虚拟化使用Kernel Same-page Merging（KSM）技术优化内存的
+                    使用。更多相关信息请参考《&OVIRT;管理员手册》。
+            </para></note>
+            <formalpara>
+                <title>参见：</title>
+                <para><itemizedlist>
+                        <listitem><simpara>
+                                <link linkend=
+                                    "sect-Installation_Guide-planning-data-center-setup_Section_4_2">
+                                    8.4.2 创建新的集群
+                                </link>
+                        </simpara></listitem>
+                        <listitem><simpara>
+                                <link linkend=
+                                    "sect-Installation_Guide-planning-data-center-setup_Section_3_1">
+                                    8.3.1 &OVIRT;虚拟化环境中的数据中心
+                                </link>
+                        </simpara></listitem>
+                </itemizedlist></para>
+            </formalpara>
+        </section>
+
+        <section id="sect-Installation_Guide-planning-data-center-setup_Section_4_2">
+            <title>创建新的集群</title>
+            <simplesect>
+                <title>说明：</title>
+                <para>一个数据中心可以包含多个集群，一个集群可以包含多个&NODE;。
+                    集群中所有的&NODE;的CPU必须是相同的类型。建议在创建集群之前
+                    首先将&NODE;添加到虚拟化环境之中，以便确定CPU的类型实现针对
+                    CPU的优化。也可以创建集群之后，使用引导操作配置&NODE;。
+                </para>
+                <procedure>
+                    <title>创建新的集群</title>
+                    <step><para>
+                            在主面板选中“集群”面板，列出所有的已有的集群。
+                    </para></step>
+                    <step><para>
+                            点击“新建”，打开“新建集群”对话框。
+                    </para></step>
+                    <step><para>
+                            选择集群所属的数据中心。
+                    </para></step>
+                    <step><para>
+                            填写集群的“名称”和“描述”。
+                    </para></step>
+                    <step><para>
+                            选择“CPU型号“和”兼容版本“。注意”CPU型号“要和集群中的
+                            &NODE;实际的CPU型号匹配，否则&OVIRT;&MANAGER;无法管
+                            理该&NODE;。
+                    </para></step>
+                    <step><para>
+                            选中“启动Virt服务”。
+                    </para></step>
+                    <step><para>
+                            点击“优化”标签，根据需要选择内存页面共享的限制、是否
+                            启动CPU多线程和内存balloon优化。
+                    </para></step>
+                    <step><para>
+                            点击“Resilience策略”标签，选择虚拟迁移策略。
+                    </para></step>
+                    <step><para>
+                            点击“集群策略”标签，配置节能策略及其调度优化方式，是
+                            否对&NODE;启用可信服务（OpenAttestation服务）。
+                    </para></step>
+                    <step><para>
+                            点击“确定”创建集群，同时出现“新建集群 - 引导
+                            操作”对话框。
+                    </para></step>
+                    <step><para>
+                            引导操作对话框，列出了完成集群创建所需要所有的步骤，
+                            也可以点击“以后再配置”暂时跳过。之后，如果需要打开引
+                            导操作对话框，可以在集群列表中选中相应的数据中心，点
+                            击上方的“引导操作”即可。
+                    </para></step>
+                </procedure>
+            </simplesect>
+            <simplesect>
+                <title>预期结果：</title>
+                <para>虚拟化环境中出现了新的集群。
+                </para>
+                <formalpara>
+                    <title>参见：</title>
+                    <para><itemizedlist>
+                            <listitem><simpara>
+                                    <link linkend=
+                                        "sect-Installation_Guide-planning-data-center-setup_Section_4_1">
+                                        8.4.1 &OVIRT;虚拟化环境中的集群
+                                    </link>
+                            </simpara></listitem>
+                    </itemizedlist></para>
+                </formalpara>
+            </simplesect>
         </section>
 	</section>
 </chapter>
