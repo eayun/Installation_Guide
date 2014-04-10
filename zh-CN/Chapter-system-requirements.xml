@@ -60,17 +60,29 @@
                 <para>
                     <itemizedlist>
                         <listitem>
-                            <simpara><link linkend=
+                            <simpara>
+                                <!--
+                                <link linkend=
                                     "sect-Installation_Guide-system-requirements_Section_2-2-2">
                                     2.2.2 &OVIRT;&MANAGER;的硬件需求
-                            </link></simpara>
+                                </link>
+                                -->
+                                <xref linkend=
+                                    "sect-Installation_Guide-system-requirements_Section_2-2-2" />
+                            </simpara>
                         </listitem>
 
                         <listitem>
-                            <simpara><link linkend=
+                            <simpara>
+                                <!--
+                                <link linkend=
                                     "sect-Installation_Guide-system-requirements_Section_2-2-3">
                                     2.2.3 &OVIRT;&NODE;的硬件需求
-                            </link></simpara>
+                                </link>
+                                -->
+                                <xref linkend=
+                                    "sect-Installation_Guide-system-requirements_Section_2-2-3" />
+                            </simpara>
                         </listitem>
                     </itemizedlist>
                 </para>
@@ -133,31 +145,55 @@
 
                     <itemizedlist>
                         <listitem>
-                            <simpara><link linkend=
+                            <simpara>
+                                <!--
+                                <link linkend=
                                     "sect-Installation_Guide-system-requirements_Section_2-2-3-2">
                                     2.2.3.2 &OVIRT;&NODE;对于CPU的要求
-                            </link></simpara>
+                                </link>
+                                -->
+                                <xref linkend=
+                                    "sect-Installation_Guide-system-requirements_Section_2-2-3-2" />
+                            </simpara>
                         </listitem>
 
                         <listitem>
-                            <simpara><link linkend=
+                            <simpara>
+                                <!--
+                                <link linkend=
                                     "sect-Installation_Guide-system-requirements_Section_2-2-3-3">
                                     2.2.3.3 &OVIRT;&NODE;对于系统内存的要求
-                            </link></simpara>
+                                </link>
+                                -->
+                                <xref linkend=
+                                    "sect-Installation_Guide-system-requirements_Section_2-2-3-3" />
+                            </simpara>
                         </listitem>
 
                         <listitem>
-                            <simpara><link linkend=
+                            <simpara>
+                                <!--
+                                <link linkend=
                                     "sect-Installation_Guide-system-requirements_Section_2-2-3-4">
                                     2.2.3.4 &OVIRT;&NODE;对于存储空间的要求
-                            </link></simpara>
+                                </link>
+                                -->
+                                <xref linkend=
+                                    "sect-Installation_Guide-system-requirements_Section_2-2-3-4" />
+                            </simpara>
                         </listitem>
 
                         <listitem>
-                            <simpara><link linkend=
+                            <simpara>
+                                <!--
+                                <link linkend=
                                     "sect-Installation_Guide-system-requirements_Section_2-2-3-5">
                                     2.2.3.5 &OVIRT;&NODE;对于PCI设备的要求
-                            </link></simpara>
+                                </link>
+                                -->
+                                <xref linkend=
+                                    "sect-Installation_Guide-system-requirements_Section_2-2-3-5" />
+                            </simpara>
                         </listitem>
                     </itemizedlist>
                 </para>
@@ -472,10 +508,16 @@
                 </para>
                 <formalpara>
                     <title>参见</title>
-                    <para><link linkend=
+                    <para>
+                        <!--
+                        <link linkend=
                             "sect-Installation_Guide-system-requirements_Section_2-3-2-2">
                             2.3.2.2 &OVIRT;虚拟化环境对目录服务的支持
-                    </link></para>
+                        </link>
+                        -->
+                        <xref linkend=
+                            "sect-Installation_Guide-system-requirements_Section_2-3-2-2" />
+                    </para>
                 </formalpara>
             </section>
 
@@ -627,16 +669,24 @@
                     <title>参见：</title>
                     <para><itemizedlist>
                             <listitem><simpara>
+                                    <!--
                                     <link linkend="
-                                        sect-Installation_Guide-appendix-additional-utilites_Chapter_Section_1"> 
+                                        sect-Installation_Guide-appendix-additional-utilites_Chapter_Section_1">
                                         附录 B.1 目录服务管理
                                     </link>
+                                    -->
+                                    <xref linkend=
+                                        "sect-Installation_Guide-appendix-additional-utilites_Chapter_Section_1" />
                             </simpara></listitem>
                             <listitem><simpara>
+                                    <!--
                                     <link linkend="
                                         sect-Installation_Guide-system-requirements_Section_2-3-3-3">
                                         2.3.3.3 目录服务的防火墙配置
                                     </link>
+                                    -->
+                                    <xref linkend=
+                                        "sect-Installation_Guide-system-requirements_Section_2-3-3-3" />
                             </simpara></listitem>
                         </itemizedlist>
                     </para>

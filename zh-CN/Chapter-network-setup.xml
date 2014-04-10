@@ -103,16 +103,24 @@
             <title>参见：</title>
             <para><itemizedlist>
                     <listitem><simpara>
+                            <!--
                             <link linkend=
                                 "sect-Installation_Guide-network-setup_Section_3">
                                 9.3 逻辑网络
                             </link>
+                            -->
+                            <xref
+                                linkend="sect-Installation_Guide-network-setup_Section_3" />
                     </simpara></listitem>
                     <listitem><simpara>
+                            <!--
                             <link linkend=
                                 "sect-Installation_Guide-network-setup_Section_5">
                                 9.5 网卡绑定
                             </link>
+                            -->
+                            <xref
+                                linkend="sect-Installation_Guide-network-setup_Section_5" />
                     </simpara></listitem>
             </itemizedlist></para>
         </formalpara>
@@ -177,16 +185,24 @@
                     <title>参见：</title>
                     <para><itemizedlist>
                             <listitem><simpara>
+                                    <!--
                                     <link linkend=
                                         "sect-Installation_Guide-planning-data-center-setup_Section_3_1">
                                         8.3.1 &OVIRT;虚拟化环境中的数据中心
                                     </link>
+                                    -->
+                                    <xref linkend=
+                                        "sect-Installation_Guide-planning-data-center-setup_Section_3_1" />
                             </simpara></listitem>
                             <listitem><simpara>
+                                    <!--
                                     <link linkend=
                                         "sect-Installation_Guide-planning-data-center-setup_Section_4_1">
                                         8.4.1 &OVIRT;虚拟化环境中的集群
                                     </link>
+                                    -->
+                                    <xref linkend=
+                                        "sect-Installation_Guide-planning-data-center-setup_Section_4_1" />
                             </simpara></listitem>
                     </itemizedlist></para>
                 </formalpara>

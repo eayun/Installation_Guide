@@ -511,10 +511,14 @@
         <itemizedlist>
             <listitem>
                 <simpara>
+                    <!--
                     <link
                         linkend="chap-Installation_Guide-system-requirements">
                         第2章 &OVIRT;系统需求
                     </link>
+                    -->
+                    <xref
+                        linkend="chap-Installation_Guide-system-requirements" />
                 </simpara>
             </listitem>
         </itemizedlist>
@@ -522,10 +526,14 @@
         <itemizedlist>
             <listitem>
                 <simpara>
+                    <!--
                     <link
                         linkend="part-manager-installation">
                         部分II 安装&OVIRT;管理端
                     </link>
+                    -->
+                    <xref
+                        linkend="part-manager-installation" />
                 </simpara>
             </listitem>
         </itemizedlist>
@@ -546,10 +554,14 @@
         <itemizedlist>
             <listitem>
                 <simpara>
+                    <!--
                     <link
                         linkend="part-part-host-installation">
                         部分III 安装&OVIRT; hypervisor节点
                     </link>
+                    -->
+                    <xref
+                        linkend="part-part-host-installation" />
                 </simpara>
             </listitem>
         </itemizedlist>
@@ -557,10 +569,14 @@
         <itemizedlist>
             <listitem>
                 <simpara>
+                    <!--
                     <link linkend=
                         "chap-Installation_Guide-planning-data-center-setup">
                         第10章 规划数据中心
                     </link>
+                    -->
+                    <xref
+                        linkend="chap-Installation_Guide-planning-data-center-setup" />
                 </simpara>
             </listitem>
         </itemizedlist>
@@ -568,10 +584,14 @@
         <itemizedlist>
             <listitem>
                 <simpara>
+                    <!--
                     <link
                         linkend="chap-Installation_Guide-network-setup">
                         第11章 配置网络
                     </link>
+                    -->
+                    <xref
+                        linkend="chap-Installation_Guide-network-setup" />
                 </simpara>
             </listitem>
         </itemizedlist>
@@ -579,10 +599,14 @@
         <itemizedlist>
             <listitem>
                 <simpara>
+                    <!--
                     <link
                         linkend="chap-Installation_Guide-storage-setup">
                         第12章 配置存储
                     </link>
+                    -->
+                    <xref
+                        linkend="chap-Installation_Guide-storage-setup" />
                 </simpara>
             </listitem>
         </itemizedlist>
