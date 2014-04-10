@@ -70,15 +70,107 @@
 
 	<section id="sect-Installation_Guide-planning-data-center-setup_Section_3">
 		<title>数据中心</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
+        <section id="sect-Installation_Guide-planning-data-center-setup_Section_3_1">
+            <title>&OVIRT;虚拟化环境中的数据中心</title>
+            <para>数据中心是&OVIRT;虚拟化环境中最高层次的概念，包括该环境中所有
+                的物理和逻辑资源。数据中心是由&NODE;组成的集群的集合，管理逻辑
+                网络和存储池等资源。
+            </para>
+            <para>&OVIRT;虚拟化安装时创建了一个Default数据中心。在管理门户中可以
+                创建并管理多个数据中心。建议不要删除Default数据中心。
+            </para>
+            <para>系统管理员（即超级用户）可以管理整个虚拟化环境，包括数据中心、
+                存储域、用户、角色、权限。其他用户可以赋予不同的管理角色和权限。
+                所有的物理资源的管理员角色用户的权限拥有层次结构，如数据中心管理
+                员拥有数据中心中所有资源（存储域、集群和&NODE;）的管理权限。
+            </para>
+            <formalpara>
+                <title>参见：</title>
+                <para><itemizedlist>
+                        <listitem><simpara>
+                                <link linkend=
+                                    "sect-Installation_Guide-planning-data-center-setup_Section_3_2">
+                                    8.3.2 创建新的数据中心
+                                </link>
+                        </simpara></listitem>
+                        <listitem><simpara>
+                                <link linkend=
+                                    "sect-Installation_Guide-planning-data-center-setup_Section_4_1">
+                                    8.4.1 &OVIRT;虚拟化环境中的集群
+                                </link>
+                        </simpara></listitem>
+                </itemizedlist></para>
+            </formalpara>
+        </section>
+
+        <section id="sect-Installation_Guide-planning-data-center-setup_Section_3_2">
+            <title>创建新的数据中心</title> 
+            <simplesect>
+                <title>说明：</title>
+                <para>下面的流程可以创建一个数据中心。该数据中心需要配置可用的集
+                    群、&NODE;和存储域才实际可用。
+                </para>
+                <note>
+                    <para>>数据中心的存储类型在添加了第一个存储域之后就无法更改。
+                    </para>
+                    <para>兼容版本如果设置为3.3，之后就无法设置为3.2以下的其他版
+                        本，即不允许版本回退。
+                    </para>
+                </note>
+                <procedure>
+                    <title>创建新的数据中心</title>
+                    <step><para>
+                            在主面板选中“数据中心”面板，列出所有的已有的数据中心。
+                    </para></step>
+                    <step><para>
+                            点击“新建”，列出所有的已有的数据中心。
+                    </para></step>
+                    <step><para>
+                            填写“名称”和“描述”。
+                    </para></step>
+                    <step><para>
+                            选择“类型”、“兼容版本”和“配额模式”。
+                    </para></step>
+                    <step><para>
+                            点击“确定”创建数据中心，同时出现“新建数据中心 - 引导
+                            操作”对话框。
+                    </para></step>
+                    <step><para>
+                            引导操作对话框，列出了完成数据中心创建所需要所有的步
+                            骤，也可以点击“以后再配置”暂时跳过。之后，如果需要打
+                            开引导操作对话框，可以在数据中心列表中选中相应的数据
+                            中心，点击上方的“引导操作”即可。
+                    </para></step>
+                </procedure>
+            </simplesect>
+            <simplesect>
+                <title>预期结果：</title>
+                <para>虚拟化环境中出现了新的数据中心，但是该数据中心仍处于“为初
+                    始化“的状态，只有配置好集群、&NODE;和存储域之后才实际可用。
+                </para>
+                <formalpara>
+                    <title>参见：</title>
+                    <para><itemizedlist>
+                            <listitem><simpara>
+                                    <link linkend=
+                                        "sect-Installation_Guide-planning-data-center-setup_Section_3_1">
+                                        8.3.1 &OVIRT;虚拟化环境中的数据中心
+                                    </link>
+                            </simpara></listitem>
+                    </itemizedlist></para>
+                </formalpara>
+            </simplesect>
+        </section>
 	</section>
+
 	<section id="sect-Installation_Guide-planning-data-center-setup_Section_4">
 		<title>集群</title>
 		<para>
 			This is a test paragraph in a section
 		</para>
+        <section id="sect-Installation_Guide-planning-data-center-setup_Section_4_1">
+            <title>&OVIRT;虚拟化环境中的集群</title>
+            <para></para>
+        </section>
 	</section>
 </chapter>
-
