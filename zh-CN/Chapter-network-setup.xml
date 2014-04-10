@@ -5,35 +5,193 @@
 ]>
 <chapter id="chap-Installation_Guide-network-setup">
 	<title>配置网络</title>
-	<para>
-		This is a test paragraph
-	</para>
-	<section id="sect-Installation_Guide-network-setup_Section_1">
-		<title>流程图解之网络配置</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
+    <section id="sect-Installation_Guide-network-setup_Section_1">
+		<title>流程图解之规划数据中心</title>
+        <informalfigure>
+            <mediaobject>
+                <imageobject>
+                    <imagedata
+                        fileref="images/eayun_installation_checklist_network_setup.png"
+                        format="PNG" />
+                </imageobject>
+            </mediaobject>
+        </informalfigure>
 	</section>
-	
+
 	<section id="sect-Installation_Guide-network-setup_Section_2">
 		<title>&OVIRT;网络</title>
-		<para>
-			This is a test paragraph in Section 2
-			<orderedlist>
-				<listitem>
-					<para>
-						This is a test listitem.
-					</para>
-				</listitem>
-			</orderedlist>
+        <para>&OVIRT;虚拟化使用网络完成绝大多数的管理、维护操作。存储、&NODE;管
+            理、用户访问、虚拟机的网络连接等都依赖于设计良好的网络结构。配置网络
+            是&OVIRT;虚拟化环境部署的前提条件，原因是根据已有的网络需求来配置网
+            络，比在实际使用过程逐步调整和修改网络配置更简单。
 		</para>
-	</section>
+        <para>不过也可以在没有网络规划的情况部署&OVIRT;虚拟化，只需要确保所有的
+            &NODE;都只要配备了一块以太网卡。但是这种情况下部署的虚拟化环境不是最
+            优化的方案。不同的应用事务和场景对网络结构的要求不同，按照功能或者相
+            关性将整个环境划分为不同的网络，可以提供网络的性能和效率，也可以减低
+            排错的难度。
+        </para>
+        <para>&OVIRT;虚拟化使用逻辑网络来实现网络的划分。逻辑网络定义了物理网络
+            中特定类型网络通信的传输路径，实现了网络通信的隔离和物理网络的虚拟化。
+        </para>
+        <para>&OVIRT;虚拟化自动建立了ovirtmgmt的逻辑网络，&MANAGER;和&NODE;之间
+            通过该逻辑网络进行通信。可以自行定义其他的逻辑网络分隔以下网络通信：
+            <itemizedlist>
+                <listitem><simpara>
+                        与显示相关的网络通信。
+                </simpara></listitem>
+                <listitem><simpara>
+                        虚拟机自身的网络通信。
+                </simpara></listitem>
+                <listitem><simpara>
+                        存储设备相关的网络通信。
+                </simpara></listitem>
+            </itemizedlist>
+            为了实现最优的网络性能，建议将上述网络通信分离，创建相应的逻辑网络。
+            逻辑网络可以由物理网络设备（如以太网卡）或者逻辑网络设备（如bonding
+            网卡）组成。使用虚拟局域网（VLAN）技术可以实现单一物理网络设备隔离网
+            络通信，使得多个逻辑网络可以共享使用同一个逻辑网络。要使用VLAN技术，
+            物理网络中的交换机需要满足对VLAN标记支持。
+        </para>
+        <para>&OVIRT;虚拟化环境中逻辑网络数量上的限制是：
+            <itemizedlist>
+                <listitem>
+                    <para>附加到&NODE;的逻辑网络的上限是可用网络的数量乘以VLAN网
+                        络设备的上限（4096）。
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>整个集群逻辑网络的上限和可以附加到一个&NODE;的逻辑网络
+                        的数量相同，因为集群中所有的&NODE;应该共享相同的网络结构。
+                    </para>
+                </listitem>
+                <listitem>
+                    <para>整个数据中心逻辑网络的上限是集群的数量乘以每个集群中逻
+                        辑网络数量的上限。
+                    </para>
+                </listitem>
+            </itemizedlist>
+        </para>
+        <note>
+            <para>建议在规划和配置&OVIRT;虚拟化环境的网络时，对于相关网络技术的
+                概念和使用有较深入的了解。对于具体网络设备的配置和操作，请阅读官
+                方手册，或寻求厂商技术支持。
+            </para>
+        </note>
+        <important>
+            <para>请谨慎修改ovirtmgmt网络的配置。错误的配置可能导致&NODE;出现暂
+                时无法管理的情况。
+            </para>
+        </important>
+        <important>
+            <para>如果在&OVIRT;虚拟机节点提供任何服务,一旦&OVIRT;虚拟化环境停止
+                工作，则所有的服务都会停止工作，下面这些可能需要特别考虑：
+                <itemizedlist>
+                    <listitem>
+                        <simpara>目录服务</simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>DNS服务</simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>存储设备</simpara>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </important>
+        <formalpara>
+            <title>参见：</title>
+            <para><itemizedlist>
+                    <listitem><simpara>
+                            <link linkend=
+                                "sect-Installation_Guide-network-setup_Section_3">
+                                9.3 逻辑网络
+                            </link>
+                    </simpara></listitem>
+                    <listitem><simpara>
+                            <link linkend=
+                                "sect-Installation_Guide-network-setup_Section_5">
+                                9.5 网卡绑定
+                            </link>
+                    </simpara></listitem>
+            </itemizedlist></para>
+        </formalpara>
+    </section>
 
 	<section id="sect-Installation_Guide-network-setup_Section_3">
 		<title>逻辑网络</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
+        <section id="sect-Installation_Guide-network-setup_Section_3_1">
+            <title>创建新的逻辑网络</title>
+            <simplesect>
+                <title>说明：</title>
+                <para>在数据中心或者集群中创建新的逻辑网络。
+                </para>
+                <procedure>
+                    <title>创建新的数据中心</title>
+                    <step><para>
+                            进入数据中心或者集群列表，选中要建立逻辑网络的对象。
+                    </para></step>
+                    <step><para>
+                            在下方的详情面板中选择“虚拟网络”，可以看到已有逻辑网
+                            络的列表。
+                    </para></step>
+                    <step><para>
+                            对于数据中心，点击“新建”，打开“新建逻辑网络”对话框；
+                            对于集群，点击“添加网络”，打开“新建逻辑网络”对话框。
+                            <figure>
+                                <title>新建逻辑网络</title>
+                                <mediaobject>
+                                    <imageobject>
+                                        <imagedata
+                                            fileref="images/eayun_installation_network_setup_new_logic_network.png"
+                                            format="PNG" />
+                                    </imageobject>
+                                </mediaobject>
+                            </figure>
+                    </para></step>
+                    <step><para>
+                            填写逻辑网络的“名称”和“描述”。
+                    </para></step>
+                    <step><para>
+                            选择是否使用”导出“到其他的虚拟化平台、“启用VLAN标
+                            签”、“虚拟机网络”和“覆盖MTU”。
+                    </para></step>
+                    <step><para>
+                            点击”集群“标签，选择该逻辑网络附加到哪一个集群，同时
+                            也可以配置是否是集群的必需网络。
+                    </para></step>
+                    <step><para>
+                            点击”配置集“标签，根据需要将虚拟网络配置以及QoS配置。
+                    </para></step>
+                    <step><para>
+                            点击“确定”创建逻辑网络。
+                    </para></step>
+                </procedure>
+            </simplesect>
+            <simplesect>
+                <title>预期结果：</title>
+                <para>为集群或者数据中心中所有的集群创建了新的逻辑网络，可以将它
+                    附加到集群中的&NODE;。
+                </para>
+                <formalpara>
+                    <title>参见：</title>
+                    <para><itemizedlist>
+                            <listitem><simpara>
+                                    <link linkend=
+                                        "sect-Installation_Guide-planning-data-center-setup_Section_3_1">
+                                        8.3.1 &OVIRT;虚拟化环境中的数据中心
+                                    </link>
+                            </simpara></listitem>
+                            <listitem><simpara>
+                                    <link linkend=
+                                        "sect-Installation_Guide-planning-data-center-setup_Section_4_1">
+                                        8.4.1 &OVIRT;虚拟化环境中的集群
+                                    </link>
+                            </simpara></listitem>
+                    </itemizedlist></para>
+                </formalpara>
+            </simplesect>
+        </section>
 	</section>
 	<section id="sect-Installation_Guide-network-setup_Section_4">
 		<title>使用管理界面的网络页</title>

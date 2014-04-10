@@ -71,7 +71,7 @@
 	<section id="sect-Installation_Guide-planning-data-center-setup_Section_3">
 		<title>数据中心</title>
         <section id="sect-Installation_Guide-planning-data-center-setup_Section_3_1">
-            <title>&OVIRT;虚拟化环境中的数据中心</title>
+            <title id="sect-Installation_Guide-planning-data-center-setup_Section_3_1.title">&OVIRT;虚拟化环境中的数据中心</title>
             <para>数据中心是&OVIRT;虚拟化环境中最高层次的概念，包括该环境中所有
                 的物理和逻辑资源。数据中心是由&NODE;组成的集群的集合，管理逻辑
                 网络和存储池等资源。
