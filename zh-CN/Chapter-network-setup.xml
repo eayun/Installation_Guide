@@ -208,13 +208,99 @@
                 </formalpara>
             </simplesect>
         </section>
+
+        <section id="sect-Installation_Guide-network-setup_Section_3_2">
+            <title>配置主机网卡以及附加逻辑网络</title>
+            <simplesect>
+                <title>说明：</title>
+                <para>在&OVIRT;&MANAGER;中可以对&NODE;的网络进行配置。将默认的
+                    逻辑网络ovirtmgmt附加到不同的网卡，并将新创建的逻辑网络附加
+                    到&NODE;的网卡。这些都是配置&NODE;网络的常规操作。
+                </para>
+                <procedure>
+                    <title>配置主机网卡以及附加逻辑网络</title>
+                    <step><para>
+                            进入主机列表，选中要进行配置的主机。
+                    </para></step>
+                    <step><para>
+                            在下方的详情面板中选择“网络接口”，可以看到该主机的网
+                            卡列表及相关配置。
+                    </para></step>
+                    <step><para>
+                            点击“设立主机网络”，打开“设立主机网络”对话框。
+                            <figure>
+                                <title>设立主机网络</title>
+                                <mediaobject>
+                                    <imageobject>
+                                        <imagedata
+                                            fileref="images/eayun_installation_network_setup_host_networks.png"
+                                            format="PNG" width="100%" scalefit="1" />
+                                    </imageobject>
+                                </mediaobject>
+                            </figure>
+                    </para></step>
+                    <step>
+                        <para>从“未分配的逻辑网络”中选中其中一个逻辑网络，拖动到
+                            网卡对应的“分配的逻辑网络”区域，即可将该逻辑网络附加
+                            到网卡上。
+                        </para>
+                        <para>也可以在“未分配的逻辑网络”中选中其中一个逻辑网络，
+                            点击右键，选择相应网卡完成附加操作。
+                        </para>
+                    </step>
+                    <step>
+                        <para>要修改逻辑网络的配置，首先将鼠标移动到“分配的逻辑
+                            网络”中对应的逻辑网络之上，点击出现的铅笔形状的图标
+                            即可打开“编辑管理网络”对话框。
+                        </para>
+                        <para>如果逻辑网络的配置没有自动和&NODE;已经的配置同步，
+                            可以首先选中“同步网络”。
+                        </para>
+                        <para>选择“引导协议”：
+                            <itemizedlist>
+                                <listitem><simpara>None
+                                </simpara></listitem>
+                                <listitem><simpara>DHCP
+                                </simpara></listitem>
+                                <listitem><simpara>Static
+                                </simpara></listitem>
+                            </itemizedlist>
+                            如果选择“Static”，需要填写“IP”、“子网掩码”和“网关”。
+                        </para>
+                        <para>点击“确定”。</para>
+                    </step>
+                    <step><para>
+                            选中“检验主机和ovirt-engine间的连接性”可以检查网络配
+                            置的修改是否会影响&MANAGER;和&NODE;之间的网络连接。
+                            检查只在主机处于“维护模式”时可以进行。
+                    </para></step>
+                    <step><para>
+                            要确保整个虚拟化环境重启之后，配置依然有效，选中
+                            “保存网络配置”。
+                    </para></step>
+                    <step><para>
+                            点击“确定”完成主机网络配置的修改。
+                    </para></step>
+                </procedure>
+            </simplesect>
+            <simplesect>
+                <title>预期结果：</title>
+                <para>将逻辑网络附加到主机的网卡，并完成了网络配置的修改。
+                </para>
+                <note><para>如果主机的网卡没有完全显示在”网络接口“列表中，可以点
+                        击上方主面板中的”刷新能力“重新获取。
+                </para></note>
+            </simplesect>
+        </section>
 	</section>
+
 	<section id="sect-Installation_Guide-network-setup_Section_4">
 		<title>使用管理界面的网络页</title>
 		<para>
 			This is a test paragraph in a section
 		</para>
 	</section>
+
 	<section id="sect-Installation_Guide-network-setup_Section_5">
 		<title>网卡绑定</title>
 		<para>
