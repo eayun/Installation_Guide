@@ -420,6 +420,130 @@
                 </formalpara>
             </simplesect>
         </section>
+
+        <section id="sect-Installation_Guide-network-setup_Section_3_5">
+            <title>管理逻辑网络的分配</title>
+            <simplesect>
+                <title>准备工作：</title>
+                <para>
+                    <itemizedlist><listitem>
+                            <simpara><xref
+                                    linkend="sect-Installation_Guide-network-setup_Section_3_1" />
+                            </simpara>
+                    </listitem></itemizedlist>
+                </para>
+            </simplesect>
+            <simplesect>
+                <title>说明：</title>
+                <para>将逻辑网络分配或者取消分配到集群。</para>
+                <procedure>
+                    <title>将逻辑网络分配获取取消分配到集群</title>
+                    <step>
+                        <para>进入集群列表，选中需要进行配置的集群。</para>
+                    </step>
+                    <step>
+                        <para>点击详情面板中的“逻辑网络”，可以看到逻辑网络的列表。
+                        </para>
+                    </step>
+                    <step>
+                        <para>点击“管理网络”，打开“管理网络”对话框。</para>
+                        <figure>
+                            <title>管理网络</title>
+                            <mediaobject>
+                                <imageobject>
+                                    <imagedata
+                                        fileref="images/eayun_installation_network_setup_manage_networks.png"
+                                        format="PNG" scalefit="1" width="100%" />
+                                </imageobject>
+                            </mediaobject>
+                        </figure>
+                    </step>
+                    <step>
+                        <para>根据实际情况，选中或者取消选中“分配所有”、“所有必
+                            需的”、“虚拟机网络”、“显示网络”、“迁移网络”。
+                        </para>
+                    </step>
+                    <step>
+                        <para>点击“确定”完成逻辑网路的配置更改。
+                        </para>
+                    </step>
+                </procedure>
+            </simplesect>
+            <simplesect>
+                <title>预期结果：</title>
+                <para>完成逻辑网络的配置。</para>
+                <note>
+                    <para>建立在外部供应商之上的逻辑网络无法设置为“显示网络”。
+                    </para>
+                </note>
+                <formalpara>
+                    <title>参见：</title>
+                    <para><itemizedlist>
+                            <listitem><simpara>
+                                    <xref
+                                        linkend="sect-Installation_Guide-network-setup_Section_3_2" />
+                            </simpara></listitem>
+                            <listitem><simpara>
+                                    <xref
+                                        linkend="sect-Installation_Guide-network-setup_Section_3_6" />
+                            </simpara></listitem>
+                        </itemizedlist>
+                    </para>
+                </formalpara>
+            </simplesect>
+        </section>
+
+        <section id="sect-Installation_Guide-network-setup_Section_3_6">
+            <title>管理网络中配置项的说明</title>
+            <para>下表对逻辑网络的配置项进行说明：
+                <table>
+                    <title>管理网络配置项</title>
+                    <tgroup cols="2">
+                        <thead><row>
+                                <entry>配置项</entry>
+                                <entry>说明</entry>
+                        </row></thead>
+                        <tbody>
+                            <row>
+                                <entry>分配所有</entry>
+                                <entry><simpara>
+                                        将逻辑网络分配到集群中所有的主机。
+                                </simpara></entry>
+                            </row>
+                            <row>
+                                <entry>所有必需的</entry>
+                                <entry><simpara>
+                                        只有当逻辑网络在所有的主机上都附加到一个
+                                        可用的网卡之后才可以正常工作。
+                                </simpara></entry>
+                            </row>
+                            <row>
+                                <entry>虚拟机网络</entry>
+                                <entry><simpara>
+                                        该逻辑网络中只有虚拟机的网络通信。
+                                </simpara></entry>
+                            </row>
+                            <row>
+                                <entry>显示网络</entry>
+                                <entry>
+                                    <simpara>
+                                        该逻辑网络中只有客户端通过SPICE连接虚拟
+                                        机显示的网络通信。
+                                    </simpara>
+                               </entry>
+                            </row>
+                            <row>
+                                <entry>迁移网络</entry>
+                                <entry><simpara>
+                                        该逻辑网络中只有虚拟机和存储域迁移时的网
+                                        络通信。  
+                                </simpara></entry>
+                            </row>
+                        </tbody>
+                    </tgroup>
+                </table>
+            </para>
+        </section>
 	</section>
 
 	<section id="sect-Installation_Guide-network-setup_Section_4">
