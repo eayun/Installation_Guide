@@ -681,16 +681,124 @@
     </section>
 
 	<section id="sect-Installation_Guide-network-setup_Section_4">
-		<title>使用管理界面的网络页</title>
+		<title>使用管理界面的网络标签</title>
 		<para>
-			This is a test paragraph in a section
+			管理界面的网络标签提供进行网络配置相关操作的统一接口。
+            <figure>
+                <title>网络标签</title>
+                <mediaobject>
+                    <imageobject>
+                        <imagedata
+                            fileref="images/eayun_installation_network_setup_networks_tab.png"
+                            format="PNG" scalefit="1" width="100%" />
+                    </imageobject>
+                </mediaobject>
+            </figure>
 		</para>
+        <para>&OVIRT;虚拟化环境中所有的网络资源都在网络标签中显示。“新建”、“导入”、
+            “编辑”、“删除”按钮对应逻辑网络的创建、导入、更改配置和删除操作。
+        </para>
+        <para>选中其中一个逻辑网络，详情面板的“通用”、“配置集”、“群集”、“主机”、
+            “虚拟机”、“模板”、“权限”标签提供了以下功能：
+            <itemizedlist>
+                <listitem><simpara>
+                    将逻辑网络附加到集群或者主机。
+                </simpara></listitem>
+                <listitem><simpara>
+                    从虚拟机或者模板中移除网卡。
+                </simpara></listitem>
+                <listitem><simpara>
+                    为用户赋予或者取消访问和管理网络的权限。
+                </simpara></listitem>
+            </itemizedlist>
+        </para>
+        <para>上述功能也通过各项资源本身对应的标签提供。</para>
+
+        <section id="sect-Installation_Guide-network-setup_Section_4_1">
+            <title>从外部供应商导入网络配置</title>
+            <simplesect>
+                <title>说明：</title>
+                <para>如果在&MANAGER;中已经注册了提供网络服务的外部供应商，可以
+                    从该供应商导入网络配置供虚拟机使用。
+                </para>
+                <procedure>
+                    <title>导入网络配置</title>
+                    <step>
+                        <para>点击主面板的“网络”。</para>
+                    </step>
+                    <step>
+                        <para>点击“导入”，打开“导入网络”对话框。
+                        </para>
+                    </step>
+                    <step>
+                        <para>从“网络供应商”下拉列表中选中其中一个，该供应商提供
+                        的网络服务会在下方的“供应商网络”显示出来。</para>
+                    </step>
+                    <step>
+                        <para>在“供应商网络”列表中选中要导入的网络，点击向下箭头，
+                        将该网络移动到“要导入的网络”里表中。</para>
+                    </step>
+                    <step>
+                        <para>点击“导入”。
+                        </para>
+                    </step>
+                </procedure>
+            </simplesect>
+            <simplesect>
+                <title>预期结果：</title>
+                <para>将外部供应商提供的网络导入到当前的虚拟化环境中使用。</para>
+                <important>
+                    <para>导入外部供应商网络目前术语技术预览，用于生产环境时遇到
+                        问题请即时反馈，以便后续版本改进。
+                    </para>
+                </important>
+            </simplesect>
+        </section>
+
+        <section id="sect-Installation_Guide-network-setup_Section_4_2">
+            <title>使用外部供应商网络时的限制</title>
+            <para>使用从外部供应商导入的网络服务，有以下限制：
+                <itemizedlist>
+                    <listitem><para>
+                            外部供应商提供的网络只能用于虚拟机网络。
+                    </para></listitem>
+                    <listitem><para>
+                            外部供应商提供的网络不能用于显示网络。
+                    </para></listitem>
+                    <listitem><para>
+                            同一网络可以多次导入，但是只能在不同数据中心进行。
+                    </para></listitem>
+                    <listitem><para>
+                            外部供应商提供的网络不能更改配置，因为这些网络由外部
+                            供应商管理。
+                    </para></listitem>
+                    <listitem><para>
+                            连接到外部供应商提供的网络的虚拟机网卡无法使用端口镜
+                            像功能。
+                    </para></listitem>
+                    <listitem><para>
+                            虚拟机使用外部供应商提供的网络时，从&MANAGER;中无法
+                            删除该供应商。
+                    </para></listitem>
+                    <listitem><para>
+                            外部供应商提供的网络不是必需网络。因此集群调度过程中
+                            这些网络不会对主机选取决策产生影响。用户需要自行确认
+                            这些网络是否处于可用状态。
+                    </para></listitem>
+                </itemizedlist>
+            </para>
+            <important>
+                <para>导入外部供应商网络目前术语技术预览，用于生产环境时遇到
+                    问题请即时反馈，以便后续版本改进。
+                </para>
+            </important>
+        </section>
 	</section>
 
 	<section id="sect-Installation_Guide-network-setup_Section_5">
 		<title>网卡绑定</title>
 		<para>
-			This is a test paragraph in a section
+			This is a test paragraph in a section.
 		</para>
 	</section>
 </chapter>
