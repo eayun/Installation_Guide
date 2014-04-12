@@ -797,9 +797,109 @@
 
 	<section id="sect-Installation_Guide-network-setup_Section_5">
 		<title>网卡绑定</title>
-		<para>
-			This is a test paragraph in a section.
-		</para>
+        <section id="sect-Installation_Guide-network-setup_Section_5_1">
+            <title>&OVIRT;虚拟化环境中的网卡绑定机制</title>
+            <para>&OVIRT;&MANAGER;的管理门户提供了图形化工具配置网卡绑定。有几种
+                不同的配置场景，其对应的机制各有不同。
+            </para>
+            <para>影响网卡绑定配置机制的因素有2个：
+                <itemizedlist>
+                    <listitem>
+                        <simpara>是否已经有逻辑网络附加到其中其中一块网卡？
+                        </simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>网卡上附加的逻辑网络是否互相兼容？一块网卡不能
+                            同时附加启用VLAN标签的逻辑网络和没有启用VLAN标签的逻
+                            辑网络。
+                        </simpara>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <table>
+                <title>网卡绑定场景以及操作的实际结果</title>
+                <tgroup cols="2">
+                    <thead><row>
+                            <entry>场景</entry>
+                            <entry>操作结果</entry>
+                    </row></thead>
+                    <tbody>
+                        <row>
+                            <entry>网卡+网卡</entry>
+                            <entry>
+                                <para>出现“新建网卡绑定”对话框，填写绑定参数后创建
+                                    新的网卡绑定。
+                                </para>
+                                <para>如果网卡上附加的逻辑网络不兼容，网卡绑定会
+                                    失败，除非从其中一块网卡上取消不兼容逻辑网络
+                                    的分配。
+                                </para>
+                            </entry>
+                        </row>
+                        <row>
+                            <entry>网卡+Bond</entry>
+                            <entry>
+                                <para>网卡会加入到绑定配置之中。网卡和原网卡绑定
+                                    上附加的逻辑网络互相兼容的情况下，所有的逻辑
+                                    网络都会附加到新的绑定网卡之上。
+                                </para>
+                                <para>如果附加的逻辑网络不兼容，绑定网卡创建失败，
+                                    除非从其中移除不兼容的逻辑网络。
+                                </para>
+                            </entry>
+                        </row>
+                        <row>
+                            <entry>Bond+Bond</entry>
+                            <entry>
+                                <para>如果绑定网卡上都没有附加逻辑网络或者逻辑网
+                                    络互相兼容，新绑定网卡创建成功。新的绑定网卡
+                                    包含所有物理网卡以及逻辑网络。在“新建网卡绑定”对
+                                    话框中可以配置绑定参数。
+                                </para>
+                                <para>如果附加的逻辑网络不兼容，绑定网卡创建失败，
+                                    除非从其中移除不兼容的逻辑网络。
+                                </para>
+                            </entry>
+                        </row>
+                    </tbody>
+                </tgroup>
+            </table>
+        </section>
+
+        <section id="sect-Installation_Guide-network-setup_Section_5_2">
+            <title>网卡绑定模式</title>
+            <para>&OVIRT;虚拟化环境支持以下网卡绑定模式：
+                <itemizedlist>
+                    <listitem>
+                        <para>模式1（主备），其中一块网卡为激活状态，其他网卡均
+                            为后备状态。当活动网卡失效时，其中一块后备网卡变为新
+                            的活动网卡。为了防止交换机出现混乱，该模式下绑定网卡
+                            的MAC地址只指向其中一块。该模式提供冗余功能。
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>模式2（XOR），传输网络数据时，首先将源地址和目标地
+                            址的MAC做XOR运算，然后和SLAVE网卡数量做取余运算，根
+                            据最终结果选择实际使用的网卡。这种算法保证了同一个目
+                            标地址MAC的网络传输使用同一块网卡。该模式提供的冗余
+                            和负载均衡的功能。
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>模式4（IEEE 802.3ad），将网卡根据速率和双工模式进
+                            行分组。所有的网卡根据IEEE 802.3ad规范划分不同的分组。
+                        </para>
+                    </listitem>
+                    <listitem>
+                        <para>模式5（adaptive transmit load balancing），所有往
+                            外发送的网络数据根据网卡的负载情况平均分布，当前活动
+                            的SLAVE网卡负责接受所有网络数据，一旦该网卡失效，另
+                            一块网卡自动变为新的活动SLAVE网卡。
+                        </para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </section>
 	</section>
 </chapter>
 
