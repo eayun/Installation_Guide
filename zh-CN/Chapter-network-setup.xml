@@ -900,6 +900,118 @@
                 </itemizedlist>
             </para>
         </section>
+
+        <section id="sect-Installation_Guide-network-setup_Section_5_3">
+            <title>使用管理门户创建新的绑定网卡</title>
+            <simplesect>
+                <title>说明：</title>
+                <para>互相兼容的网络设备可以创建网卡绑定，这种配置可以增加网络吞
+                    吐以及可靠性。可以将多个网卡、多个绑定网卡以及前述2者的组成
+                    配置成新的绑定网卡。
+                </para>
+                <procedure>
+                    <title>使用管理门户创建新的绑定网卡</title>
+                    <step>
+                        <para>点击“主机”标签，在主机列表中选中要进行配置的主机。
+                        </para>
+                    </step>
+                    <step>
+                        <para>在详情面板中点击“网络接口”标签，主机所有的网卡及其
+                            配置信息都会显示出来。
+                        </para>
+                    </step>
+                    <step>
+                        <para>点击“设立主机网络”，打开“设立主机网络”对话框。
+                        </para>
+                    </step>
+                    <step>
+                        <para>选中其中一块网卡，并拖动到另一块网卡之上，出现“创
+                            建新的Bond”对话框。也可以在其中一块网卡点击右键，从
+                            菜单中选择另一块网卡进行绑定。
+                        </para>
+                        <para>如果网络设备之间不兼容，绑定创建会失败，同时给出如
+                            何解决兼容性冲突的说明。
+                        </para>
+                        <figure>
+                            <title>创建新的Bond</title>
+                            <mediaobject>
+                                <imageobject>
+                                    <imagedata
+                                        fileref="images/eayun_installation_network_setup_create_new_bond.png"
+                                        format="PNG" scalefit="1" width="100%" />
+                                </imageobject>
+                            </mediaobject>
+                        </figure>
+                    </step>
+                    <step>
+                        <para>填写“Bond 名称”，选择“Bonding 模式”。</para>
+                        <para>可选的模式有：1，2，4，5。其他模式需要选择“自定义：”
+                            之后，手工输入配置参数。
+                        </para>
+                    </step>
+                    <step>
+                        <para>点击“OK”创建绑定网卡。</para>
+                    </step>
+                    <step>
+                        <para>将逻辑网络附加到新创建的绑定网卡上。</para>
+                    </step>
+                    <step>
+                        <para>根据实际情况选中“检验主机和ovirt-engine间的连接”及
+                        “保存网络配置”。</para>
+                    </step>
+                    <step>
+                        <para>点击“确定”完成配置修改。
+                        </para>
+                    </step>
+                </procedure>
+            </simplesect>
+            <simplesect>
+                <title>预期结果：</title>
+                <para>主机上的网卡配置为绑定设备，在主机的“网络接口”标签中显示的
+                    是新建的绑定网卡。
+                </para>
+                <para>要是用网卡绑定，需要在主机连接到的交换机上配置对Bond的支持，
+                    对于不同交换机配置方法各不相同，请咨询交换机的生产厂商。
+                </para>
+            </simplesect>
+        </section>
+
+        <section id="sect-Installation_Guide-network-setup_Section_5_4">
+            <title>网卡绑定配置参数示例</title>
+            <para>在“创建新的Bond”对话框中，选择”自定义“，可以创建不使用默认参数
+                的绑定网卡。下面是一些例子，可以根据实际情况采用。网卡绑定参数的
+                详细说明请参考内核文档——
+                <ulink url="https://www.kernel.org/doc/Documentation/networking/bonding.txt">
+                    Linux Ethernet Bonding Driver HOWTO
+                </ulink>
+            </para>
+            <example>
+                <title>xmit_hash_policy</title>
+                <para>该参数定义在模式2和模式4这两种绑定方式中数据传输的负载均衡
+                    策略。例如，主要的数据传输在很多不同的IP地址之间进行，可以设
+                    置为按IP地址进行负载均衡。要设置负载均衡策略，选择“自定义”，
+                    然后输入以下配置：
+                    <screen>mode=4, xmit_hash_policy=layer2+3
+                    </screen>
+                </para>
+            </example>
+            <example>
+                <title>使用ARP监测网卡状态</title>
+                <para>如果无法通过ethtool获取网卡物理连接状态，使用ARP也可以实现
+                    网卡状态的检测。选择“自定义”，配置arp_interval参数：
+                    <screen>mode=1, arp_interval=1, arp_ip_target=192.168.0.2
+                    </screen>
+                </para>
+            </example>
+            <example>
+                <title>Primary</title>
+                <para>配置网卡绑定时可以指定其中一块网卡作为primary。选择“自定义”，
+                    然后输入以下配置：
+                    <screen>mode=1, primary=eth0
+                    </screen>
+                </para>
+            </example>
+        </section>
 	</section>
 </chapter>
 
