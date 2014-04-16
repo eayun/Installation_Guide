@@ -141,12 +141,189 @@
 
 	<section id="sect-Installation_Guide-storage-setup_Section_3">
 		<title>为&OVIRT;添加存储</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
         <section id="sect-Installation_Guide-storage-setup_Section_3_1">
             <title>添加NFS存储</title>
-            <para></para>
+            <section id="sect-Installation_Guide-storage-setup_Section_3_1_1">
+                <title>准备NFS存储</title>
+                <simplesect>
+                    <title>说明：</title>
+                    <para>通过下面的步骤可以在CentOS Linux环境中建立NFS服务。
+                    </para>
+                    <procedure>
+                        <title>准备NFS存储</title>
+                        <step>
+                            <title>安装nfs-utils</title>
+                            <para>在CentOS中，启用NFS服务需要安装nfs-utils软件包。
+                                使用rpm命令检查系统是否已经安装：
+                                <screen>$ rpm -qi nfs-utils
+                                </screen>
+                            </para>
+                            <para>如果nfs-utils已经安装，软件包的信息会打印出来。
+                                否则不会有任何输出，需要以root用户执行yum命令进行安
+                                装：
+                                <screen># yum install nfs-utils
+                                </screen>
+                            </para>
+                        </step>
+                        <step>
+                            <title>配置服务启动</title>
+                            <para>要保证主机可以操作时NFS服务处于可用状态，nfs和
+                                rpcbind服务需要配置为开机自动启动。以root用户执
+                                行chkconfig进行配置：
+                                <screen># chkconfig --add rpcbind
+# chkconfig --add nfs
+# chkconfig rpcbind on
+# chkconfig nfs on
+                                </screen>
+                            </para>
+                            <para>配置服务开机自动启动之后，可以执行service立即
+                                启动2个服务：
+                                <screen># service rpcbind start
+# service nfs start
+                                </screen>
+                            </para>
+                        </step>
+                        <step>
+                            <title>创建共享目录</title>
+                            <para>新建一个目录作为NFS共享目录：
+                                <screen># mkdir /exports/iso
+                                </screen>
+                            </para>
+                            <para>将示例中的/exports/iso替换为自己指定的共享目录。
+                            </para>
+                        </step>
+                        <step>
+                            <title>配置共享目录</title>
+                            <para>NFS的共享目录在/etc/exports中进行配置。一个共
+                                享目录对于配置文件中的一行，该行第一部分为共享目
+                                录的路径，之后是一个tab字符，然后是NFS的共享参数。
+                                要在&OVIRT;虚拟化环境使用NFS共享目录，该共享必须
+                                提供读取和写入的权限。
+                            </para>
+                            <para>以/exports/iso为例，要配置为可读可写的NFS共享，
+                                应该在/etc/exports中加入以下配置：
+                                <screen>/exports/iso    *(rw)
+                                </screen>
+                            </para>
+                            <para>同样在实际配置过程中，将上例中的/exports/iso替
+                                换为自己指定的目录。
+                            </para>
+                        </step>
+                        <step>
+                            <title>更新NFS配置</title>
+                            <para>更改/etc/exports配置之后，需要通知nfs服务重新
+                                加载配置文件。以root用户执行以下命令强制重新加载
+                                配置文件：
+                                <screen># service nfs reload
+                                </screen>
+                            </para>
+                        </step>
+                        <step>
+                            <title>配置权限</title>
+                            <para>NFS共享目录的权限应该配置为：属主和属组分别为
+                                vdsm和kvm。如果在NFS服务
+                                器上没有上述用户和用户，则使用下面的命令配置属主
+                                和属组（仍以/exports/iso为例）：
+                                <screen># chown -R 36:36 /exports/iso
+                                </screen>
+                            </para>
+                            <para>共享目录的权限应该配置为：属主和属组拥有读写和
+                                写入的权限。属主还需要执行权限。权限设置使用chmod
+                                命令。下面的命令以/exports/iso为例进行说明：
+                                <screen># chmod 0755 /exports/iso
+                                </screen>
+                            </para>
+                        </step>
+                    </procedure>
+                </simplesect>
+                <simplesect>
+                    <title>预期结果：</title>
+                    <para>NFS共享目录准备就绪，可以添加到&OVIRT;虚拟化环境中。
+                    </para>
+                </simplesect>
+            </section>
+
+            <section id="sect-Installation_Guide-storage-setup_Section_3_1_2">
+                <title>添加NFS存储到数据中心</title>
+                <simplesect>
+                    <title>准备工作：</title>
+                    <para>
+                        <itemizedlist><listitem>
+                                <simpara><xref
+                                        linkend="sect-Installation_Guide-storage-setup_Section_3_1" />
+                                </simpara>
+                        </listitem></itemizedlist>
+                    </para>
+                </simplesect>
+                <simplesect>
+                    <title>说明：</title>
+                    <para>NFS类型的存储域是附加到数据中心的NFS共享目录。NFS类型
+                        的存储域可以用来保存虚拟机磁盘镜像或者ISO光盘镜像。NFS共
+                        享目录准备好之后，要通过管理门户添加到数据中心。
+                    </para>
+                    <para>NFS类型的Data域可以添加到NFS类型的数据中心。NFS、ISO、
+                        export存储可以添加到任意类型的数据中心。
+                    </para>
+                    <procedure>
+                        <title>添加NFS存储到数据中心</title>
+                        <step>
+                            <para>在管理门户中点击“存储”标签，显示当前的存储域列
+                                表。
+                            </para>
+                        </step>
+                        <step>
+                            <para>点击“新建域”，打开“新建域”对话框。
+                                <figure>
+                                    <title>NFS存储</title>
+                                    <mediaobject>
+                                        <imageobject>
+                                            <imagedata
+                                                fileref="images/eayun_installation_storage_setup_add_nfs_storage.png"
+                                                format="PNG" scalefit="1"
+                                                width="100%" />
+                                        </imageobject>
+                                    </mediaobject>
+                                </figure>
+                            </para>
+                        </step>
+                        <step>
+                            <para>填写域的“名称”。
+                            </para>
+                        </step>
+                        <step>
+                            <para>选择“数据中心”、“域功能/存储类型”、“使用主
+                                机”。（如有必要，选择一种“格式”）
+                            </para>
+                        </step>
+                        <step>
+                            <para>填写“导出路径”，格式请输入框下方的说明。如：
+                                192.168.0.1:/data或者server.example.com/data。
+                            </para>
+                        </step>
+                        <step>
+                            <para>点击“高级参数”，可以自行定义NFS共享的参数。建
+                                议使用默认配置。
+                                <important>
+                                    <para>和存储域的通信都是通过指定的主机，而不
+                                        是通过&MANAGER;。因此配置存储域之前要确
+                                        保数据中心已经包含了一个可用的主机。
+                                    </para>
+                                </important>
+                            </para>
+                        </step>
+                        <step>
+                            <para>点击“确定”完成存储域的创建。
+                            </para>
+                        </step>
+                    </procedure>
+                </simplesect>
+                <simplesect>
+                    <title>预期结果：</title>
+                    <para>新建的存储域在“存储”标签的列表中显示，初始化完成之前
+                        状态为“Locked”，初始化完成之后会自动附加到数据中心。
+                    </para>
+                </simplesect>
+            </section>
         </section>
         <section id="sect-Installation_Guide-storage-setup_Section_3_2">
             <title>添加pNFS存储</title>
