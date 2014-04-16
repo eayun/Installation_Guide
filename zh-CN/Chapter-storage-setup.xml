@@ -5,28 +5,138 @@
 ]>
 <chapter id="chap-Installation_Guide-storage-setup">
 	<title>存储配置</title>
-	<para>
-		This is a test paragraph
-	</para>
 	<section id="sect-Installation_Guide-storage-setup_Section_1">
 		<title>流程图解之存储配置</title>
-		<para>
-			This is a test paragraph in a section
-		</para>
+        <informalfigure>
+            <mediaobject>
+                <imageobject>
+                    <imagedata
+                        fileref="images/eayun_installation_checklist_storage_setup.png"
+                        format="PNG" />
+                </imageobject>
+            </mediaobject>
+        </informalfigure>
 	</section>
 	
 	<section id="sect-Installation_Guide-storage-setup_Section_2">
 		<title>关于&OVIRT;存储</title>
 		<para>
-			This is a test paragraph in Section 2
-			<orderedlist>
+            &OVIRT;虚拟化环境对虚拟机磁盘、ISO镜像以及虚拟机快照进行集中管理。存
+            储系统支持的技术有：
+			<itemizedlist>
 				<listitem>
-					<para>
-						This is a test listitem.
-					</para>
+					<simpara>NFS（Network File System）
+					</simpara>
 				</listitem>
-			</orderedlist>
+				<listitem>
+					<simpara>GlusterFS
+					</simpara>
+				</listitem>
+				<listitem>
+					<simpara>其他兼容POSIX标准的文件系统
+					</simpara>
+				</listitem>
+				<listitem>
+					<simpara>iSCSI（Internet Small Computer System Interface）
+					</simpara>
+				</listitem>
+				<listitem>
+					<simpara>直接连接到&NODE;的本地存储设备
+					</simpara>
+				</listitem>
+				<listitem>
+					<simpara>光纤通道协议（FCP）
+					</simpara>
+				</listitem>
+				<listitem>
+					<simpara>并行NFS（pNFS）
+					</simpara>
+				</listitem>
+			</itemizedlist>
+            配置存储环境是使用新建数据中心的前提条件。数据中心只有在附加可用的存
+            储域之后才能完成初始化。
 		</para>
+        <para>&OVIRT;虚拟化环境中对于存储的管理通过管理门户的“存储”标签完成。在
+            “存储”标签可以看到当前所有存储域的列表，存储域的详细信息可以通过下方
+            的详情面板获取。
+        </para>
+        <para>&OVIRT;虚拟化环境提供3种类型的存储域：
+            <itemizedlist>
+                <listitem>
+                    <para><emphasis>Data域：</emphasis>Data域中保存的是供虚拟机使
+                        用的磁盘和OVF（Open Virtualization Format）文件。虚拟机
+                        的快照文件也保存在Data域中。
+                    </para>
+                    <para>Data域不可以在数据中心之间共享使用，而且Data域的存储类
+                        型必须和数据中心保持一致，如：iSCSI类型的数据中心，必须
+                        包含一个iSCSI类型的Data域。在数据中心中添加其他类型的另
+                        外2种类型的存储域之前，数据中心必须已经包含了一个Data域。
+                    </para>
+                </listitem>
+                <listitem>
+                    <para><emphasis>ISO域：</emphasis>ISO域中保存光盘ISO镜像文件。
+                        虚拟机使用这些光盘镜像安装操作系统或者其他应用软件。使用
+                        ISO域省去了数据中心对于物理光驱和光盘等介质的需求。ISO域
+                        可以在多个数据中心之间共享使用。
+                    </para>
+                </listitem>
+                <listitem>
+                    <para><emphasis>Export域：</emphasis>Export域的主要目的是提
+                        供在数据中心或者&OVIRT;虚拟化环境之间拷贝和移动数据镜像
+                        的临时存储空间。Export域也用于虚拟机的备份。Export域可以
+                        在数据中心之间进行迁移，但是同一时间只能在一个数据中心中
+                        激活。
+                        <important>
+                            <para>在以后的版本中逐步取消支持使用NFS以外的方式创
+                                建Export域。建议新建的Export域都使用NFS存储方式。
+                            </para>
+                        </important>
+                    </para>
+                </listitem>
+            </itemizedlist>
+            在为数据中心添加存储域之前，请对于数据中心的存储需求进行评估和规划。
+            <important>
+                <para>要添加存储域，需要对管理门户的访问权限，同时数据中心至少应
+                    该有一台已经启动的主机。
+                </para>
+            </important>
+        </para>
+
+        <formalpara>
+            <title>参见：</title>
+            <para><itemizedlist>
+                    <listitem>
+                        <simpara>
+                            <xref linkend="sect-Installation_Guide-storage-setup_Section_3_1" />
+                        </simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
+                            <xref linkend="sect-Installation_Guide-storage-setup_Section_3_3" />
+                        </simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
+                            <xref linkend="sect-Installation_Guide-storage-setup_Section_3_4" />
+                        </simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
+                            <xref linkend="sect-Installation_Guide-storage-setup_Section_3_5" />
+                        </simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
+                            <xref linkend="sect-Installation_Guide-storage-setup_Section_3_6" />
+                        </simpara>
+                    </listitem>
+                    <listitem>
+                        <simpara>
+                            <xref linkend="sect-Installation_Guide-storage-setup_Section_4" />
+                        </simpara>
+                    </listitem>
+            </itemizedlist></para>
+        </formalpara>
 	</section>
 
 	<section id="sect-Installation_Guide-storage-setup_Section_3">
@@ -34,6 +144,30 @@
 		<para>
 			This is a test paragraph in a section
 		</para>
+        <section id="sect-Installation_Guide-storage-setup_Section_3_1">
+            <title>添加NFS存储</title>
+            <para></para>
+        </section>
+        <section id="sect-Installation_Guide-storage-setup_Section_3_2">
+            <title>添加pNFS存储</title>
+            <para></para>
+        </section>
+        <section id="sect-Installation_Guide-storage-setup_Section_3_3">
+            <title>添加iSCSI存储</title>
+            <para></para>
+        </section>
+        <section id="sect-Installation_Guide-storage-setup_Section_3_4">
+            <title>添加FCP存储</title>
+            <para></para>
+        </section>
+        <section id="sect-Installation_Guide-storage-setup_Section_3_5">
+            <title>添加本地存储</title>
+            <para></para>
+        </section>
+        <section id="sect-Installation_Guide-storage-setup_Section_3_6">
+            <title>添加POSIXFS存储</title>
+            <para></para>
+        </section>
 	</section>
 	<section id="sect-Installation_Guide-storage-setup_Section_4">
 		<title>ISO域</title>
