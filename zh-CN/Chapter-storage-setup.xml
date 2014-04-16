@@ -147,13 +147,13 @@
                 <title>准备NFS存储</title>
                 <simplesect>
                     <title>说明：</title>
-                    <para>通过下面的步骤可以在CentOS Linux环境中建立NFS服务。
+                    <para>通过下面的步骤可以在&OVIRT;环境中建立NFS服务。
                     </para>
                     <procedure>
                         <title>准备NFS存储</title>
                         <step>
                             <title>安装nfs-utils</title>
-                            <para>在CentOS中，启用NFS服务需要安装nfs-utils软件包。
+                            <para>启用NFS服务需要安装nfs-utils软件包。
                                 使用rpm命令检查系统是否已经安装：
                                 <screen>$ rpm -qi nfs-utils
                                 </screen>
@@ -244,7 +244,7 @@
             </section>
 
             <section id="sect-Installation_Guide-storage-setup_Section_3_1_2">
-                <title>添加NFS存储到数据中心</title>
+                <title>将NFS存储添加到数据中心</title>
                 <simplesect>
                     <title>准备工作：</title>
                     <para>
@@ -265,7 +265,7 @@
                         export存储可以添加到任意类型的数据中心。
                     </para>
                     <procedure>
-                        <title>添加NFS存储到数据中心</title>
+                        <title>将NFS存储添加到数据中心</title>
                         <step>
                             <para>在管理门户中点击“存储”标签，显示当前的存储域列
                                 表。
@@ -325,10 +325,107 @@
                 </simplesect>
             </section>
         </section>
+
         <section id="sect-Installation_Guide-storage-setup_Section_3_2">
             <title>添加pNFS存储</title>
-            <para></para>
+            <section id="sect-Installation_Guide-storage-setup_Section_3_2_1">
+                <title>准备pNFS存储</title>
+                <!-- TODO: write document for deploying pNFS server -->
+                <para>&OVIRT;虚拟化支持pNFS存储。pNFS改进了NFS的扩展性，同时在性
+                    能方面也有一定提升。pNFS服务提供的共享目录，客户端可以同时通
+                    过多台服务器进行访问。pNFS协议支持3种存储协议或者方案：
+                    files、objects、blocks。&OVIRT;目前支持files方式。
+                </para>
+                <para>要使用pNFS，使用下面的参数挂载pNFS服务器提供的共享目录：
+                    <screen> -o minorversion=1
+                    </screen>
+                    或者
+                    <screen> -o v4.1
+                    </screen>
+                    配置共享目录的权限，使得&MANAGER;可以访问：
+                    <screen># chown 36:36 [pNFS共享目录的路径]
+                    </screen>
+                </para>
+                <para>服务器启动pNFS之后，nfs_layout_nfsv41_files内核模块会在第
+                    一次挂载时自动加载。使用下面的命令确认模块是否已经正确加载：
+                    <screen>$ lsmod | grep nfs_layout_nfsv41_files</screen>
+                    另外一种确认的方法是执行mount命令，启用pNFS的挂载项会出现
+                    minorversion=1的挂载参数。
+                </para>
+            </section>
+
+            <section id="sect-Installation_Guide-storage-setup_Section_3_2_2">
+                <title>将pNFS存储添加到数据中心</title>
+                <simplesect>
+                    <title>说明：</title>
+                    <para>pNFS类型的存储域是附加到数据中心的pNFS共享目录。pNFS共
+                        享目录准备好之后，要通过管理门户添加到数据中心。
+                    </para>
+                    <procedure>
+                        <title>将pNFS存储添加到数据中心</title>
+                        <step>
+                            <para>在管理门户中点击“存储”标签，显示当前的存储域列
+                                表。
+                            </para>
+                        </step>
+                        <step>
+                            <para>点击“新建域”，打开“新建域”对话框。
+                                <figure>
+                                    <title>pNFS存储</title>
+                                    <mediaobject>
+                                        <imageobject>
+                                            <imagedata
+                                                fileref="images/eayun_installation_storage_setup_add_pnfs_storage.png"
+                                                format="PNG" scalefit="1"
+                                                width="100%" />
+                                        </imageobject>
+                                    </mediaobject>
+                                </figure>
+                            </para>
+                        </step>
+                        <step>
+                            <para>填写域的“名称”。
+                            </para>
+                        </step>
+                        <step>
+                            <para>选择“数据中心”、“域功能/存储类型”、“使用主
+                                机”。（如有必要，选择一种“格式”）
+                            </para>
+                        </step>
+                        <step>
+                            <para>填写“路径”，格式如：192.168.0.1:/data或者
+                                server.example.com/data。
+                            </para>
+                        </step>
+                        <step>
+                            <para>“VFS类型”，填写“nfs4”。</para>
+                        </step>
+                        <step>
+                            <para>“挂载选项”，填写“minorversion=1”。
+                                <important>
+                                    <para>
+                                        和存储域的通信都是通过指定的主机，而不是
+                                        通过&MANAGER;。因此配置存储域之前要确保
+                                        数据中心已经包含了一个可用的主机。
+                                    </para>
+                                </important>
+                            </para>
+                        </step>
+                        <step>
+                            <para>点击“确定”完成存储域的创建。
+                            </para>
+                        </step>
+                    </procedure>
+                </simplesect>
+                <simplesect>
+                    <title>预期结果：</title>
+                    <para>新建的存储域在“存储”标签的列表中显示，初始化完成之前
+                        状态为“Locked”，初始化完成之后会自动附加到数据中心。
+                    </para>
+                </simplesect>
+            </section>
         </section>
+
         <section id="sect-Installation_Guide-storage-setup_Section_3_3">
             <title>添加iSCSI存储</title>
             <para></para>
