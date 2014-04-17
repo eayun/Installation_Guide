@@ -564,8 +564,90 @@
 
         <section id="sect-Installation_Guide-storage-setup_Section_3_4">
             <title>添加FCP存储</title>
-            <para></para>
+            <simplesect>
+                <title>说明：</title>
+                <para>&OVIRT;虚拟化平台支持在SAN存储网络提供的LUN卷组上建立存储
+                    域。但是卷组或者LUN都不能同时加入到多个存储域。
+                </para>
+                <para>&OVIRT;虚拟化平台的管理人员对SAN（Stroage Area Network）存
+                    储网络有一定了解。通常情况下，SAN存储网络中服务器主机和共享
+                    的存储设备之间通过FCP（Fibre Channel Protocol）进行通信。因
+                    此FCP存储多用于将SAN存储网络中的存储设备添加为数据中心的存储
+                    域。
+                </para>
+                <note><para>
+                        只能将FCP存储域添加到FCP类型的数据中心。
+                </para></note>
+                <procedure>
+                    <title>将FCP存储添加到数据中心</title>
+                    <step>
+                        <para>在管理门户中点击“存储”标签，显示当前的存储域列
+                            表。
+                        </para>
+                    </step>
+                    <step>
+                        <para>点击“新建域”，打开“新建域”对话框。
+                            <figure>
+                                <title>FCP存储</title>
+                                <mediaobject>
+                                    <imageobject>
+                                        <imagedata
+                                            fileref="images/eayun_installation_storage_setup_add_fcp_storage.png"
+                                            format="PNG" scalefit="1"
+                                            width="100%" />
+                                    </imageobject>
+                                </mediaobject>
+                            </figure>
+                        </para>
+                    </step>
+                    <step>
+                        <para>填写域的“名称”。
+                        </para>
+                    </step>
+                    <step>
+                        <para>在“数据中心”中选择一个iSCSI类型的数据中心。
+                        </para>
+                        <para>如果没有可用的iSCSI的数据中心，选择“(none)”。</para>
+                    </step>
+                    <step>
+                        <para>选择“域功能/存储类型”、“格式”。之前如果选中了一个
+                            数据中心，则不兼容的“域功能/存储类型”在下拉列表中将
+                            不会出现。
+                        </para>
+                    </step>
+                    <step>
+                        <para>选择“使用主机”。如果新建的存储域不是数据中心的第一
+                            个存储域，则“使用主机”必须选择数据中心的SPM主机。
+                        </para>
+                        <important>
+                            <para>
+                                和存储域的通信都是通过指定的主机，而不是
+                                通过&MANAGER;。因此配置存储域之前要确保
+                                数据中心已经包含了一个可用的主机。
+                            </para>
+                        </important>
+                    </step>
+                    <step>
+                        <para>在“域功能/存储类型”中选中“Data/Fibre Channel”之
+                            后，连接到主机的FCP存储设备上没有使用的LUN会自动显示
+                            在列表中。选择“Lun ID”前面的复选框选中所有可用的
+                            LUN。
+                        </para>
+                    </step>
+                    <step>
+                        <para>点击“确定”完成存储域的创建。
+                        </para>
+                    </step>
+                </procedure>
+            </simplesect>
+            <simplesect>
+                <title>预期结果：</title>
+                <para>新建的FCP存储域在“存储”标签的列表中显示，初始化完成之前
+                    状态为“Locked”，初始化完成之后会自动附加到数据中心。
+                </para>
+            </simplesect>
         </section>
+
         <section id="sect-Installation_Guide-storage-setup_Section_3_5">
             <title>添加本地存储</title>
             <para></para>
