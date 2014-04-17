@@ -758,10 +758,106 @@
         </section>
 
         <section id="sect-Installation_Guide-storage-setup_Section_3_6">
-            <title>添加POSIXFS存储</title>
-            <para></para>
+            <title>添加兼容POSIX标准的文件系统作为存储域</title>
+            <section id="sect-Installation_Guide-storage-setup_Section_3_6_1">
+                <title>关于兼容POSIX标准的文件系统作为存储域</title>
+                <para>&OVIRT;虚拟化环境中支持兼容POSIX标准的文件系统作为存储域。
+                    创建兼容POSIX标准的文件系统作为存储域，支持使用自定义的参数
+                    挂载文件系统，和手工挂载文件系统类似。这种类型的存储域主要用
+                    于除了NFS、iSCSI、FCP之外的存储。
+                </para>
+                <para>&OVIRT;虚拟化环境中使用的兼容POSIX标准的文件系统必须支持
+                    sparse文件和直接I/O。如CIFS（Common Internet File System）不
+                    支持直接I/O，所以无法在&OVIRT;虚拟化环境中使用。
+                </para>
+                <important>
+                    <para>不要使用兼容POSIX标准的文件系统存储域挂载NFS共享。NFS
+                        共享应该都使用NFS存储域。
+                    </para>
+                </important>
+            </section>
+
+            <section id="sect-Installation_Guide-storage-setup_Section_3_6_2">
+                <title>添加兼容POSIX标准的文件系统作为存储域</title>
+                <simplesect>
+                    <title>说明：</title>
+                    <para>使用兼容POSIX标准的文件系统在除了NFS、iSCSI、FCP等类型
+                        之外的存储上创建存储域。
+                    </para>
+                    <procedure>
+                        <title>添加兼容POSIX标准的文件系统作为存储域</title>
+                        <step>
+                            <para>在管理门户中点击“存储”标签，显示当前的存储域列
+                                表。
+                            </para>
+                        </step>
+                        <step>
+                            <para>点击“新建域”，打开“新建域”对话框。
+                                <figure>
+                                    <title>POSIXFS存储</title>
+                                    <mediaobject>
+                                        <imageobject>
+                                            <imagedata
+                                                fileref="images/eayun_installation_storage_setup_add_posixfs_storage.png"
+                                                format="PNG" scalefit="1"
+                                                width="100%" />
+                                        </imageobject>
+                                    </mediaobject>
+                                </figure>
+                            </para>
+                        </step>
+                        <step>
+                            <para>填写域的“名称”。
+                            </para>
+                        </step>
+                        <step>
+                            <para>在“数据中心”中选择一个POSIX compliant FS类型的
+                                数据中心。
+                            </para>
+                            <para>如果没有可用的数据中心，选择“(none)”。</para>
+                        </step>
+                        <step>
+                            <para>在“域功能/存储类型”中选中
+                                “Data / POSIX compliant FS”。
+                            </para>
+                            <para>如有必要，选择一种“格式”。
+                            </para>
+                        </step>
+                        <step>
+                            <para>选择“使用主机”。下拉框中只有当前数据中心中的主
+                                机可选。选中的主机将会连接到新建的存储域。
+                            </para>
+                        </step>
+                        <step>
+                            <para>填写“路径”，和手工执行mount命令中使用的路径相
+                                同。
+                            </para>
+                        </step>
+                        <step>
+                            <para>填写“VFS类型”，和手动执行mount命令时-t选项之后
+                                的值相同。
+                            </para>
+                        </step>
+                        <step>
+                            <para>填写“挂载选项”，和手动执行mount命令时-o选项之
+                                后的值相同，不同的参数使用“,”分隔。
+                            </para>
+                        </step>
+                        <step>
+                            <para>点击“确定”完成存储域的创建。
+                            </para>
+                        </step>
+                    </procedure>
+                </simplesect>
+                <simplesect>
+                    <title>预期结果：</title>
+                    <para>通过POSIXFS存储域将其他类型的存储附加到数据中心。
+                    </para>
+                </simplesect>
+            </section>
         </section>
 	</section>
+
 	<section id="sect-Installation_Guide-storage-setup_Section_4">
 		<title>ISO域</title>
 		<para>
