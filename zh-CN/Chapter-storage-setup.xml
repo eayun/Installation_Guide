@@ -428,8 +428,140 @@
 
         <section id="sect-Installation_Guide-storage-setup_Section_3_3">
             <title>添加iSCSI存储</title>
-            <para></para>
+            <simplesect>
+                <title>说明：</title>
+                <para>&OVIRT;虚拟化平台支持在iSCSI存储提供的LUN卷组上建立存储
+                    域。但是卷组或者LUN都不能同时加入到多个存储域。
+                </para>
+                <note><para>只能在iSCSI类型的数据中心里添加iSCSI存储域。
+                </para></note>
+                <procedure>
+                    <title>将iSCSI存储添加到数据中心</title>
+                    <step>
+                        <para>在管理门户中点击“存储”标签，显示当前的存储域列
+                            表。
+                        </para>
+                    </step>
+                    <step>
+                        <para>点击“新建域”，打开“新建域”对话框。
+                            <figure>
+                                <title>iSCSI存储</title>
+                                <mediaobject>
+                                    <imageobject>
+                                        <imagedata
+                                            fileref="images/eayun_installation_storage_setup_add_iscsi_storage.png"
+                                            format="PNG" scalefit="1"
+                                            width="100%" />
+                                    </imageobject>
+                                </mediaobject>
+                            </figure>
+                        </para>
+                    </step>
+                    <step>
+                        <para>填写域的“名称”。
+                        </para>
+                    </step>
+                    <step>
+                        <para>在“数据中心”中选择一个iSCSI类型的数据中心。
+                        </para>
+                        <para>如果没有可用的iSCSI的数据中心，选择“(none)”。</para>
+                    </step>
+                    <step>
+                        <para>选择“域功能/存储类型”、“格式”。之前如果选中了一个
+                            数据中心，则不兼容的“域功能/存储类型”在下拉列表中将
+                            不会出现。
+                        </para>
+                    </step>
+                    <step>
+                        <para>选择“使用主机”。如果新建的存储域不是数据中心的第一
+                            个存储域，则“使用主机”必须选择数据中心的SPM主机。
+                        </para>
+                        <important>
+                            <para>
+                                和存储域的通信都是通过指定的主机，而不是
+                                通过&MANAGER;。因此配置存储域之前要确保
+                                数据中心已经包含了一个可用的主机。
+                            </para>
+                        </important>
+                    </step>
+                    <step>
+                        <para>&OVIRT;&MANAGER;支持iSCSI target到LUN的映射，也支
+                            持LUN到iSCSI target的映射。在“新建域”对话框中，选择
+                            iSCSI存储类型之后，会自动显示已知的iSCSI target及其
+                            上配置的LUN。如果准备添加的iSCSI target没有自动列
+                            出，可以点击“发现目标”进行扫描，否则可以直接进入下一
+                            步。
+                        </para>
+                        <highlights>
+                            <simpara>发现iSCSI目标</simpara>
+                        </highlights>
+                        <substeps>
+                            <step>
+                                <para>点击“发现目标”。当iSCSI target已经被发现并
+                                    登录之后，“新建域”对话框会自动列出target中没
+                                    有使用的LUN。
+                                </para>
+                                <note>
+                                    <para>在&OVIRT;&MANAGER;之外被使用的LUN仍然
+                                        会列出。
+                                    </para>
+                                </note>
+                                <para>通过“发现目标”可以添加来自多个target的
+                                    LUN，也可以添加同一个LUN的多个路径。
+                                </para>
+                            </step>
+                            <step>
+                                <para>在“地址”的输入栏中填入iSCSI target的fqdn
+                                    域名或者ip地址。
+                                </para>
+                            </step>
+                            <step>
+                                <para>在“端口”的输入栏中填入iSCSI target的端口，
+                                    默认为3260。
+                                </para>
+                            </step>
+                            <step>
+                                <para>如果iSCSI存储使用了CHAP（Challenge
+                                    Handshake Authentication）加密认证协议，则需
+                                    要选中“用户验证”，并填写“CHAP用户”和“CHAP密
+                                    码”。
+                                </para>
+                            </step>
+                            <step>
+                                <para>点击”发现“按钮。
+                                </para>
+                            </step>
+                            <step>
+                                <para>从发现目录的结果的选择要进行添加的target，
+                                    点击登录按钮（图标为向右的箭头）。也是点击上
+                                    方的“登录全部”按钮登录所有发现的target。
+                                </para>
+                            </step>
+                        </substeps>
+                    </step>
+                    <step>
+                        <para>点击target前面的“+”按钮，在target下方会列出所有未
+                            被使用的LUN列表。
+                        </para>
+                    </step>
+                    <step>
+                        <para>勾选准备在其上建立存储域的LUN。
+                        </para>
+                    </step>
+                    <step>
+                        <para>点击“确定”完成存储域的创建。
+                        </para>
+                    </step>
+                </procedure>
+            </simplesect>
+            <simplesect>
+                <title>预期结果：</title>
+                <para>新建的iSCSI存储域在“存储”标签的列表中显示，初始化过程需要
+                    5分钟左右。
+                </para>
+            </simplesect>
         </section>
+
         <section id="sect-Installation_Guide-storage-setup_Section_3_4">
             <title>添加FCP存储</title>
             <para></para>
