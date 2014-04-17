@@ -888,7 +888,8 @@
                             <para>本例中会将CentOS-6-5.iso上传名为ISODomain的ISO
                                 域。命令执行之后会提示输入管理用户和密码，用户名
                                 的格式为username@domain。
-                                <screen># engine-iso-uploader --iso-domain=ISODomain upload CentOS-6-5.iso
+                                <screen># engine-iso-uploader \
+--iso-domain=ISODomain upload CentOS-6-5.iso
                                 </screen>
                             </para>
                         </example>
@@ -917,13 +918,63 @@
         </section>
 
         <section id="sect-Installation_Guide-storage-setup_Section_4_2">
-            <title>VirtIO和Guest Tool镜像文件</title>
-            <para></para>
+            <title>VirtIO和Guest工具镜像文件</title>
+            <para>virtio-win光盘和虚拟软驱镜像为Windows虚拟机提供了VirtIO驱动。
+                &OVIRT;-tools-setup光盘镜像提供了Windows虚拟机的Guest工具。这些
+                镜像文件在&OVIRT;虚拟化环境安装和配置会复制到了&MANAGER;服务器。
+            </para>
+            <para>虚拟机安装了这些镜像中的驱动和工具之后可以提供性能和可用性。最
+                新的virtio-win和&OVIRT;-tools-setup镜像可以通过&MANAGER;服务器上
+                的以下路径获取：
+                <itemizedlist>
+                    <listitem><simpara>
+                            /usr/share/virtio-win/virtio-win.iso
+                    </simpara></listitem>
+                    <listitem><simpara>
+                            /usr/share/virtio-win/virtio-win.vfd
+                    </simpara></listitem>
+                    <listitem><simpara>
+                            /usr/share/&OVIRT;-guest-tools-iso/&OVIRT;-tools-setup.iso
+                    </simpara></listitem>
+                </itemizedlist>
+            </para>
+            <para>这些镜像需要通过ISO上传工具手动上传到虚拟化环境的ISO域之中。上
+                传完成之后，虚拟化环境中的虚拟机才可以使用这些镜像。
+            </para>
+            <formalpara>
+                <title>参见：</title>
+                <para><itemizedlist>
+                        <listitem><simpara>
+                                <xref linkend=
+                                    "sect-Installation_Guide-storage-setup_Section_4_3" />
+                        </simpara></listitem>
+                </itemizedlist></para>
+            </formalpara>
         </section>
 
         <section id="sect-Installation_Guide-storage-setup_Section_4_3">
             <title>将VirtIO和Guest Tool镜像文件上传到ISO域</title>
-            <para></para>
+            <para>下面的示例将virtio-win.iso、virtio-win.vfd和
+                &OVIRT;-tools-setup.iso上传到ISODomain存储域。
+                <example>
+                    <title>上传VirtIO和Guest工具镜像</title>
+                    <screen># engine-iso-uploader --iso-domain=ISODomain \
+upload /usr/share/virtio-win/virtio-win.iso \
+/usr/share/virtio-win/virtio-win.vfd \
+/usr/share/&OVIRT;-guest-tools-iso/rhev-tools-setup.iso
+                    </screen>
+                </example>
+            </para>
+
+            <formalpara>
+                <title>参见：</title>
+                <para><itemizedlist>
+                        <listitem><simpara>
+                                <xref linkend=
+                                    "sect-Installation_Guide-storage-setup_Section_4_2" />
+                        </simpara></listitem>
+                </itemizedlist></para>
+            </formalpara>
         </section>
 	</section>
 </chapter>
