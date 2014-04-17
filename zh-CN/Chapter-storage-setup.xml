@@ -650,8 +650,113 @@
 
         <section id="sect-Installation_Guide-storage-setup_Section_3_5">
             <title>添加本地存储</title>
-            <para></para>
+            <section id="sect-Installation_Guide-storage-setup_Section3_5_1">
+                <title>准备本地存储</title>
+                <simplesect>
+                    <title>说明：</title>
+                    <para>在数据中心的主机上可以建立本地存储域。本地存储建立之
+                        后，主机会自动加入一个新建的数据中心和一个新建的集群，该
+                        数据中心和集群无法加入其他主机。一般的集群包含多个主机，
+                        所有主机都可以 使用集群中任何一个存储域，这对于本地存储
+                        域是不可实现的。这种单主机的集群，也可以创建虚拟机，但是
+                        虚拟机无法迁移、调度和隔离。
+                    </para>
+                    <important>
+                        <para>在&OVIRT;&NODE;中，/data/images目录是唯一可以作为
+                            本地存储域的路径，因为该目录的权限和属主属组配置都已
+                            经符合要求。下文中“准备本地存储”的步骤是只针对其他安
+                            装通用Linux系统服务器。
+                        </para>
+                    </important>
+                    <procedure>
+                        <title>准备本地存储</title>
+                        <step>
+                            <para>在&NODE;上新建用来创建本地存储域的目录：
+                                <screen># mkdir -p /data/images
+                                </screen>
+                            </para>
+                        </step>
+                        <step>
+                            <para>确保vdsm用户（uid为36）和kvm用户组（gid为36）
+                                对本地存储目录有读取和写入权限。
+                                <screen># chown 36:36 /data/ /data/images
+                                </screen>
+                                <screen># chmod 0755 /data/ /data/images
+                                </screen>
+                            </para>
+                        </step>
+                    </procedure>
+                </simplesect>
+                <simplesect>
+                    <title>预期结果：</title>
+                    <para>新建本地存储域加入到了&OVIRT;虚拟化环境。
+                    </para>
+                </simplesect>
+            </section>
+
+            <section id="sect-Installation_Guide-storage-setup_Section3_5_2">
+                <title>创建本地存储域</title>
+                <simplesect>
+                    <title>说明：</title>
+                    <para>本地存储目录准备就绪之后，可以在对应的主机上建立本地存
+                        储。
+                    </para>
+                    <para>在主机上创建本地存储域会新建一个数据中心和一个集群。新
+                        的本地存储域和新数据中心、新集群是在一次操作中完成的。
+                    </para>
+                    <procedure>
+                        <title>创建本地存储域</title>
+                        <step>
+                            <para>在管理门户中点击“主机”标签，显示当前的主机列表。
+                            </para>
+                        </step>
+                        <step>
+                            <para>点击“维护”，将主机设置为维护模式。
+                            </para>
+                        </step>
+                        <step>
+                            <para>点击“配置本地存储”，打开“配置本地存储”对话框。
+                                <figure>
+                                    <title>配置本地存储</title>
+                                    <mediaobject>
+                                        <imageobject>
+                                            <imagedata
+                                                fileref="images/eayun_installation_storage_setup_configure_local_storage.png"
+                                                format="PNG" scalefit="1"
+                                                width="100%" />
+                                        </imageobject>
+                                    </mediaobject>
+                                </figure>
+                            </para>
+                        </step>
+                        <step>
+                            <para>点击“数据中心”、“集群”、“存储”后面的“编辑”可以
+                                对前述3项内容进行修改。
+                            </para>
+                        </step>
+                        <step>
+                            <para>填入本地存储的路径。
+                            </para>
+                        </step>
+                        <step>
+                            <para>如果有优化需求，点击“优化”标签，配置“内存优
+                                化”和“CPU线程”策略。
+                            </para>
+                        </step>
+                        <step>
+                            <para>点击“确定”完成存储域的创建。
+                            </para>
+                        </step>
+                    </procedure>
+                </simplesect>
+                <simplesect>
+                    <title>预期结果：</title>
+                    <para>主机加入到新建的数据中心，并显示为在线状态。
+                    </para>
+                </simplesect>
+            </section>
         </section>
+
         <section id="sect-Installation_Guide-storage-setup_Section_3_6">
             <title>添加POSIXFS存储</title>
             <para></para>
