@@ -7,7 +7,7 @@
 	<title>为Hypervisor配置网络时间协议（NTP）</title>
 	<formalpara><title>摘要</title>
 		<para>
-			Hypervisor支持指定一个或者多个网络时间协议服务器，以此来保证虚拟见监视器和NTP服务器的系统时钟同步。保证虚拟机监视器和RHEVM的时间资源同步是非常重要的。者可以确保在RHEV环境中的准确时间。时间的同步影响了VM之间的>迁移。。
+			Hypervisor支持指定一个或者多个网络时间协议服务器，以此来保证虚拟机监视器和NTP服务器的系统时钟同步。保证虚拟机监视器和RHEVM的时间资源同步是非常重要的。这可以确保在RHEV环境中的准确时间。时间的同步影响了VM之间的>迁移。。
 		</para>		
 	</formalpara>
 	<procedure>

@@ -740,27 +740,74 @@
 					</orderedlist>
 				</step>
 				<step>
-					<para></para>
+                                  <para>接下来你可以配置Hypervisor的存储</para>
+                                  <itemizedlist>
+                                    <listitem>
+                                      <para>
+                                        选择或取消Fill disk with Data partitio
+                                        n。如果不选择该项，将会看到磁盘剩余的空
+                                        间，并允许指定给数据分区分配的空间大小。
+                                      </para>
+                                    </listitem>
+                                    <listitem>
+                                      <para>
+                                        为Swap，Config，Logging设置大小。
+                                      </para>
+                                    </listitem>
+                                    <listitem>
+                                      <para>
+                                        如果选择了Fill disk with Data partition
+                                        ，Data这一栏会自动设置成0。如果没有选，
+                                        你可以为保留的空间设置一个数值。输入-1
+                                        意味着占用所有的剩余空间。
+                                      </para>
+                                    </listitem>
+                                  </itemizedlist>
 				</step>
 				<step>
-					<para></para>
+                                  <para>
+                                    Hyperviosr需要设置一个密码，以此来保护admin
+                                    用户的控制台访问。安装时需要在Password和Con
+                                    firm Password栏填写密码。
+                                  </para>
+                                  <para>
+                                    最好使用一个强壮的密码。一个强壮的密码可以是
+                                    大小写字母，数字和标点字符的混合。密码最少六
+                                    个字符，不能包含目录字符。
+                                  </para>
+                                  <para>
+                                    输入密码后，选择&lt;Install>并按Enter键来安
+                                    装Hypervisor到指定的硬盘上。
+                                  </para>
 				</step>
 			</procedure>
 			<formalpara>
 				<title>结果</title>
-				<para>当安装结束的时候，将会提示。选择&lt;Reboot>按钮，并按Enter键来重启系统。</para>
+                                <para>
+                                  当安装结束的时候，将会提示。选择&lt;Reboot>按
+                                  钮，并按Enter键来重启系统。
+                                </para>
 			</formalpara>
 			<note>
-				<para>
-				</para>
+			      <para>
+                                  移除启动设备，并修改系统启动项，避免重启后又进
+                                  入安装流程。
+			      </para>
 			</note>
 			<note>
-				<para>
-				</para>
+                              <para>
+                                  &OVIRT; Hypervisor可以在SANS和其他网络存储中保
+                                  存客户虚拟镜像。Hypervisor也可以被安装在SANs中，
+                                  作为BIOS中的一个启动设备，提供HBA配置许可。
+			      </para>
 			</note>
 			<note>
-				<para>
-				</para>
+                            <para>
+                                Hypervisor的安装可以使用多路径设备。SANS和其他网
+                                络存储经常使用多路径。安装的时候默认是开启多路径
+                                的。可以响应scsi_id函数的块设备都是多路径的。这
+                                些设备不包括USB存储设一些老的ATA硬盘。
+			    </para>
 			</note>
 		</section>
 	</section> 
