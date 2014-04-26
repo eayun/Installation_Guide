@@ -28,8 +28,8 @@
     <!--
 	<xi:include href="Chapter-self-hosted-engine.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
 	<xi:include href="Chapter-data-collection.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
-    -->
-	<xi:include href="Chapter-update-environment.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+    
+        <xi:include href="Chapter-update-environment.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />-->
     </part>
 
     <part id="part-part-host-installation" label="III">

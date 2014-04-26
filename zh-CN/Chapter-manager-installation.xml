@@ -9,7 +9,7 @@
 		<title>安装管理端图解示意图</title>
                 <mediaobject>
                   <imageobject>
-                    <imagedata fileref="../../../img/7.1.png" format="PNG" scale="75"/>
+                    <imagedata fileref="images/eayun_installation_procedure.png" format="PNG" width="100%" scalefit="1"/>
                   </imageobject>
                 </mediaobject>
 	</section>
@@ -46,7 +46,7 @@
                         <para>远程数据库服务器应该已经加载uuid-ossp扩展。</para>
                       </listitem>
                     </itemizedlist>
-                    <para>此外，你要需要知道你要使用的远程数据库服务器的用户名和密码，该用户必须有咋在PostgreSQL中创建数据库的权限。</para>
+                    <para>此外，你要需要知道你要使用的远程数据库服务器的用户名和密码，该用户必须有在PostgreSQL中创建数据库的权限。</para>
                   </listitem>
                  <listitem>
                     <para>创建&MANAGER;的安全认证时候要使用的组织名称。</para>
@@ -63,25 +63,21 @@
                 </orderedlist>
                 <example>
                   <title>完全安装</title>
-                  <programlisting language="Bash">
-                    <![CDATA[
-                    EayunOS Manager will be installed using the following configuration:
-                    =================================================================
-                    override-httpd-config:     yes
-                    http-port:                 80
-                    https-port:                443
-                    host-fqdn:                 demo.eayun.com
-                    auth-pass:                 ********
-                    org-name:                  eayunos.com
-                    default-dc-type:           NFS
-                    db-remote-install:         local
-                    db-local-pass:             ********
-                    nfs-mp:                    /usr/local/exports/iso
-                    config-nfs:                yes
-                    override-iptables:         yes
-                    Proceed with the configuration listed above? (yes|no): yes
-                    ]]>
-                  </programlisting>
+                    <screen>EayunOS Manager will be installed using the following configuration:
+=================================================================
+override-httpd-config:     yes
+http-port:                 80
+https-port:                443
+host-fqdn:                 demo.eayun.com
+auth-pass:                 ********
+org-name:                  eayunos.com
+default-dc-type:           NFS
+db-remote-install:         local
+db-local-pass:             ********
+nfs-mp:                    /usr/local/exports/iso
+config-nfs:                yes
+override-iptables:         yes
+Proceed with the configuration listed above? (yes|no): yes</screen>
                 </example>
                 <note>
                   <para>
@@ -92,21 +88,13 @@
                       <para>
                     使用--gen-answer-file参数设置要创建的答案文件的路径。然后engine-setup将会在文件中记录所有问题的答案。
                       </para>
-                      <programlisting language="Bash">
-                        <![CDATA[
-                          # engine-setup --gen-answer-file=ANSWER_FILE
-                        ]]>
-                      </programlisting>
+                      <screen># engine-setup --gen-answer-file=ANSWER_FILE</screen>
                     </listitem>
                     <listitem>
                       <para>
                       在使用答案文件进行安装的时候。使用--answer-file参数设置要使用的的答案文件的路径。然后engine-setup将会使用文件中记录所有答案。
                       </para>
-                      <programlisting language="Bash">
-                        <![CDATA[
-                          # engine-setup --answer-file=ANSWER_FILE
-                        ]]>
-                      </programlisting>
+                      <screen># engine-setup --answer-file=ANSWER_FILE</screen>
                     </listitem>
                   </itemizedlist>
                   <para>使用engine-setup --help来获取更多engine-setup的更多帮助信息。</para>
@@ -114,16 +102,99 @@
 	</section>
 	<section id="sect-Installation_Guide-manager-installation_Section_3">
 		<title>安装系统</title>
-		<para>
-		      截图！！
-		</para>
+                <procedure>
+                      <step>
+                        <para>图中，选中【install or upgrade an existing system】，按Enter</para>
+                        <para>
+                                <figure id="eayunos-install-eayunos-manager-0"><title>图1</title>
+                                        <mediaobject>
+                                                <imageobject>
+                                                        <imagedata fileref="images/eayun_installation_manager_1.png" format="PNG" width="100%" scalefit="1"/>
+                                                </imageobject>
+                                        </mediaobject>
+                                </figure>
+                        </para>
+                      </step>
+                      <step>
+                        <para>准备开始安装，等待</para>
+                        <para>
+                                <figure id="eayunos-install-eayunos-manager-1"><title>图2</title>
+                                        <mediaobject>
+                                                <imageobject>
+                                                        <imagedata fileref="images/eayun_installation_manager_2.png" format="PNG" width="100%" scalefit="1"/>
+                                                </imageobject>
+                                        </mediaobject>
+                                </figure>
+                        </para>
+                      </step>
+                      <step>
+                        <para>图中，输入密码及确认密码</para>
+                        <para>
+                                <figure id="eayunos-install-eayunos-manager-2"><title>图3</title>
+                                        <mediaobject>
+                                                <imageobject>
+                                                        <imagedata fileref="images/eayun_installation_manager_3.png" format="PNG" width="100%" scalefit="1"/>
+                                                </imageobject>
+                                        </mediaobject>
+                                </figure>
+                        </para>
+                      </step>
+                      <step>
+                        <para>图中，选中【Use All Space】，按“下一步”</para>
+                        <para>
+                                <figure id="eayunos-install-eayunos-manager-3"><title>图4</title>
+                                        <mediaobject>
+                                                <imageobject>
+                                                        <imagedata fileref="images/eayun_installation_manager_4.png" format="PNG" width="100%" scalefit="1"/>
+                                                </imageobject>
+                                        </mediaobject>
+                                </figure>
+                        </para>
+                      </step>
+                      <step>
+                        <para>图中，系统进入格式化中，等待</para>
+                        <para>
+                                <figure id="eayunos-install-eayunos-manager-4"><title>图5</title>
+                                        <mediaobject>
+                                                <imageobject>
+                                                        <imagedata fileref="images/eayun_installation_manager_5.png" format="PNG" width="100%" scalefit="1"/>
+                                                </imageobject>
+                                        </mediaobject>
+                                </figure>
+                        </para>
+                      </step>
+                      <step>
+                        <para>开始安装操作系统</para>
+                        <para>
+                                <figure id="eayunos-install-eayunos-manager-5"><title>图6</title>
+                                        <mediaobject>
+                                                <imageobject>
+                                                        <imagedata fileref="images/eayun_installation_manager_6.png" format="PNG" width="100%" scalefit="1"/>
+                                                </imageobject>
+                                        </mediaobject>
+                                </figure>
+                        </para>
+                      </step>
+                      <step>
+                        <para>图中，操作系统安装完成，系统自动重启，输入用户名和密码进入系统</para>
+                        <para>
+                                <figure id="eayunos-install-eayunos-manager-6"><title>图7</title>
+                                        <mediaobject>
+                                                <imageobject>
+                                                        <imagedata fileref="images/eayun_installation_manager_7.png" format="PNG" width="100%" scalefit="1"/>
+                                                </imageobject>
+                                        </mediaobject>
+                                </figure>
+                        </para>
+                      </step>
+		</procedure>
 	</section>
 	<section id="sect-Installation_Guide-manager-installation_Section_5">
 		<title>配置&OVIRT; &MANAGER;</title>
                 <formalpara>
                   <title>条件</title>
                   <para>
-                    当系统安装完后，需要配置&OVIRT; &MANAGER; engine-setup就是完成这个任务的。这个脚本问你一系列问题，并根据你的回答配置你的环境。提供给它它需要的数据后，它开始启动&OVIRT; &MANAGER;的服务。
+                    当系统安装完后，需要配置&OVIRT; &MANAGER; 。engine-setup就是完成这个任务的。这个脚本问你一系列问题，并根据你的回答配置你的环境。提供给它它需要的数据后，它开始启动&OVIRT; &MANAGER;的服务。
                   </para>
                 </formalpara>
                   <para>
@@ -135,165 +206,112 @@
                     <para>
                         engine-setup脚本判断此次是一个安装还是升级，同时看看&MANAGER;有没有可以升级的包。这一阶段不需要输入。
                     </para>
-                    <programlisting language="Bash">
-                    <![CDATA[
-                    [ INFO] Checking for product updates...
-                    [ INFO] No product updates found
-                    ]]>
-                    </programlisting>
+<screen>[ INFO] Checking for product updates...
+[ INFO] No product updates found</screen>
                   </step>
                   <step>
                     <para>网络配置</para>
                     <para>
                       系统会自动检测你的主机名并进行反向查找。如果检测出的主机名错误或者使用一台虚拟机，可以手动纠正主机名。你的完整域名必须在DNS里同时由正向和反向查找记录，尤其在它还安装了报告服务器的情况下。
                     </para>
-                    <programlisting language="Bash">
-                      <![CDATA[
-                        Host fully qualified DNS name of this server [autodetected host name]:
-                      ]]>
-                    </programlisting>
+                    <screen>Host fully qualified DNS name of this server [autodetected host name]:</screen>
                     <para>
                       engine-setup将会检查你的防火墙配置，帮你打开&MANAGER;通信所需要的端口。如果不允许engine-setup修改iptables的配置，那就必须手动打开&OVIRT; &MANAGER;需要的这些端口。
                     </para>
-                    <programlisting language="Bash">
-                      <![CDATA[
-                      iptables was detected on your computer. Do you wish Setup to configure it?
-                      (yes, no) [yes]:
-                      ]]>
-                    </programlisting>
+                    <screen>iptables was detected on your computer. Do you wish Setup to configure it?
+(yes, no) [yes]:</screen>
                   </step>
                   <step>
                     <para>数据库配置</para>
                     <para>可以使用本地或者远程的Postgres数据库。engine-setup脚本可以完全自动配置数据库，包括添加用户和数据库，或者使用你设置的值。</para>
-                    <programlisting language="Bash">
-                      <![CDATA[
-                      Where is the database located? (Local, Remote) [Local]:
-                      Setup can configure the local postgresql server automatically for the engine
-                      to run. This may conflict with existing applications.
-                      Would you like Setup to automatically configure postgresql, or prefer to
-                      perform that manually? (Automatic, Manual) [Automatic]:
-                      ]]>
-                    </programlisting>
+                    <screen>Where is the database located? (Local, Remote) [Local]:
+Setup can configure the local postgresql server automatically for the engine
+to run. This may conflict with existing applications.
+Would you like Setup to automatically configure postgresql, or prefer to
+perform that manually? (Automatic, Manual) [Automatic]:</screen>
                   </step>
                   <step>
                     <para>engine配置</para>
                     <para>为自动创建的&OVIRT; &MANAGER;管理员账户admin@internal设置密码。</para>
-                    <programlisting language="Bash">
-                      <![CDATA[
-                       Engine admin password:
-                       Confirm engine admin password:
-                       ]]>
-                    </programlisting>
+                    <screen>Engine admin password:
+Confirm engine admin password:</screen>
                     <para>选择Gluster，Virtualization或者Both。Both具有最大的适应性</para>
-                    <programlisting language="Bash">
-                      <![CDATA[
-                          Data center (Both, Virt, Gluster) [Both]: 
-                       ]]>
-                     </programlisting>
+                    <screen>Data center (Both, Virt, Gluster) [Both]: </screen>
                      <para>选择初始化数据中心的类型。环境中可以由很多数据中心，数据中心用不同的存储方式。这里选择的是第一个数据中心的类型。</para>
-                    <programlisting language="Bash">
-                      <![CDATA[
-                      Default storage type: (NFS, FC, ISCSI, POSIXFS) [NFS]:
-                       ]]>
-                    </programlisting>
+                     <screen>Default storage type: (NFS, FC, ISCSI, POSIXFS) [NFS]:</screen>
                   </step>
                   <step>
                     <para>PKI配置</para>
                     <para>&MANAGER;使用认证来和它的主机交流。需要为认证提供组织名。这个认证也可以用来增强&MANAGER;的https的通信安全。</para>
-                    <programlisting language="Bash">
-                      <![CDATA[
-                      Organization name for certificate [autodetected domain-based name]:
-                      ]]>
-                    </programlisting>
+                    <screen>Organization name for certificate [autodetected domain-based name]:</screen>
                   </step>
                   <step>
                     <para>Apache配置</para>
                     <para>&OVIRT; &MANAGER; 使用Apache服务器来为用户提供一个登录页面。engine-setup脚本可以把&MANAGER;的登录页面变成Apache的默认页面。</para>
-                    <programlisting language="Bash">
-                      <![CDATA[
-                      Setup can configure the default page of the web server to present the
-                      application home page. This may conflict with existing applications.
-                      Do you wish to set the application as the default web page of the server?
-                      (Yes, No) [Yes]:
-                       ]]>
-                     </programlisting>
+                    <screen>Setup can configure the default page of the web server to present the
+application home page. This may conflict with existing applications.
+Do you wish to set the application as the default web page of the server?
+(Yes, No) [Yes]:</screen>
                      <para>
                       主机和&MANAGER;的ssl（https）通信使用PKI配置阶段生成的自签名。其他的https连接选择另一个证书，不影响&MANAGER;和主机之间的通信。
                      </para>
-                    <programlisting language="Bash">
-                      <![CDATA[
-                      Setup can configure apache to use SSL using a certificate issued from the
-                      internal CA
-                      Do you wish Setup to configure that, or prefer to perform that manually?
-                      (Automatic, Manual) [Automatic]:
-                      ]]>
-                    </programlisting>
+                     <screen>Setup can configure apache to use SSL using a certificate issued from the
+internal CA
+Do you wish Setup to configure that, or prefer to perform that manually?
+(Automatic, Manual) [Automatic]:</screen>
                   </step>
                   <step>
                     <para>系统配置</para>
                     <para>engine-setup可以在&MANAGER;上创建一个NFS服务，利用该服务使用ISO domain。在&MANAGER;本地保存ISO domain可以简化更新环境中的元素。</para>
-                    <programlisting language="Bash">
-                      <![CDATA[
-                      Configure an NFS share on this server to be used as an ISO Domain? (Yes, No)                      
-                      [Yes]:
-                      Local ISO domain path [/var/lib/exports/iso]:
-                      Local ISO domain name [ISO_DOMAIN]:
-                      Configure WebSocket Proxy on this machine? (Yes, No) [Yes]:
-                      ]]>
-                    </programlisting>
+                    <screen>Configure an NFS share on this server to be used as an ISO Domain? (Yes, No)                      
+[Yes]:
+Local ISO domain path [/var/lib/exports/iso]:
+Local ISO domain name [ISO_DOMAIN]:
+Configure WebSocket Proxy on this machine? (Yes, No) [Yes]:</screen>
                     </step>
                     <step>
                       <para>
                         engine-setup验证你的所有答案，并警告你可能发生的问题。用户需要输入来确定提供的的答案是否对环境由不良影响。
                       </para>
-                      <programlisting language="Bash">
-                      <![CDATA[--== END OF CONFIGURATION ==-- 
+                      <screen>--== END OF CONFIGURATION ==-- 
 Would you like transactions from the Red Hat Access Plugin sent from the RHEV
-Manager to be brokered through a proxy server? (Yes, No) [No]:
-                      ]]>
-                      </programlisting>
-                      <programlisting language="Bash">
-                      <![CDATA[
-                      [ INFO] Stage: Setup validation
-                      ]]>
-                      </programlisting>
+Manager to be brokered through a proxy server? (Yes, No) [No]:</screen>
+                      <screen>[ INFO] Stage: Setup validation</screen>
                     </step>
                     <step>
                       <para>预览和摘要</para>
                       <para>在预览阶段，engine-setup给你展示了你自己输入的配置值，并给你修改的机会。如果你选择运行，engine-setup将会按照你在配置阶段提供的答案进行&OVIRT; &MANAGER;安装</para>
                       <screen>          --== CONFIGURATION PREVIEW ==--
-                        Database name:                engine
-                        Database secured connection:     False
-                        Database host:                   localhost
-                        Database user name:              engine
-                        Database host name validation:   False
-                        Database port:                   5432
-                        NFS setup:                       True
-                        PKI organization:                Your Org
-                        NFS mount point:                 /var/lib/exports/iso
-                        Application mode:                both
-                        Firewall manager:                iptables
-                        Configure WebSocket Proxy:       True
-                        Host FQDN:                       Your Manager's FQDN
-                        Datacenter storage type:         nfs
-                        Configure local database:        True
-                        Set application as default page: True
-                        Configure Apache SSL :           True
-                        Please confirm installation settings (OK, Cancel) [OK]:
-                      </screen>
+Database name:                engine
+Database secured connection:     False
+Database host:                   localhost
+Database user name:              engine
+Database host name validation:   False
+Database port:                   5432
+NFS setup:                       True
+PKI organization:                Your Org
+NFS mount point:                 /var/lib/exports/iso
+Application mode:                both
+Firewall manager:                iptables
+Configure WebSocket Proxy:       True
+Host FQDN:                       Your Manager's FQDN
+Datacenter storage type:         nfs
+Configure local database:        True
+Set application as default page: True
+Configure Apache SSL :           True
+Please confirm installation settings (OK, Cancel) [OK]:</screen>
                       <para>环境配置好以后，使用engine-setup查看你环境和安全的细节。</para>
                       <screen>A default ISO NFS share has been created on this host.
-                        If IP based access restrictions are required, edit: entry
-                        /var/lib/exports/iso in /etc/exports
-                        SSH fingerprint: 87:af:b5:fe:7a:e5:1b:64:83:57:02:07:62:eb:8c:18
-                        Internal CA SHA1
-                        Fingerprint=7B:DF:2A:EE:18:C8:B1:CC:F7:6B:59:42:A3:96:BC:44:32:98:FF:A6
-                        Web access is enabled at:
-                                http://manager.fqdn:80/ovirt-engine
-                                https://manager.fqdn:443/ovirt-engine
-                        Please use the user "admin" and password specified in order to login into
-                        oVirt Engin
-                      </screen>
+If IP based access restrictions are required, edit: entry
+/var/lib/exports/iso in /etc/exports
+SSH fingerprint: 87:af:b5:fe:7a:e5:1b:64:83:57:02:07:62:eb:8c:18
+Internal CA SHA1
+Fingerprint=7B:DF:2A:EE:18:C8:B1:CC:F7:6B:59:42:A3:96:BC:44:32:98:FF:A6
+Web access is enabled at:
+http://manager.fqdn:80/ovirt-engine
+https://manager.fqdn:443/ovirt-engine
+Please use the user "admin" and password specified in order to login into
+oVirt Engin</screen>
                     </step>
                     <step>
                       <para>清理结束</para>
@@ -323,25 +341,24 @@ setup-installation-date.log
                   也可以使用engine-setup --answer-file=/[path_to_answer_file]来手动指定一个密码，此时需要临时密码保存在回答文件中。可以使用engine-setup --generate-answer=file来生成一个回答文件。下面是回答文件的格式
                 </para>
                 <screen># action=setup
-                  [environment:default]
-                  OVESETUP_CORE/engineStop=none:None
-                  OVESETUP_DIALOG/confirmSettings=bool:True
-                  OVESETUP_DB/database=str:engine
-                  OVESETUP_DB/fixDbViolations=none:None
-                  OVESETUP_DB/secured=bool:False
-                  OVESETUP_DB/host=str:localhost
-                  OVESETUP_DB/user=str:engine
-                  OVESETUP_DB/securedHostValidation=bool:False
-                  OVESETUP_DB/password=str:0056jKkY
-                  OVESETUP_DB/port=int:5432
-                  OVESETUP_SYSTEM/nfsConfigEnabled=bool:True
-                  ...
-                  OVESETUP_APACHE/configureSsl=bool:True
-                  OSETUP_RPMDISTRO/requireRollback=none:None
-                  OSETUP_RPMDISTRO/enableUpgrade=none:None
-                  OVESETUP_AIO/configure=none:None
-                  OVESETUP_AIO/storageDomainDir=none:None
-                </screen>
+[environment:default]
+OVESETUP_CORE/engineStop=none:None
+OVESETUP_DIALOG/confirmSettings=bool:True
+OVESETUP_DB/database=str:engine
+OVESETUP_DB/fixDbViolations=none:None
+OVESETUP_DB/secured=bool:False
+OVESETUP_DB/host=str:localhost
+OVESETUP_DB/user=str:engine
+OVESETUP_DB/securedHostValidation=bool:False
+OVESETUP_DB/password=str:0056jKkY
+OVESETUP_DB/port=int:5432
+OVESETUP_SYSTEM/nfsConfigEnabled=bool:True
+...
+OVESETUP_APACHE/configureSsl=bool:True
+OSETUP_RPMDISTRO/requireRollback=none:None
+OSETUP_RPMDISTRO/enableUpgrade=none:None
+OVESETUP_AIO/configure=none:None
+OVESETUP_AIO/storageDomainDir=none:None</screen>
 	</section>
 	<section id="sect-Installation_Guide-manager-installation_Section_7">
 		<title>准备PostgreSQL数据库服务</title>
@@ -355,19 +372,17 @@ setup-installation-date.log
                     <para>
                       为&OVIRT; &MANAGER;读写数据库建立一个postgresql帐号。并建立一个数据库来保存环境信息。这一步需要在本地和远程手动配置数据库服务器。在数据库服务器中使用postgresql用户来运行psql终端。
                     </para>
-                    <screen># su - postgres
-                      $ psql
-                      postgres=# create user USER password 'PASSWORD';
-                      postgres=# create database DATABASE owner USER;
+                    <screen># su - postgres                      
+$ psql
+postgres=# create user USER password 'PASSWORD';
+postgres=# create database DATABASE owner USER;
                     </screen>
                   </step>
                   <step>
                     <para>
                       通过启用客户认证，确定数据库是可以远程访问的。这一步需要在远程服务器手动配置。编辑/var/lib/pgsql/data/pg_hba.conf文件，加入下面的内容：
                     </para>
-                    <screen>
-                      host all all X.X.X.X/24 trust
-                    </screen>
+                    <screen>host all all X.X.X.X/24 trust</screen>
                     <para>
                         用&MANAGER;的IP地址替换X.X.X.X。
                     </para>
@@ -376,9 +391,7 @@ setup-installation-date.log
                     <para>
                       允许TCP/IP连接到数据库。这一步需要在远程服务器手动配置。编辑/var/lib/pgsql/data/postgresql.conf文件，加入下面的内容：
                     </para>
-                    <screen>
-                      listen_addresses='*'
-                    </screen>
+                    <screen>listen_addresses='*'</screen>
                     <para>
                       上面的例子使postgresql监听所有接受上的所有连接。你可以通过IP指定接口。
                     </para>
@@ -387,9 +400,7 @@ setup-installation-date.log
                     <para>
                       重启postgresql服务。这一步需要在远程服务器手动配置。
                     </para>
-                    <screen>
-                      service postgresql restart
-                    </screen>
+                    <screen>service postgresql restart</screen>
                   </step>
                 </procedure>
                 <formalpara>
@@ -411,9 +422,7 @@ setup-installation-date.log
                     <para>
                       在使用engine-setup配置&OVIRT; &MANAGER;的时候，你需要决定数据库安装的位置。
                     </para>
-                    <screen>
-                      Where is the database located? (Local, Remote) [Local]:
-                    </screen>
+                    <screen>Where is the database located? (Local, Remote) [Local]:</screen>
                     <para>
                       在配置&OVIRT; &MANAGER;使用本地数据库还是远程数据库的时候，除了上面的这一项，其他都相同。如果是远程的话，必须提供远程服务器的主机名和监听的端口。
                     </para>
@@ -423,17 +432,16 @@ setup-installation-date.log
                     如果使用远程的数据库，engine-setup需要附加数据库服务器的主机名和监听的端口。
                     </para>
                     <screen>Database host [localhost]:
-                      Database port [5432]:
-                    </screen>
+Database port [5432]:</screen>
                   </step>
                   <step>
                     <para>
                     任何一种情况，都需要确定数据库是否使用安全连接，配置数据库的名称，用来访问数据库的用户名，和用户的密码。
                     </para>
                     <screen>Database secured connection (Yes, No) [No]:
-                    Database name [engine]:
-                    Database user [engine]:
-                    Database password:
+Database name [engine]:
+Database user [engine]:
+Database password:
                     </screen>
                     <note>
                       <para>
@@ -514,35 +522,32 @@ setup-installation-date.log
                   <step>
                     <para>到这里还有一次放弃移除&OVIRT; &MANAGER;的机会。如果选择执行，ovirt-engine服务被停止，之前选择的环境配置都会被移除。</para>
                     <screen>During execution engine service will be stopped (OK, Cancel) [OK]:
-                      ovirt-engine is about to be removed, data will be lost (OK, Cancel)
-                    [Cancel]:OK</screen>
+ovirt-engine is about to be removed, data will be lost (OK, Cancel)
+[Cancel]:OK</screen>
                   </step>
                 </procedure>
                 <formalpara>
                   <title>结果</title>
                   <para>当运行engine-cleanup后，移除了环境的配置文件。</para>
                 </formalpara>
-                <screen>
-                  --== SUMMARY ==--
-                  A backup of the database is available at /var/lib/ovirt-engine/backups/engine-date-
-                  and-extra-characters.sql
-                  Engine setup successfully cleaned up
-                  A backup of PKI configuration and keys is available at /var/lib/ovirt-
-                  engine/backups/engine-pki-date-and-extra-characters.tar.gz
-                  --== END OF SUMMARY ==--
-                  [ INFO ] Generating answer file '/var/lib/ovirt-
-                  engine/setup/answers/20130827181911-cleanup.conf'
-                  [ INFO ] Stage: Clean up
-                  Log file is located at /var/log/ovirt-engine/setup/ovirt-engine-
-                  remove-date.log
-                  [ INFO ] Stage: Pre-termination
-                  [ INFO ] Stage: Termination
-                  [ INFO ] Execution of cleanup completed successfully</screen>
+                <screen>--== SUMMARY ==--
+A backup of the database is available at /var/lib/ovirt-engine/backups/engine-date-
+and-extra-characters.sql
+Engine setup successfully cleaned up
+A backup of PKI configuration and keys is available at /var/lib/ovirt-
+engine/backups/engine-pki-date-and-extra-characters.tar.gz
+--== END OF SUMMARY ==--
+[ INFO ] Generating answer file '/var/lib/ovirt-
+engine/setup/answers/20130827181911-cleanup.conf'
+[ INFO ] Stage: Clean up
+Log file is located at /var/log/ovirt-engine/setup/ovirt-engine-
+remove-date.log
+[ INFO ] Stage: Pre-termination
+[ INFO ] Stage: Termination
+[ INFO ] Execution of cleanup completed successfully</screen>
                 <para>
                   现在可以使用yum安全地移除&OVIRT;包。
                 </para>
-                <screen>
-                  # yum remove rhevm* vdsm-bootstrap
-                </screen>
+                <screen># yum remove rhevm* vdsm-bootstrap</screen>
 	</section>
 </chapter>

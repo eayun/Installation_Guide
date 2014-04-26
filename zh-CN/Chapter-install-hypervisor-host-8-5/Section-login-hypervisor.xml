@@ -14,12 +14,8 @@
 		<title>登陆Hypervisor</title>
 		<step>
 			<para>启动Hypervisor。一个登陆提示出现。</para>
-			<programlisting language="Bash">
-				<![CDATA[
-				please login as 'admin' to configure the node
-				localhost login:
-				]]>
-			</programlisting>
+                        <screen>please login as 'admin' to configure the node
+localhost login:</screen>
 		</step>
 		<step>
 			<para>输入用户名admin并按Enter键。</para>

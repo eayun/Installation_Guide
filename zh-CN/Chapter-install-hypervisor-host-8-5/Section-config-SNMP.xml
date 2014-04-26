@@ -10,16 +10,13 @@
 			SNMP界面允许你启用和配置SNMP的密码。
 		</para>
 	</formalpara>
-	<programlisting language="Bash">
-		<![CDATA[
-		Enable SNMP               [  ]
-		SNMP Passwod
-		Password:                        ________________
-		Confirm Password:         ________________
-		<Save>           <Reset>
-		]]>
-	</programlisting>
-	<procedure>
+        <screen>Enable SNMP               [  ]
+SNMP Passwod
+Password:                 ________________
+Confirm Password:         ________________
+&lt;Save>           &lt;Reset>
+        </screen>            
+        <procedure>
 		<title>配置Hypervisor简单网络协议</title>
 		<step>
 			<para>选择Enable SNMP栏。</para>

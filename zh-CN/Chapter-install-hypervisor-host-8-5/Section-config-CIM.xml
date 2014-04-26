@@ -14,11 +14,7 @@
 		<title>配置Hypervisor通用信息模型</title>
 		<step>
 			<para>选择Enable CIM栏。</para>
-			<programlisting language="Bash">
-				<![CDATA[
-				Enable CIM       [ ]
-				]]>
-			</programlisting>
+                        <screen>Enable CIM       [ ]</screen>
 		</step>
 		<step>
 			<para>在Password栏输入密码。你将使用这个密码来用CIM访问Hypervisor。</para>

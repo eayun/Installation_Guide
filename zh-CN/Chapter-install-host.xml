@@ -24,31 +24,23 @@
 					<title>配置虚拟化主机的防火墙</title>
 					<step>
 						<para>移除现有的防火墙规则</para>
-						<para>使用iptabels命令是添加--flush参数来移除现存的规则。</para>
-						 <programlisting language="Bash">
-						 	 <![CDATA[
-								# iptables --flush
-							 ]]>
-						 </programlisting>
+                                                <para>使用iptabels命令是添加--flush参数来移除现存的规则。</para>
+                                                <screen># iptables --flush</screen>
 					</step>
 					<step>
 						<para>添加防火墙配置规则</para>
 						<para>使用iptabels命令是并加入--append参数来添加&OVIRT;需要的防火墙规则。提示符（#）已经被我们从命令列表中刻意去除了。这样方便你简单地把这些内容复制到一个脚本文件或者命令提示符。</para>
-						 <programlisting language="Bash">
-						 	 <![CDATA[
-								iptables --append INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
-								iptables --append INPUT -p icmp -j ACCEPT
-								iptables --append INPUT -i lo -j ACCEPT
-								iptables --append INPUT -p tcp --dport 22 -j ACCEPT
-								iptables --append INPUT -p tcp --dport 16514 -j ACCEPT
-								iptables --append INPUT -p tcp --dport 54321 -j ACCEPT
-								iptables --append INPUT -p tcp -m multiport --dports 5634:6166 -j ACCEPT
-								iptables --append INPUT -p tcp -m multiport --dports 49152:49216 -j ACCEPT
-								iptables --append INPUT -j REJECT --reject-with icmp-host-prohibited
-								iptables --append FORWARD -m physdev ! --physdev-is-bridged -j REJECT \
-									--reject-with icmp-host-prohibited
-							 ]]>
-						 </programlisting>
+						 <screen>iptables --append INPUT -m state --state ESTABLISHED,RELATED -j ACCEPT
+iptables --append INPUT -p icmp -j ACCEPT
+iptables --append INPUT -i lo -j ACCEPT
+iptables --append INPUT -p tcp --dport 22 -j ACCEPT
+iptables --append INPUT -p tcp --dport 16514 -j ACCEPT
+iptables --append INPUT -p tcp --dport 54321 -j ACCEPT
+iptables --append INPUT -p tcp -m multiport --dports 5634:6166 -j ACCEPT
+iptables --append INPUT -p tcp -m multiport --dports 49152:49216 -j ACCEPT
+iptables --append INPUT -j REJECT --reject-with icmp-host-prohibited
+iptables --append FORWARD -m physdev ! --physdev-is-bridged -j REJECT \
+--reject-with icmp-host-prohibited</screen>
 						<note>
 							<para>这些提供的iptables命令添加的防火墙规则允许了指定端口的网络传输。这些端口包括：</para>
 							<para>SSH使用22端口，</para>
@@ -60,22 +52,14 @@
 					</step>
 					<step>
 						<para>保存更新后的防火墙配置</para>
-						<para>使用save来保存更新的防火墙配置脚本，使iptables在初始化的时候就使用该规则。</para>
-						 <programlisting language="Bash">
-						 	 <![CDATA[
-								# service iptables save
-							 ]]>
-						 </programlisting>
+                                                <para>使用save来保存更新的防火墙配置脚本，使iptables在初始化的时候就使用该规则。</para>
+                                                <screen>#service iptables save</screen>
 					</step>
 					<step>
 						<para>开机启动iptables服务</para>
 						<para>确保iptables服务被配置为开机启动。如果服务没有运行就启动它，否则重启它。</para>
-						<programlisting language="Bash">
-						 	 <![CDATA[
-								# chkconfig iptables on
-								# service iptables restart
-							 ]]>
-						 </programlisting>
+                                                <screen># chkconfig iptables on
+# service iptables restart</screen>
 					</step>
 				</procedure>
 				<formalpara>
@@ -100,21 +84,13 @@
 					<step>
 						<para>运行visudo命令</para>
 						<para>运行visudo命令来打开/etc/sudoers</para>
-						<programlisting language="Bash">
-						 	 <![CDATA[
-								# visudo
-							 ]]>
-						 </programlisting>
+                                                <screen># visudo</screen>
 					</step>
 					<step>
 						<para>编辑sudoers文件</para>
 						<para>阅读配置文件，并确定有下面这几行：</para>
-						<programlisting language="Bash">
-						 	 <![CDATA[
-								# Allow root to run any commands anywhere
-							 	root	ALL=(ALL)	ALL
-							 ]]>
-						 </programlisting>
+                                                <screen># Allow root to run any commands anywhere
+root	ALL=(ALL)	ALL</screen>
 						 <para>如果文件不包含上面这几行,加入它们，并使用VIM:w命令来保存文件。
 						 </para>
 					</step>
@@ -146,11 +122,7 @@
 					<step>
 						<para>安装SSH服务器(openssh-server)</para>
 						<para>使用yum安装openssh-server服务器包。</para>
-						<programlisting language="Bash">
-						 	 <![CDATA[
-								# yum install openssh-server
-							 ]]>
-						 </programlisting>
+                                                <screen># yum install openssh-server</screen>
 					</step>
 					<step>
 						<title>编辑SSH服务器的配置文件</title>
@@ -170,20 +142,12 @@
 						<para>
 							使用chkconfig命令配置SSH服务器为开机启动服务。
 						</para>
-						<programlisting language="Bash">
-						 	 <![CDATA[
-								# chkconfig --level 345 sshd on
-							 ]]>
-						 </programlisting>
+                                                <screen># chkconfig --level 345 sshd on</screen>
 					</step>
 					<step>
 						<title>启动SSH服务器</title>
 						<para>使用service命令启动SSH，如果它正在运行的的话就重启它。</para>
-						<programlisting language="Bash">
-						 	 <![CDATA[
-								# service sshd restart
-							 ]]>
-					    </programlisting>
+                                                <screen># service sshd restart</screen>
 					</step>
 				</procedure>
 				<formalpara>

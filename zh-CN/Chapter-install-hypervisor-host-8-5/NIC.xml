@@ -60,15 +60,12 @@
 					</orderedlist> 
 					<para>如果你不清楚要使用的IP Address，Netmask或者Gateway，去联系网络管理员或者考虑动态配置。</para>
 					<para>范例8.12.  Static IPv4网络配置</para>
-					<programlisting language="Bash">
-						<![CDATA[
-						IPv4 Settings
-						( ) Disabled	( ) DHCP	(*) Static
-						IP Address: 192.168.122.100_	Netmask: 255.255.255.0___
-						Gateway
-						192.168.1.1_____
-						]]>
-					</programlisting>
+                                        <screen>IPv4 Settings
+( ) Disabled	( ) DHCP	(*) Static
+IP Address: 192.168.122.100_	Netmask: 255.255.255.0___
+Gateway
+192.168.1.1_____
+                                        </screen>
 				</listitem>
 			</orderedlist>
 		</step> 

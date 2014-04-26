@@ -10,7 +10,7 @@
 	<!--<figure id="bookmark"><title>流程图</title>  -->
 			<mediaobject>
 				<imageobject>
-					<imagedata fileref="../../../img/7.1.png" format="PNG" scale="75"/>
+                                  <imagedata fileref="images/eayun_installation_procedure.png" format="PNG" width="100%" scalefit="1"/>
 				</imageobject>
 			</mediaobject>
 	<!--	</figure>   -->

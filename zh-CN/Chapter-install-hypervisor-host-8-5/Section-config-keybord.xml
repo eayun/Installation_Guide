@@ -14,25 +14,20 @@
 		<title>配置Hypervisor的键盘布局</title>
 		<step>
 			<para>从系统提供的列表中选择键盘布局。</para>
-			<programlisting language="Bash">
-				<![CDATA[
-				Keyboard Layout Selection
+                        <screen>Keyboard Layout Selection
+Choose the Keyboard Layout you would like to apply to this system.
 
-				Choose the Keyboard Layout you would like to apply to this system.
-
-				Current Active Keyboard Layout: U.S. English
-				Available Keyboard Layouts
-				Swiss German (latin1)
-				Turkish
-				U.S. English
-				U.S. International
-				Ukranian
-				...
+Current Active Keyboard Layout: U.S. English
+Available Keyboard Layouts
+Swiss German (latin1)
+Turkish
+U.S. English
+U.S. International
+Ukranian
+...
 
 
-				<Save>
-				]]>
-			</programlisting>
+&lt;Save></screen>
 		</step>
 		<step>
 			<para>用方向键调整选项。选择保存，并按Enter键来保存选项。</para>

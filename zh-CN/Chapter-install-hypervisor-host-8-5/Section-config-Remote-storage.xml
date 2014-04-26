@@ -15,12 +15,8 @@
 		<step>
 			<para>iSCSI INitiator 的名称</para>
 			<para> 在iSCSI Initiator名称栏键入initiator 名称</para>
-			<programlisting language="Bash">
-			<![CDATA[
-			Example 8.19.  iSCSI Initiator Name
-			iqn.2014-03.eayun.com:target1
-			]]>
-			</programlisting>
+                        <screen>Example 8.19.  iSCSI Initiator Name
+iqn.2014-03.eayun.com:target1</screen>
 		</step>
 		<step>
 			<para>保存配置</para>
