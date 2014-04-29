@@ -9,7 +9,7 @@
 		<title>安装管理端图解示意图</title>
                 <mediaobject>
                   <imageobject>
-                    <imagedata fileref="images/EayunOS_workflow_install_manager.png" format="PNG" width="100%" scalefit="1"/>
+                    <imagedata fileref="images/EayunOS_installation_workflow_install_manager.png" format="PNG" width="100%" scalefit="1"/>
                   </imageobject>
                 </mediaobject>
 	</section>
@@ -140,7 +140,7 @@ Proceed with the configuration listed above? (yes|no): yes</screen>
                         </para>
                       </step>
                       <step>
-                        <para>图中，选中【Use All Space】，按“下一步”</para>
+                        <para>图中，选中”使用所有空间“，按“下一步”</para>
                         <para>
                                 <figure id="eayunos-install-eayunos-manager-3"><title>图4</title>
                                         <mediaobject>

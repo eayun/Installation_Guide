@@ -484,27 +484,33 @@ wodim-1.1.9-11.el6.x86_64</screen>
 							</mediaobject>
 						</figure>
 						<para>可以使用下面的启动选项：</para>
-						<para>Install / Upgrade EayunOS Node Hypervisor-3.3-1</para>
+						<para>Install or Upgrade</para>
 						<para>启动Hypervisor安装程序</para>
 						<para></para>
-						<para>Install / Upgrade (Basic Video)EayunOS Node Hypervisor-3.3-1</para>
+						<para>Boot (Basic Video)</para>
 						<para>使用basic video模式安装或者升级Hypervisor</para>
 						<para></para>
-						<para>Install / Upgrade with serial console EayunOS Node Hypervisor-3.3-1</para>
+                        <para>Install (Basic Vide)</para>
+                        <para>使用basic video模式安装hypervisor</para>
+                        <para></para>
+						<para>Install or Upgrade with serial console</para>
 						<para>安装或者升级Hypervisor前，将控制台重定向到串行设备/dev/ttyS0</para>
 						<para></para>
-						<para>Reinstall EayunOS Node Hypervisor-3.3-1</para>
+						<para>Reinstall</para>
 						<para>重新安装Hypervisor</para>
 						<para></para>
-						<para>Reinstall (Basic Video)EayunOS Node Hypervisor-3.3-1</para>
+						<para>Reinstall (Basic Video)</para>
 						<para>使用basic video模式重装Hypervisor</para>
 						<para></para>
-						<para>Reinstall with serial console EayunOS Node Hypervisor-3.3-1</para>
+						<para>Reinstall with serial console</para>
 						<para>重装Hypervisor前，将控制台重定向到串行设备/dev/ttyS0</para>
 						<para></para>
 						<para>Uninstall</para>
 						<para>卸载</para>
 						<para></para>
+                        <para>Boot from local drive</para>
+                        <para>从本地硬盘启动</para>
+                        <para></para>
 						<para>在启动菜单中选择合适的启动项。</para>
 					</step>
 					<step>	
@@ -580,7 +586,7 @@ wodim-1.1.9-11.el6.x86_64</screen>
 				</step>
 				<step>
 					<para>
-						选择Install / Upgrade EayunOS Node Hypervisor-3.3-1并按Enter键开始安装流程。
+						选择Install or Upgrade并按Enter键开始安装流程。
 					</para>
 				</step>
 				<step>
