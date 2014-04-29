@@ -468,7 +468,7 @@ wodim-1.1.9-11.el6.x86_64</screen>
 						 	<title>开机画面</title>
 						 	<mediaobject>
 			                	<imageobject>
-									<imagedata fileref="images/eayun_installation_splash.png" format="PNG" width="100%" scalefit="1"/>
+									<imagedata fileref="images/EayunOS_installation_splash.png" format="PNG" width="100%" scalefit="1"/>
 					            </imageobject>
 							</mediaobject>
 						</figure>
@@ -479,7 +479,7 @@ wodim-1.1.9-11.el6.x86_64</screen>
 						 	<title>启动菜单</title>
 						 	<mediaobject>
 			                	<imageobject>
-                                                  <imagedata fileref="images/eayun_installation_select_screen.png" format="PNG" width="100%" scalefit="1"/>
+                                                  <imagedata fileref="images/EayunOS_installation_select_screen.png" format="PNG" width="100%" scalefit="1"/>
 					            </imageobject>
 							</mediaobject>
 						</figure>
@@ -524,7 +524,7 @@ wodim-1.1.9-11.el6.x86_64</screen>
 						 	<title>添加启动参数</title>
 						 	<mediaobject>
 			                	<imageobject>
-                                                  <imagedata fileref="images/eayun_installation_boot_param.png" format="PNG" width="100%" scalefit="1"/>
+                                                  <imagedata fileref="images/EayunOS_installation_boot_param.png" format="PNG" width="100%" scalefit="1"/>
 					            </imageobject>
 							</mediaobject>
 						</figure>

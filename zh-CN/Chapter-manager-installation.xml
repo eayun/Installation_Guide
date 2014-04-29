@@ -9,7 +9,7 @@
 		<title>安装管理端图解示意图</title>
                 <mediaobject>
                   <imageobject>
-                    <imagedata fileref="images/eayun_installation_procedure.png" format="PNG" width="100%" scalefit="1"/>
+                    <imagedata fileref="images/EayunOS_workflow_install_manager.png" format="PNG" width="100%" scalefit="1"/>
                   </imageobject>
                 </mediaobject>
 	</section>
@@ -109,7 +109,7 @@ Proceed with the configuration listed above? (yes|no): yes</screen>
                                 <figure id="eayunos-install-eayunos-manager-0"><title>图1</title>
                                         <mediaobject>
                                                 <imageobject>
-                                                        <imagedata fileref="images/eayun_installation_manager_1.png" format="PNG" width="100%" scalefit="1"/>
+                                                        <imagedata fileref="images/EayunOS_installation_manager_1.png" format="PNG" width="100%" scalefit="1"/>
                                                 </imageobject>
                                         </mediaobject>
                                 </figure>
@@ -121,7 +121,7 @@ Proceed with the configuration listed above? (yes|no): yes</screen>
                                 <figure id="eayunos-install-eayunos-manager-1"><title>图2</title>
                                         <mediaobject>
                                                 <imageobject>
-                                                        <imagedata fileref="images/eayun_installation_manager_2.png" format="PNG" width="100%" scalefit="1"/>
+                                                        <imagedata fileref="images/EayunOS_installation_manager_2.png" format="PNG" width="100%" scalefit="1"/>
                                                 </imageobject>
                                         </mediaobject>
                                 </figure>
@@ -133,7 +133,7 @@ Proceed with the configuration listed above? (yes|no): yes</screen>
                                 <figure id="eayunos-install-eayunos-manager-2"><title>图3</title>
                                         <mediaobject>
                                                 <imageobject>
-                                                        <imagedata fileref="images/eayun_installation_manager_3.png" format="PNG" width="100%" scalefit="1"/>
+                                                        <imagedata fileref="images/EayunOS_installation_manager_3.png" format="PNG" width="100%" scalefit="1"/>
                                                 </imageobject>
                                         </mediaobject>
                                 </figure>
@@ -145,7 +145,7 @@ Proceed with the configuration listed above? (yes|no): yes</screen>
                                 <figure id="eayunos-install-eayunos-manager-3"><title>图4</title>
                                         <mediaobject>
                                                 <imageobject>
-                                                        <imagedata fileref="images/eayun_installation_manager_4.png" format="PNG" width="100%" scalefit="1"/>
+                                                        <imagedata fileref="images/EayunOS_installation_manager_4.png" format="PNG" width="100%" scalefit="1"/>
                                                 </imageobject>
                                         </mediaobject>
                                 </figure>
@@ -157,7 +157,7 @@ Proceed with the configuration listed above? (yes|no): yes</screen>
                                 <figure id="eayunos-install-eayunos-manager-4"><title>图5</title>
                                         <mediaobject>
                                                 <imageobject>
-                                                        <imagedata fileref="images/eayun_installation_manager_5.png" format="PNG" width="100%" scalefit="1"/>
+                                                        <imagedata fileref="images/EayunOS_installation_manager_5.png" format="PNG" width="100%" scalefit="1"/>
                                                 </imageobject>
                                         </mediaobject>
                                 </figure>
@@ -169,7 +169,7 @@ Proceed with the configuration listed above? (yes|no): yes</screen>
                                 <figure id="eayunos-install-eayunos-manager-5"><title>图6</title>
                                         <mediaobject>
                                                 <imageobject>
-                                                        <imagedata fileref="images/eayun_installation_manager_6.png" format="PNG" width="100%" scalefit="1"/>
+                                                        <imagedata fileref="images/EayunOS_installation_manager_6.png" format="PNG" width="100%" scalefit="1"/>
                                                 </imageobject>
                                         </mediaobject>
                                 </figure>
@@ -181,7 +181,7 @@ Proceed with the configuration listed above? (yes|no): yes</screen>
                                 <figure id="eayunos-install-eayunos-manager-6"><title>图7</title>
                                         <mediaobject>
                                                 <imageobject>
-                                                        <imagedata fileref="images/eayun_installation_manager_7.png" format="PNG" width="100%" scalefit="1"/>
+                                                        <imagedata fileref="images/EayunOS_installation_manager_7.png" format="PNG" width="100%" scalefit="1"/>
                                                 </imageobject>
                                         </mediaobject>
                                 </figure>

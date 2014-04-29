@@ -13,5 +13,23 @@
 		</affiliation>
 		<email>jiansheng.li@eayun.com</email>
 	</author>
+    <author>
+        <firstname>赵</firstname>
+        <surname>超</surname>
+        <affiliation>
+            <orgname>易云捷讯</orgname>
+            <orgdiv>虚拟化文档组</orgdiv>
+        </affiliation>
+        <email>chao.zhao@eayun.com</email>
+    </author>
+    <author>
+        <firstname>李</firstname>
+        <surname>凌志</surname>
+        <affiliation>
+            <orgname>易云捷讯</orgname>
+            <orgdiv>虚拟化文档组</orgdiv>
+        </affiliation>
+        <email>lingzhi.li@eayun.com</email>
+    </author>
 </authorgroup>
 
