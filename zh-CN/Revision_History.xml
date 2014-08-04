@@ -8,6 +8,20 @@
 	<simpara>
 		<revhistory>
 			<revision>
+				<revnumber>0.0-1</revnumber>
+				<date>Mon Aug 04 2014</date>
+				<author>
+                    <firstname>赵</firstname>
+                    <surname>超</surname>
+					<email>chao.zhao@eayun.com</email>
+				</author>
+				<revdescription>
+					<simplelist>
+						<member>修复多处文字、语句错误。</member>
+					</simplelist>
+				</revdescription>
+			</revision>
+			<revision>
 				<revnumber>0.0-0</revnumber>
 				<date>Fri Mar 14 2014</date>
 				<author>
