@@ -39,7 +39,7 @@
 			<para>Hypervisor支持DHCP和静态网络配置（static）。</para>
 			<orderedlist numeration="lowerroman">
 				<listitem>
-					<para>动态网路配置（DHCP）</para>
+					<para>动态网络配置（DHCP）</para>
 					<para>动态网络配置允许Hypervisor通过DHCP来动态的被分配地址。在IPv4 Settings中选择DHCP选项，并按空格来打开动态IPv4网络配置功能。</para>
 				</listitem>
 				<listitem>

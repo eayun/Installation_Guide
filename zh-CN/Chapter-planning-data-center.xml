@@ -153,7 +153,7 @@
             </simplesect>
             <simplesect>
                 <title>预期结果：</title>
-                <para>虚拟化环境中出现了新的数据中心，但是该数据中心仍处于“为初
+                <para>虚拟化环境中出现了新的数据中心，但是该数据中心仍处于“未初
                     始化“的状态，只有配置好集群、&NODE;和存储域之后才实际可用。
                 </para>
                 <formalpara>
@@ -195,8 +195,8 @@
                 能。虚拟机的迁移对于用户来说是透明的，在迁移过程中虚拟机仍会持续
                 运行。但是需要注意的是虚拟机不能迁移到集群之外的&NODE;。
             </para>
-            <note><para>&OVIRT;虚拟化使用Kernel Same-page Merging（KSM）技术优化内存的
-                    使用。更多相关信息请参考《&OVIRT;管理员手册》。
+            <note><para>&OVIRT;虚拟化使用了Kernel Same-page Merging（KSM）技术对系统内存
+                    进行了优化。更多相关信息请参考《&OVIRT;管理员手册》。
             </para></note>
             <formalpara>
                 <title>参见：</title>

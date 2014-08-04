@@ -787,7 +787,7 @@ U.S. International
 								<para>使用管理服务地地址进行配置</para>
 									<orderedlist numeration="lowerroman">
 										<listitem><para>在Management Server栏输入管理器的IP地址或者完整域名。</para></listitem>
-										<listitem><para>在Management Server Port输入管理服务器的端口。默认值是443。如果&OVIRT;安装的时候选择来一个不同的端口，在这里指定一个新值来替换默认值。</para></listitem>
+										<listitem><para>在Management Server Port输入管理服务器的端口。默认值是443。如果&OVIRT;安装的时候选择了一个不同的端口，在这里指定一个新值来替换默认值。</para></listitem>
 										<listitem><para>选择Retrieve Certificate,检查来自指定管理服务器的证书指纹是否正确。证书指纹的比对结果在&OVIRT;安装结束的时候返回。</para></listitem>
 										<listitem><para>不用设置Password和Confirm Password，当管理服务器地址有效的时候这两栏不需要。</para></listitem>
 									</orderedlist>
@@ -797,7 +797,7 @@ U.S. International
                                		<orderedlist numeration="lowerroman">
                                			<listitem><para>在Password栏输入密码。建议你使用一个强壮的密码。强壮的密码可以是大小写字母，数字，标点符号的混合。密码最少六个字符，而且不应该出现在字典中。</para></listitem>
                                         <listitem><para>在Confirm Password栏重新输入你的密码。</para></listitem>
-                                        <listitem><para>不用设置Management Server和Management Server Port两栏，只要密码设置来，稍后允许管理器添加Hypervisor就可以了，不需要这两栏。</para></listitem>
+                                        <listitem><para>不用设置Management Server和Management Server Port两栏，只要密码设置了，稍后允许管理器添加Hypervisor就可以了，不需要这两栏。</para></listitem>
                                     </orderedlist>
 							</listitem>
 						</orderedlist>
@@ -842,7 +842,7 @@ U.S. International
 				</procedure>
 				<formalpara>
 						<title>结果</title>
-						<para>该主机的状态变成Installing，一会之后，它的状态变成来UP。</para>
+						<para>该主机的状态变成Installing，一会之后，它的状态变成UP。</para>
 				</formalpara>
 			</section>
 		</section>

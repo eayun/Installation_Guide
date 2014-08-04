@@ -335,7 +335,7 @@ root	ALL=(ALL)	ALL</screen>
 									<para>SSH 公钥</para>
 								</entry>
 								<entry>	
-									<para>如果你愿意使用管理器的ssh密钥而不是使用密码来认证主机，那么复制下面的内容哦你到被添加的主机的/root/.known_hosts文件。</para>
+									<para>如果你愿意使用管理器的ssh密钥而不是使用密码来认证主机，那么复制下面的内容到被添加的主机的/root/.known_hosts文件。</para>
 								</entry>
 							</row>
 							<row>
