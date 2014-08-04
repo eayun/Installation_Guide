@@ -268,7 +268,7 @@
                                 检查内核模块kvm有没有加载：
                                 <screen># lsmod | grep kvm
                                 </screen>
-                                如果输入中包含kvm_intel或者kvm_amd说明模块已经正
+                                如果输出中包含kvm_intel或者kvm_amd说明模块已经正
                                 确加载，CPU满足虚拟化技术的要求。
                             </para>
                         </listitem>
